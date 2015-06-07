@@ -13,63 +13,64 @@
 <span class='curline'><a href='../S/1.html#L130'>a</a>                 130 mylist.cpp             MyList() __MYLIST_NOEXCEPT() : a(NULL), capacity(0), size(0){};</span>
 <span class='curline'><a href='../S/1.html#L144'>a</a>                 144 mylist.cpp             MyList&lt;T&gt; get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0));//返回MyList中第start到第end位的元素，包括两边。此处需要像python一样接受负数，具体见测试代码。</span>
 <span class='curline'><a href='../S/1.html#L146'>a</a>                 146 mylist.cpp             int count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0]);//返回MyList中和item相等的元素的个数。</span>
-<span class='curline'><a href='../S/1.html#L166'>a</a>                 166 mylist.cpp             ~MyList(){delete [] a;}</span>
-<span class='curline'><a href='../S/1.html#L184'>a</a>                 184 mylist.cpp               tmp[i]=a[i];          //If exception raises, a will not be influenced</span>
-<span class='curline'><a href='../S/1.html#L191'>a</a>                 191 mylist.cpp           a[i].~T();</span>
-<span class='curline'><a href='../S/1.html#L192'>a</a>                 192 mylist.cpp         delete[] a;</span>
-<span class='curline'><a href='../S/1.html#L194'>a</a>                 194 mylist.cpp         a = tmp;</span>
-<span class='curline'><a href='../S/1.html#L201'>a</a>                 201 mylist.cpp         a = new T [num];</span>
-<span class='curline'><a href='../S/1.html#L207'>a</a>                 207 mylist.cpp               a[i] = item;</span>
-<span class='curline'><a href='../S/1.html#L210'>a</a>                 210 mylist.cpp             delete[] a;</span>
-<span class='curline'><a href='../S/1.html#L221'>a</a>                 221 mylist.cpp         a = new T[capacity];</span>
-<span class='curline'><a href='../S/1.html#L226'>a</a>                 226 mylist.cpp               a[i]=l.a[i];</span>
-<span class='curline'><a href='../S/1.html#L229'>a</a>                 229 mylist.cpp             delete[] a;</span>
-<span class='curline'><a href='../S/1.html#L241'>a</a>                 241 mylist.cpp         a=new T[capacity];</span>
-<span class='curline'><a href='../S/1.html#L246'>a</a>                 246 mylist.cpp               a[i]=arr[i];</span>
-<span class='curline'><a href='../S/1.html#L249'>a</a>                 249 mylist.cpp             delete[] a;</span>
-<span class='curline'><a href='../S/1.html#L260'>a</a>                 260 mylist.cpp         a[size]=item;       //if exception raises, size will remain unchanged. Since a[size] is undefined, then the part exposed to user (a[0]~a[size-1]) remains unchanged)</span>
-<span class='curline'><a href='../S/1.html#L270'>a</a>                 270 mylist.cpp         T tmp=a[size-1];</span>
-<span class='curline'><a href='../S/1.html#L271'>a</a>                 271 mylist.cpp         a[--size].~T(); //Destructor never throws exception</span>
-<span class='curline'><a href='../S/1.html#L291'>a</a>                 291 mylist.cpp           a[i]=a[i-1];</span>
-<span class='curline'><a href='../S/1.html#L292'>a</a>                 292 mylist.cpp         a[index]=item;</span>
-<span class='curline'><a href='../S/1.html#L300'>a</a>                 300 mylist.cpp           a[i].~T();</span>
-<span class='curline'><a href='../S/1.html#L318'>a</a>                 318 mylist.cpp           a[i].~T();</span>
-<span class='curline'><a href='../S/1.html#L320'>a</a>                 320 mylist.cpp           a[i-end+start-1] = a[i];      //error in copy -&gt; correct destruct</span>
-<span class='curline'><a href='../S/1.html#L330'>a</a>                 330 mylist.cpp         return a[index];</span>
-<span class='curline'><a href='../S/1.html#L335'>a</a>                 335 mylist.cpp     MyList&lt;T&gt; MyList&lt;T&gt;::get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0))</span>
-<span class='curline'><a href='../S/1.html#L341'>a</a>                 341 mylist.cpp         return MyList&lt;T&gt;(a+start, end-start+1); //RVO</span>
-<span class='curline'><a href='../S/1.html#L346'>a</a>                 346 mylist.cpp     int MyList&lt;T&gt;::count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0])</span>
-<span class='curline'><a href='../S/1.html#L350'>a</a>                 350 mylist.cpp           ans+=(item == a[i]);</span>
-<span class='curline'><a href='../S/1.html#L359'>a</a>                 359 mylist.cpp           if (item == a[i])</span>
-<span class='curline'><a href='../S/1.html#L406'>a</a>                 406 mylist.cpp           a[i].~T();</span>
-<span class='curline'><a href='../S/1.html#L409'>a</a>                 409 mylist.cpp           a[i]=l[i];</span>
-<span class='curline'><a href='../S/1.html#L419'>a</a>                 419 mylist.cpp         return a[index];</span>
-<span class='curline'><a href='../S/1.html#L437'>a</a>                 437 mylist.cpp     inline bool __comp(const T&amp; a, const T&amp; b) { if (less) return a&lt;b; return a&gt;b; }</span>
-<span class='curline'><a href='../S/1.html#L485'>a</a>                 485 mylist.cpp         if(!less) sort_impl&lt;true&gt;(a,a+size);</span>
-<span class='curline'><a href='../S/1.html#L486'>a</a>                 486 mylist.cpp         else sort_impl&lt;false&gt;(a,a+size);</span>
-<span class='curline'><a href='../S/1.html#L495'>a</a>                 495 mylist.cpp             y=a[i];</span>
-<span class='curline'><a href='../S/1.html#L496'>a</a>                 496 mylist.cpp             a[i]=a[size-i-1];</span>
-<span class='curline'><a href='../S/1.html#L497'>a</a>                 497 mylist.cpp             a[size-i-1]=y;</span>
-<span class='curline'><a href='../S/1.html#L505'>a</a>                 505 mylist.cpp     {	MyList&lt;int&gt; a, b;</span>
-<span class='curline'><a href='../S/1.html#L508'>a</a>                 508 mylist.cpp           a.push(i);</span>
-<span class='curline'><a href='../S/1.html#L510'>a</a>                 510 mylist.cpp         cout&lt;&lt;a&lt;&lt;endl;</span>
-<span class='curline'><a href='../S/1.html#L511'>a</a>                 511 mylist.cpp         a[3] = 15; // a = [0, 1, 2, 15, 4]</span>
-<span class='curline'><a href='../S/1.html#L512'>a</a>                 512 mylist.cpp         cout&lt;&lt;a&lt;&lt;endl;</span>
-<span class='curline'><a href='../S/1.html#L513'>a</a>                 513 mylist.cpp         a.sort(); // a = [0, 1, 2, 4, 15]</span>
-<span class='curline'><a href='../S/1.html#L514'>a</a>                 514 mylist.cpp         cout&lt;&lt;a&lt;&lt;endl;</span>
-<span class='curline'><a href='../S/1.html#L515'>a</a>                 515 mylist.cpp         a.reverse(); // a = [15, 4, 2, 1, 0]</span>
-<span class='curline'><a href='../S/1.html#L516'>a</a>                 516 mylist.cpp         a += 12; // a = [15, 4, 2, 1, 0, 12]</span>
-<span class='curline'><a href='../S/1.html#L517'>a</a>                 517 mylist.cpp         cout&lt;&lt;a&lt;&lt;endl;</span>
-<span class='curline'><a href='../S/1.html#L518'>a</a>                 518 mylist.cpp         b = a.get_item(4, -3); // b = [] *若start &gt; end，返回空数组</span>
-<span class='curline'><a href='../S/1.html#L519'>a</a>                 519 mylist.cpp         b = a.get_item(3, -1); // b = [1, 0, 12] </span>
-<span class='curline'><a href='../S/1.html#L520'>a</a>                 520 mylist.cpp         a += b; // a = [15, 4, 2, 1, 0, 12, 1, 0, 12]</span>
-<span class='curline'><a href='../S/1.html#L522'>a</a>                 522 mylist.cpp         for (i=0; i&lt;a.get_size(); ++i)</span>
-<span class='curline'><a href='../S/1.html#L523'>a</a>                 523 mylist.cpp           cout&lt;&lt;a.get_item(i)&lt;&lt;endl;</span>
-<span class='curline'><a href='../S/1.html#L524'>a</a>                 524 mylist.cpp         cout&lt;&lt;a.count(5)&lt;&lt;endl;</span>
-<span class='curline'><a href='../S/1.html#L527'>a</a>                 527 mylist.cpp         a.erase(2, 6); // a = [15, 4, 0, 12]</span>
-<span class='curline'><a href='../S/1.html#L528'>a</a>                 528 mylist.cpp         cout&lt;&lt;a&lt;&lt;endl;</span>
-<span class='curline'><a href='../S/1.html#L531'>a</a>                 531 mylist.cpp         a.erase(3,9);</span>
-<span class='curline'><a href='../S/1.html#L537'>a</a>                 537 mylist.cpp         b = a + a; // b = [15, 4, 0, 12, 15, 4, 0, 12]</span>
+<span class='curline'><a href='../S/1.html#L165'>a</a>                 165 mylist.cpp             ~MyList(){delete [] a;}</span>
+<span class='curline'><a href='../S/1.html#L183'>a</a>                 183 mylist.cpp               tmp[i]=a[i];          //If exception raises, a will not be influenced</span>
+<span class='curline'><a href='../S/1.html#L190'>a</a>                 190 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L191'>a</a>                 191 mylist.cpp         delete[] a;</span>
+<span class='curline'><a href='../S/1.html#L193'>a</a>                 193 mylist.cpp         a = tmp;</span>
+<span class='curline'><a href='../S/1.html#L200'>a</a>                 200 mylist.cpp         a = new T [num];</span>
+<span class='curline'><a href='../S/1.html#L206'>a</a>                 206 mylist.cpp               a[i] = item;</span>
+<span class='curline'><a href='../S/1.html#L209'>a</a>                 209 mylist.cpp             delete[] a;</span>
+<span class='curline'><a href='../S/1.html#L220'>a</a>                 220 mylist.cpp         a = new T[capacity];</span>
+<span class='curline'><a href='../S/1.html#L225'>a</a>                 225 mylist.cpp               a[i]=l.a[i];</span>
+<span class='curline'><a href='../S/1.html#L228'>a</a>                 228 mylist.cpp             delete[] a;</span>
+<span class='curline'><a href='../S/1.html#L240'>a</a>                 240 mylist.cpp         a=new T[capacity];</span>
+<span class='curline'><a href='../S/1.html#L245'>a</a>                 245 mylist.cpp               a[i]=arr[i];</span>
+<span class='curline'><a href='../S/1.html#L248'>a</a>                 248 mylist.cpp             delete[] a;</span>
+<span class='curline'><a href='../S/1.html#L259'>a</a>                 259 mylist.cpp         a[size]=item;       //if exception raises, size will remain unchanged. Since a[size] is undefined, then the part exposed to user (a[0]~a[size-1]) remains unchanged)</span>
+<span class='curline'><a href='../S/1.html#L269'>a</a>                 269 mylist.cpp         T tmp=a[size-1];</span>
+<span class='curline'><a href='../S/1.html#L270'>a</a>                 270 mylist.cpp         a[--size].~T(); //Destructor never throws exception</span>
+<span class='curline'><a href='../S/1.html#L290'>a</a>                 290 mylist.cpp           a[i]=a[i-1];</span>
+<span class='curline'><a href='../S/1.html#L291'>a</a>                 291 mylist.cpp         a[index]=item;</span>
+<span class='curline'><a href='../S/1.html#L299'>a</a>                 299 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L317'>a</a>                 317 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L319'>a</a>                 319 mylist.cpp           a[i-end+start-1] = a[i];      //error in copy -&gt; correct destruct</span>
+<span class='curline'><a href='../S/1.html#L329'>a</a>                 329 mylist.cpp         return a[index];</span>
+<span class='curline'><a href='../S/1.html#L334'>a</a>                 334 mylist.cpp     MyList&lt;T&gt; MyList&lt;T&gt;::get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0))</span>
+<span class='curline'><a href='../S/1.html#L340'>a</a>                 340 mylist.cpp         return MyList&lt;T&gt;(a+start, end-start+1); //RVO</span>
+<span class='curline'><a href='../S/1.html#L345'>a</a>                 345 mylist.cpp     int MyList&lt;T&gt;::count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0])</span>
+<span class='curline'><a href='../S/1.html#L349'>a</a>                 349 mylist.cpp           ans+=(item == a[i]);</span>
+<span class='curline'><a href='../S/1.html#L358'>a</a>                 358 mylist.cpp           if (item == a[i])</span>
+<span class='curline'><a href='../S/1.html#L405'>a</a>                 405 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L408'>a</a>                 408 mylist.cpp           a[i]=l[i];</span>
+<span class='curline'><a href='../S/1.html#L418'>a</a>                 418 mylist.cpp         return a[index];</span>
+<span class='curline'><a href='../S/1.html#L436'>a</a>                 436 mylist.cpp     inline bool __comp(const T&amp; a, const T&amp; b) { if (less) return a&lt;b; return a&gt;b; }</span>
+<span class='curline'><a href='../S/1.html#L484'>a</a>                 484 mylist.cpp         if(!less) sort_impl&lt;true&gt;(a,a+size);</span>
+<span class='curline'><a href='../S/1.html#L485'>a</a>                 485 mylist.cpp         else sort_impl&lt;false&gt;(a,a+size);</span>
+<span class='curline'><a href='../S/1.html#L494'>a</a>                 494 mylist.cpp             y=a[i];</span>
+<span class='curline'><a href='../S/1.html#L495'>a</a>                 495 mylist.cpp             a[i]=a[size-i-1];</span>
+<span class='curline'><a href='../S/1.html#L496'>a</a>                 496 mylist.cpp             a[size-i-1]=y;</span>
+<span class='curline'><a href='../S/1.html#L505'>a</a>                 505 mylist.cpp         a=b.a;</span>
+<span class='curline'><a href='../S/1.html#L513'>a</a>                 513 mylist.cpp     {	MyList&lt;int&gt; a, b;</span>
+<span class='curline'><a href='../S/1.html#L516'>a</a>                 516 mylist.cpp           a.push(i);</span>
+<span class='curline'><a href='../S/1.html#L518'>a</a>                 518 mylist.cpp         cout&lt;&lt;a&lt;&lt;endl;</span>
+<span class='curline'><a href='../S/1.html#L519'>a</a>                 519 mylist.cpp         a[3] = 15; // a = [0, 1, 2, 15, 4]</span>
+<span class='curline'><a href='../S/1.html#L520'>a</a>                 520 mylist.cpp         cout&lt;&lt;a&lt;&lt;endl;</span>
+<span class='curline'><a href='../S/1.html#L521'>a</a>                 521 mylist.cpp         a.sort(); // a = [0, 1, 2, 4, 15]</span>
+<span class='curline'><a href='../S/1.html#L522'>a</a>                 522 mylist.cpp         cout&lt;&lt;a&lt;&lt;endl;</span>
+<span class='curline'><a href='../S/1.html#L523'>a</a>                 523 mylist.cpp         a.reverse(); // a = [15, 4, 2, 1, 0]</span>
+<span class='curline'><a href='../S/1.html#L524'>a</a>                 524 mylist.cpp         a += 12; // a = [15, 4, 2, 1, 0, 12]</span>
+<span class='curline'><a href='../S/1.html#L525'>a</a>                 525 mylist.cpp         cout&lt;&lt;a&lt;&lt;endl;</span>
+<span class='curline'><a href='../S/1.html#L526'>a</a>                 526 mylist.cpp         b = a.get_item(4, -3); // b = [] *若start &gt; end，返回空数组</span>
+<span class='curline'><a href='../S/1.html#L527'>a</a>                 527 mylist.cpp         b = a.get_item(3, -1); // b = [1, 0, 12] </span>
+<span class='curline'><a href='../S/1.html#L528'>a</a>                 528 mylist.cpp         a += b; // a = [15, 4, 2, 1, 0, 12, 1, 0, 12]</span>
+<span class='curline'><a href='../S/1.html#L530'>a</a>                 530 mylist.cpp         for (i=0; i&lt;a.get_size(); ++i)</span>
+<span class='curline'><a href='../S/1.html#L531'>a</a>                 531 mylist.cpp           cout&lt;&lt;a.get_item(i)&lt;&lt;endl;</span>
+<span class='curline'><a href='../S/1.html#L532'>a</a>                 532 mylist.cpp         cout&lt;&lt;a.count(5)&lt;&lt;endl;</span>
+<span class='curline'><a href='../S/1.html#L535'>a</a>                 535 mylist.cpp         a.erase(2, 6); // a = [15, 4, 0, 12]</span>
+<span class='curline'><a href='../S/1.html#L536'>a</a>                 536 mylist.cpp         cout&lt;&lt;a&lt;&lt;endl;</span>
+<span class='curline'><a href='../S/1.html#L539'>a</a>                 539 mylist.cpp         a.erase(3,9);</span>
+<span class='curline'><a href='../S/1.html#L545'>a</a>                 545 mylist.cpp         b = a + a; // b = [15, 4, 0, 12, 15, 4, 0, 12]</span>
 </pre>
 </body>
 </html>

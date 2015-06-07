@@ -11,16 +11,16 @@
 <pre>
 <span class='curline'><a href='../S/1.html#L141'>start</a>             141 mylist.cpp             void erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY); //删除MyList中第start到第end位的元素，包括两边。</span>
 <span class='curline'><a href='../S/1.html#L144'>start</a>             144 mylist.cpp             MyList&lt;T&gt; get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0));//返回MyList中第start到第end位的元素，包括两边。此处需要像python一样接受负数，具体见测试代码。</span>
-<span class='curline'><a href='../S/1.html#L313'>start</a>             313 mylist.cpp     void MyList&lt;T&gt;::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L315'>start</a>             315 mylist.cpp         if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size || start&gt;end)</span>
-<span class='curline'><a href='../S/1.html#L317'>start</a>             317 mylist.cpp         for (int i=start; i&lt;=end; ++i)</span>
-<span class='curline'><a href='../S/1.html#L320'>start</a>             320 mylist.cpp           a[i-end+start-1] = a[i];      //error in copy -&gt; correct destruct</span>
-<span class='curline'><a href='../S/1.html#L321'>start</a>             321 mylist.cpp         size -= end-start+1;</span>
-<span class='curline'><a href='../S/1.html#L335'>start</a>             335 mylist.cpp     MyList&lt;T&gt; MyList&lt;T&gt;::get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0))</span>
-<span class='curline'><a href='../S/1.html#L337'>start</a>             337 mylist.cpp         if (start&lt;0) start+=size;</span>
-<span class='curline'><a href='../S/1.html#L339'>start</a>             339 mylist.cpp         if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size) throw MyListOutOfRangeError();</span>
-<span class='curline'><a href='../S/1.html#L340'>start</a>             340 mylist.cpp         if (start&gt;end) return MyList&lt;T&gt;();</span>
-<span class='curline'><a href='../S/1.html#L341'>start</a>             341 mylist.cpp         return MyList&lt;T&gt;(a+start, end-start+1); //RVO</span>
+<span class='curline'><a href='../S/1.html#L312'>start</a>             312 mylist.cpp     void MyList&lt;T&gt;::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L314'>start</a>             314 mylist.cpp         if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size || start&gt;end)</span>
+<span class='curline'><a href='../S/1.html#L316'>start</a>             316 mylist.cpp         for (int i=start; i&lt;=end; ++i)</span>
+<span class='curline'><a href='../S/1.html#L319'>start</a>             319 mylist.cpp           a[i-end+start-1] = a[i];      //error in copy -&gt; correct destruct</span>
+<span class='curline'><a href='../S/1.html#L320'>start</a>             320 mylist.cpp         size -= end-start+1;</span>
+<span class='curline'><a href='../S/1.html#L334'>start</a>             334 mylist.cpp     MyList&lt;T&gt; MyList&lt;T&gt;::get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0))</span>
+<span class='curline'><a href='../S/1.html#L336'>start</a>             336 mylist.cpp         if (start&lt;0) start+=size;</span>
+<span class='curline'><a href='../S/1.html#L338'>start</a>             338 mylist.cpp         if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size) throw MyListOutOfRangeError();</span>
+<span class='curline'><a href='../S/1.html#L339'>start</a>             339 mylist.cpp         if (start&gt;end) return MyList&lt;T&gt;();</span>
+<span class='curline'><a href='../S/1.html#L340'>start</a>             340 mylist.cpp         return MyList&lt;T&gt;(a+start, end-start+1); //RVO</span>
 </pre>
 </body>
 </html>

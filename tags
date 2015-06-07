@@ -31,6 +31,7 @@ __MYLIST_NEW	mylist.cpp	32;"	d	file:
 __MYLIST_NOEXCEPT	mylist.cpp	/^        MyList() __MYLIST_NOEXCEPT() : a(NULL), capacity(0), size(0){};$/;"	f	class:MyList
 __MYLIST_NOEXCEPT	mylist.cpp	/^int MyList<T>::get_size() const __MYLIST_NOEXCEPT()$/;"	f
 __MYLIST_NOEXCEPT	mylist.cpp	/^void MyList<T>::clean() __MYLIST_NOEXCEPT()$/;"	f
+__MYLIST_NOEXCEPT	mylist.cpp	/^void MyList<T>::swap(const MyList<T>& b) __MYLIST_NOEXCEPT()$/;"	f
 __MYLIST_NOEXCEPT	mylist.cpp	22;"	d	file:
 __MYLIST_NOEXCEPT	mylist.cpp	34;"	d	file:
 __MYLIST_NOEXCEPT_IF	mylist.cpp	/^int MyList<T>::count(const T &item) const __MYLIST_NOEXCEPT_IF(item == a[0])$/;"	f

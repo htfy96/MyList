@@ -11,16 +11,16 @@
 <pre>
 <span class='curline'><a href='../S/1.html#L127'>less</a>              127 mylist.cpp             template&lt;bool less&gt; void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT);</span>
 <span class='curline'><a href='../S/1.html#L160'>less</a>              160 mylist.cpp             void sort(bool less=true) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L436'>less</a>              436 mylist.cpp     template&lt;typename T, bool less&gt;</span>
-<span class='curline'><a href='../S/1.html#L437'>less</a>              437 mylist.cpp     inline bool __comp(const T&amp; a, const T&amp; b) { if (less) return a&lt;b; return a&gt;b; }</span>
-<span class='curline'><a href='../S/1.html#L443'>less</a>              443 mylist.cpp     template&lt;bool less&gt;</span>
-<span class='curline'><a href='../S/1.html#L456'>less</a>              456 mylist.cpp                 if (__comp&lt;T,less&gt;(*i, *j))</span>
-<span class='curline'><a href='../S/1.html#L466'>less</a>              466 mylist.cpp             while (__comp&lt;T,less&gt;(*i,x)) ++i;</span>
-<span class='curline'><a href='../S/1.html#L467'>less</a>              467 mylist.cpp             while (__comp&lt;T,less&gt;(x,*j)) --j;</span>
-<span class='curline'><a href='../S/1.html#L477'>less</a>              477 mylist.cpp         if (l&lt;j) sort_impl&lt;less&gt;(l, j);</span>
-<span class='curline'><a href='../S/1.html#L478'>less</a>              478 mylist.cpp         if (i&lt;r) sort_impl&lt;less&gt;(i, r);</span>
-<span class='curline'><a href='../S/1.html#L482'>less</a>              482 mylist.cpp     void MyList&lt;T&gt;::sort(bool less) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L485'>less</a>              485 mylist.cpp         if(!less) sort_impl&lt;true&gt;(a,a+size);</span>
+<span class='curline'><a href='../S/1.html#L435'>less</a>              435 mylist.cpp     template&lt;typename T, bool less&gt;</span>
+<span class='curline'><a href='../S/1.html#L436'>less</a>              436 mylist.cpp     inline bool __comp(const T&amp; a, const T&amp; b) { if (less) return a&lt;b; return a&gt;b; }</span>
+<span class='curline'><a href='../S/1.html#L442'>less</a>              442 mylist.cpp     template&lt;bool less&gt;</span>
+<span class='curline'><a href='../S/1.html#L455'>less</a>              455 mylist.cpp                 if (__comp&lt;T,less&gt;(*i, *j))</span>
+<span class='curline'><a href='../S/1.html#L465'>less</a>              465 mylist.cpp             while (__comp&lt;T,less&gt;(*i,x)) ++i;</span>
+<span class='curline'><a href='../S/1.html#L466'>less</a>              466 mylist.cpp             while (__comp&lt;T,less&gt;(x,*j)) --j;</span>
+<span class='curline'><a href='../S/1.html#L476'>less</a>              476 mylist.cpp         if (l&lt;j) sort_impl&lt;less&gt;(l, j);</span>
+<span class='curline'><a href='../S/1.html#L477'>less</a>              477 mylist.cpp         if (i&lt;r) sort_impl&lt;less&gt;(i, r);</span>
+<span class='curline'><a href='../S/1.html#L481'>less</a>              481 mylist.cpp     void MyList&lt;T&gt;::sort(bool less) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L484'>less</a>              484 mylist.cpp         if(!less) sort_impl&lt;true&gt;(a,a+size);</span>
 </pre>
 </body>
 </html>

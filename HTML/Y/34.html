@@ -12,16 +12,16 @@
 <span class='curline'><a href='../S/1.html#L138'>index</a>             138 mylist.cpp             void insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//将item插入到place处。</span>
 <span class='curline'><a href='../S/1.html#L145'>index</a>             145 mylist.cpp             T get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY );</span>
 <span class='curline'><a href='../S/1.html#L156'>index</a>             156 mylist.cpp             T &amp;operator [](int index) const  __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY);//返回第index个元素。</span>
-<span class='curline'><a href='../S/1.html#L284'>index</a>             284 mylist.cpp     void MyList&lt;T&gt;::insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L286'>index</a>             286 mylist.cpp         if (index&lt;0 || index&gt;size) throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of insert out of range");</span>
-<span class='curline'><a href='../S/1.html#L290'>index</a>             290 mylist.cpp         for (int i=size-1; i&gt;index; --i)</span>
-<span class='curline'><a href='../S/1.html#L292'>index</a>             292 mylist.cpp         a[index]=item;</span>
-<span class='curline'><a href='../S/1.html#L326'>index</a>             326 mylist.cpp     T MyList&lt;T&gt;::get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY) </span>
-<span class='curline'><a href='../S/1.html#L328'>index</a>             328 mylist.cpp         if (index&lt;0 || index&gt;=size) </span>
-<span class='curline'><a href='../S/1.html#L330'>index</a>             330 mylist.cpp         return a[index];</span>
-<span class='curline'><a href='../S/1.html#L415'>index</a>             415 mylist.cpp     T&amp; MyList&lt;T&gt;::operator[](int index) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L417'>index</a>             417 mylist.cpp         if (index&lt;0 || index&gt;=size) </span>
-<span class='curline'><a href='../S/1.html#L419'>index</a>             419 mylist.cpp         return a[index];</span>
+<span class='curline'><a href='../S/1.html#L283'>index</a>             283 mylist.cpp     void MyList&lt;T&gt;::insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L285'>index</a>             285 mylist.cpp         if (index&lt;0 || index&gt;size) throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of insert out of range");</span>
+<span class='curline'><a href='../S/1.html#L289'>index</a>             289 mylist.cpp         for (int i=size-1; i&gt;index; --i)</span>
+<span class='curline'><a href='../S/1.html#L291'>index</a>             291 mylist.cpp         a[index]=item;</span>
+<span class='curline'><a href='../S/1.html#L325'>index</a>             325 mylist.cpp     T MyList&lt;T&gt;::get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY) </span>
+<span class='curline'><a href='../S/1.html#L327'>index</a>             327 mylist.cpp         if (index&lt;0 || index&gt;=size) </span>
+<span class='curline'><a href='../S/1.html#L329'>index</a>             329 mylist.cpp         return a[index];</span>
+<span class='curline'><a href='../S/1.html#L414'>index</a>             414 mylist.cpp     T&amp; MyList&lt;T&gt;::operator[](int index) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L416'>index</a>             416 mylist.cpp         if (index&lt;0 || index&gt;=size) </span>
+<span class='curline'><a href='../S/1.html#L418'>index</a>             418 mylist.cpp         return a[index];</span>
 </pre>
 </body>
 </html>

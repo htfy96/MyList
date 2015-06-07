@@ -13,28 +13,28 @@
 <span class='curline'><a href='../S/1.html#L132'>l</a>                 132 mylist.cpp             MyList(const MyList &amp;l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//深复制另外一个MyList。</span>
 <span class='curline'><a href='../S/1.html#L153'>l</a>                 153 mylist.cpp             MyList &amp;operator = (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//赋值</span>
 <span class='curline'><a href='../S/1.html#L155'>l</a>                 155 mylist.cpp             MyList &amp;operator += (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T());//将一个MyList加入到本个MyList之后。</span>
-<span class='curline'><a href='../S/1.html#L217'>l</a>                 217 mylist.cpp     MyList&lt;T&gt;::MyList(const MyList &amp;l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L219'>l</a>                 219 mylist.cpp         size = l.size;</span>
-<span class='curline'><a href='../S/1.html#L220'>l</a>                 220 mylist.cpp         capacity = l.capacity;</span>
-<span class='curline'><a href='../S/1.html#L226'>l</a>                 226 mylist.cpp               a[i]=l.a[i];</span>
-<span class='curline'><a href='../S/1.html#L376'>l</a>                 376 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator +=(const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T())</span>
-<span class='curline'><a href='../S/1.html#L378'>l</a>                 378 mylist.cpp         if (capacity &lt; size + l.size)</span>
-<span class='curline'><a href='../S/1.html#L379'>l</a>                 379 mylist.cpp           double_space(size + l.size);</span>
-<span class='curline'><a href='../S/1.html#L380'>l</a>                 380 mylist.cpp         for (int i=0; i&lt;l.size; ++i)</span>
-<span class='curline'><a href='../S/1.html#L381'>l</a>                 381 mylist.cpp           (*this) += l[i];</span>
-<span class='curline'><a href='../S/1.html#L402'>l</a>                 402 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator= (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_ASSIGN)</span>
-<span class='curline'><a href='../S/1.html#L404'>l</a>                 404 mylist.cpp         if (capacity&lt;l.size) double_space(l.size);</span>
-<span class='curline'><a href='../S/1.html#L405'>l</a>                 405 mylist.cpp         for (int i=size;i&lt;l.size;++i)</span>
-<span class='curline'><a href='../S/1.html#L407'>l</a>                 407 mylist.cpp         size = l.size;</span>
-<span class='curline'><a href='../S/1.html#L408'>l</a>                 408 mylist.cpp         for(int i=0; i&lt;l.size; ++i)</span>
-<span class='curline'><a href='../S/1.html#L409'>l</a>                 409 mylist.cpp           a[i]=l[i];</span>
-<span class='curline'><a href='../S/1.html#L444'>l</a>                 444 mylist.cpp     void MyList&lt;T&gt;::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L448'>l</a>                 448 mylist.cpp         T *i=l, *j=r;</span>
-<span class='curline'><a href='../S/1.html#L450'>l</a>                 450 mylist.cpp         T &amp;x= *(l+((r-l)&gt;&gt;1));</span>
-<span class='curline'><a href='../S/1.html#L451'>l</a>                 451 mylist.cpp         if (l&gt;=r) return;</span>
-<span class='curline'><a href='../S/1.html#L452'>l</a>                 452 mylist.cpp         if (r-l&lt;SORT_THRESHOLD)</span>
-<span class='curline'><a href='../S/1.html#L454'>l</a>                 454 mylist.cpp             for(i=l;i&lt;r;++i)</span>
-<span class='curline'><a href='../S/1.html#L477'>l</a>                 477 mylist.cpp         if (l&lt;j) sort_impl&lt;less&gt;(l, j);</span>
+<span class='curline'><a href='../S/1.html#L216'>l</a>                 216 mylist.cpp     MyList&lt;T&gt;::MyList(const MyList &amp;l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L218'>l</a>                 218 mylist.cpp         size = l.size;</span>
+<span class='curline'><a href='../S/1.html#L219'>l</a>                 219 mylist.cpp         capacity = l.capacity;</span>
+<span class='curline'><a href='../S/1.html#L225'>l</a>                 225 mylist.cpp               a[i]=l.a[i];</span>
+<span class='curline'><a href='../S/1.html#L375'>l</a>                 375 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator +=(const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T())</span>
+<span class='curline'><a href='../S/1.html#L377'>l</a>                 377 mylist.cpp         if (capacity &lt; size + l.size)</span>
+<span class='curline'><a href='../S/1.html#L378'>l</a>                 378 mylist.cpp           double_space(size + l.size);</span>
+<span class='curline'><a href='../S/1.html#L379'>l</a>                 379 mylist.cpp         for (int i=0; i&lt;l.size; ++i)</span>
+<span class='curline'><a href='../S/1.html#L380'>l</a>                 380 mylist.cpp           (*this) += l[i];</span>
+<span class='curline'><a href='../S/1.html#L401'>l</a>                 401 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator= (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_ASSIGN)</span>
+<span class='curline'><a href='../S/1.html#L403'>l</a>                 403 mylist.cpp         if (capacity&lt;l.size) double_space(l.size);</span>
+<span class='curline'><a href='../S/1.html#L404'>l</a>                 404 mylist.cpp         for (int i=size;i&lt;l.size;++i)</span>
+<span class='curline'><a href='../S/1.html#L406'>l</a>                 406 mylist.cpp         size = l.size;</span>
+<span class='curline'><a href='../S/1.html#L407'>l</a>                 407 mylist.cpp         for(int i=0; i&lt;l.size; ++i)</span>
+<span class='curline'><a href='../S/1.html#L408'>l</a>                 408 mylist.cpp           a[i]=l[i];</span>
+<span class='curline'><a href='../S/1.html#L443'>l</a>                 443 mylist.cpp     void MyList&lt;T&gt;::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L447'>l</a>                 447 mylist.cpp         T *i=l, *j=r;</span>
+<span class='curline'><a href='../S/1.html#L449'>l</a>                 449 mylist.cpp         T &amp;x= *(l+((r-l)&gt;&gt;1));</span>
+<span class='curline'><a href='../S/1.html#L450'>l</a>                 450 mylist.cpp         if (l&gt;=r) return;</span>
+<span class='curline'><a href='../S/1.html#L451'>l</a>                 451 mylist.cpp         if (r-l&lt;SORT_THRESHOLD)</span>
+<span class='curline'><a href='../S/1.html#L453'>l</a>                 453 mylist.cpp             for(i=l;i&lt;r;++i)</span>
+<span class='curline'><a href='../S/1.html#L476'>l</a>                 476 mylist.cpp         if (l&lt;j) sort_impl&lt;less&gt;(l, j);</span>
 </pre>
 </body>
 </html>

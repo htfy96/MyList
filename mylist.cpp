@@ -160,9 +160,8 @@ class MyList{
         void sort(bool less=true) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
             ;//实现一个快速排序或归并排序，对支持比较运算符（>=<）的类进行排序。
         // 若less=true，按照从小到大排列，否则按从大到小排列
-        void reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
-            ;//将MyList的元素倒过来。
-
+        void reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT);//将MyList的元素倒过来。
+        void swap(const MyList<T>& b) __MYLIST_NOEXCEPT();
         ~MyList(){delete [] a;}
 };
 
@@ -497,6 +496,15 @@ void MyList<T>::reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRU
         a[size-i-1]=y;
     }
 }
+
+template<typename T>
+void MyList<T>::swap(const MyList<T>& b) __MYLIST_NOEXCEPT()
+{
+    capacity=b.capacity;
+    size=b.size;
+    a=b.a;
+}
+
 
 #endif
 using namespace std;
