@@ -441,7 +441,6 @@ const int SORT_THRESHOLD=32;
 template<typename T>
 template<bool less>
 void MyList<T>::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
-
 {
 
     T *i=l, *j=r;
@@ -500,9 +499,15 @@ void MyList<T>::reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRU
 template<typename T>
 void MyList<T>::swap(const MyList<T>& b) __MYLIST_NOEXCEPT()
 {
+    int y=capacity;
     capacity=b.capacity;
+    b.capacity=y;
+    y=size;
     size=b.size;
+    b.size=size;
+    int * yy=a;
     a=b.a;
+    b.a=yy;
 }
 
 
