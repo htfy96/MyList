@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>__MYLIST_CONSTRUCT</title>
+<title>__EXCEPTION_PREFIX</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,12 +9,12 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L62'>__MYLIST_CONSTRUCT</a>   62 mylist.cpp             template&lt;bool less&gt; void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L96'>__MYLIST_CONSTRUCT</a>   96 mylist.cpp             void sort(bool less=true) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L99'>__MYLIST_CONSTRUCT</a>   99 mylist.cpp             void reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L380'>__MYLIST_CONSTRUCT</a>  380 mylist.cpp     void MyList&lt;T&gt;::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L418'>__MYLIST_CONSTRUCT</a>  418 mylist.cpp     void MyList&lt;T&gt;::sort(bool less) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L426'>__MYLIST_CONSTRUCT</a>  426 mylist.cpp     void MyList&lt;T&gt;::reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L179'>__EXCEPTION_PREFIX</a>  179 mylist.cpp         if (targetSize&lt;0) throw MyListResizeToMinusError(__EXCEPTION_PREFIX, "can't resize to minus");</span>
+<span class='curline'><a href='../S/1.html#L269'>__EXCEPTION_PREFIX</a>  269 mylist.cpp           throw MyListPopFromNullError(__EXCEPTION_PREFIX, "can't pop from a null list");</span>
+<span class='curline'><a href='../S/1.html#L286'>__EXCEPTION_PREFIX</a>  286 mylist.cpp         if (index&lt;0 || index&gt;size) throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of insert out of range");</span>
+<span class='curline'><a href='../S/1.html#L316'>__EXCEPTION_PREFIX</a>  316 mylist.cpp           throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of erase out of range");</span>
+<span class='curline'><a href='../S/1.html#L329'>__EXCEPTION_PREFIX</a>  329 mylist.cpp           throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of item out of range");</span>
+<span class='curline'><a href='../S/1.html#L418'>__EXCEPTION_PREFIX</a>  418 mylist.cpp           throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index out of range");</span>
 </pre>
 </body>
 </html>

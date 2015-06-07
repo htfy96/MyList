@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>ostream</title>
+<title>i</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,9 +9,62 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L50'>ostream</a>            50 mylist.cpp     std::ostream &amp; operator &lt;&lt; (std::ostream &amp;os, const MyList&lt;U&gt; &amp;obj) __MYLIST_NOEXCEPT();</span>
-<span class='curline'><a href='../S/1.html#L93'>ostream</a>            93 mylist.cpp             friend std::ostream &amp; operator&lt;&lt; &lt;&gt;(std::ostream &amp;os, const MyList&lt;T&gt; &amp;obj) __MYLIST_NOEXCEPT();//如果T是可以直接cout的类的话（比如int），按Python数组的格式输出MyList中的每一个元素，例如：</span>
-<span class='curline'><a href='../S/1.html#L360'>ostream</a>           360 mylist.cpp     std::ostream &amp; operator &lt;&lt; (std::ostream &amp;os, const MyList&lt;U&gt; &amp;obj) __MYLIST_NOEXCEPT()</span>
+<span class='curline'><a href='../S/1.html#L183'>i</a>                 183 mylist.cpp             for(int i=0;i&lt;size;++i)</span>
+<span class='curline'><a href='../S/1.html#L184'>i</a>                 184 mylist.cpp               tmp[i]=a[i];          //If exception raises, a will not be influenced</span>
+<span class='curline'><a href='../S/1.html#L190'>i</a>                 190 mylist.cpp         for (int i=0;i&lt;size;++i)</span>
+<span class='curline'><a href='../S/1.html#L191'>i</a>                 191 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L206'>i</a>                 206 mylist.cpp             for(int i=0; i&lt;num; ++i)</span>
+<span class='curline'><a href='../S/1.html#L207'>i</a>                 207 mylist.cpp               a[i] = item;</span>
+<span class='curline'><a href='../S/1.html#L225'>i</a>                 225 mylist.cpp             for(int i=0;i&lt;size;++i)</span>
+<span class='curline'><a href='../S/1.html#L226'>i</a>                 226 mylist.cpp               a[i]=l.a[i];</span>
+<span class='curline'><a href='../S/1.html#L245'>i</a>                 245 mylist.cpp             for(int i=0;i&lt;size;++i) //Out_of_range is not an exception</span>
+<span class='curline'><a href='../S/1.html#L246'>i</a>                 246 mylist.cpp               a[i]=arr[i];</span>
+<span class='curline'><a href='../S/1.html#L290'>i</a>                 290 mylist.cpp         for (int i=size-1; i&gt;index; --i)</span>
+<span class='curline'><a href='../S/1.html#L291'>i</a>                 291 mylist.cpp           a[i]=a[i-1];</span>
+<span class='curline'><a href='../S/1.html#L299'>i</a>                 299 mylist.cpp         for(int i=0;i&lt;size;++i)</span>
+<span class='curline'><a href='../S/1.html#L300'>i</a>                 300 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L317'>i</a>                 317 mylist.cpp         for (int i=start; i&lt;=end; ++i)</span>
+<span class='curline'><a href='../S/1.html#L318'>i</a>                 318 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L319'>i</a>                 319 mylist.cpp         for (int i=end+1; i&lt;size; ++i)</span>
+<span class='curline'><a href='../S/1.html#L320'>i</a>                 320 mylist.cpp           a[i-end+start-1] = a[i];      //error in copy -&gt; correct destruct</span>
+<span class='curline'><a href='../S/1.html#L349'>i</a>                 349 mylist.cpp         for(int i=0; i&lt;size; ++i)</span>
+<span class='curline'><a href='../S/1.html#L350'>i</a>                 350 mylist.cpp           ans+=(item == a[i]);</span>
+<span class='curline'><a href='../S/1.html#L358'>i</a>                 358 mylist.cpp         for (int i=0;i&lt;size;++i)</span>
+<span class='curline'><a href='../S/1.html#L359'>i</a>                 359 mylist.cpp           if (item == a[i])</span>
+<span class='curline'><a href='../S/1.html#L361'>i</a>                 361 mylist.cpp               erase(i,i);</span>
+<span class='curline'><a href='../S/1.html#L380'>i</a>                 380 mylist.cpp         for (int i=0; i&lt;l.size; ++i)</span>
+<span class='curline'><a href='../S/1.html#L381'>i</a>                 381 mylist.cpp           (*this) += l[i];</span>
+<span class='curline'><a href='../S/1.html#L405'>i</a>                 405 mylist.cpp         for (int i=size;i&lt;l.size;++i)</span>
+<span class='curline'><a href='../S/1.html#L406'>i</a>                 406 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L408'>i</a>                 408 mylist.cpp         for(int i=0; i&lt;l.size; ++i)</span>
+<span class='curline'><a href='../S/1.html#L409'>i</a>                 409 mylist.cpp           a[i]=l[i];</span>
+<span class='curline'><a href='../S/1.html#L427'>i</a>                 427 mylist.cpp         for (int i=0;i&lt;obj.size;++i)</span>
+<span class='curline'><a href='../S/1.html#L429'>i</a>                 429 mylist.cpp             if (i) os&lt;&lt;", ";</span>
+<span class='curline'><a href='../S/1.html#L430'>i</a>                 430 mylist.cpp             os&lt;&lt;obj[i];</span>
+<span class='curline'><a href='../S/1.html#L448'>i</a>                 448 mylist.cpp         T *i=l, *j=r;</span>
+<span class='curline'><a href='../S/1.html#L454'>i</a>                 454 mylist.cpp             for(i=l;i&lt;r;++i)</span>
+<span class='curline'><a href='../S/1.html#L455'>i</a>                 455 mylist.cpp               for (j=i+1;j&lt;r;++j)</span>
+<span class='curline'><a href='../S/1.html#L456'>i</a>                 456 mylist.cpp                 if (__comp&lt;T,less&gt;(*i, *j))</span>
+<span class='curline'><a href='../S/1.html#L458'>i</a>                 458 mylist.cpp                     y=*i;</span>
+<span class='curline'><a href='../S/1.html#L459'>i</a>                 459 mylist.cpp                     *i=*j;</span>
+<span class='curline'><a href='../S/1.html#L466'>i</a>                 466 mylist.cpp             while (__comp&lt;T,less&gt;(*i,x)) ++i;</span>
+<span class='curline'><a href='../S/1.html#L468'>i</a>                 468 mylist.cpp             if (i&lt;=j)</span>
+<span class='curline'><a href='../S/1.html#L470'>i</a>                 470 mylist.cpp                 y=*i;</span>
+<span class='curline'><a href='../S/1.html#L471'>i</a>                 471 mylist.cpp                 *i=*j;</span>
+<span class='curline'><a href='../S/1.html#L473'>i</a>                 473 mylist.cpp                 ++i;</span>
+<span class='curline'><a href='../S/1.html#L476'>i</a>                 476 mylist.cpp         } while (i&lt;=j);</span>
+<span class='curline'><a href='../S/1.html#L478'>i</a>                 478 mylist.cpp         if (i&lt;r) sort_impl&lt;less&gt;(i, r);</span>
+<span class='curline'><a href='../S/1.html#L493'>i</a>                 493 mylist.cpp         for(int i=0;i&lt;size/2;++i)</span>
+<span class='curline'><a href='../S/1.html#L495'>i</a>                 495 mylist.cpp             y=a[i];</span>
+<span class='curline'><a href='../S/1.html#L496'>i</a>                 496 mylist.cpp             a[i]=a[size-i-1];</span>
+<span class='curline'><a href='../S/1.html#L497'>i</a>                 497 mylist.cpp             a[size-i-1]=y;</span>
+<span class='curline'><a href='../S/1.html#L506'>i</a>                 506 mylist.cpp         int i;</span>
+<span class='curline'><a href='../S/1.html#L507'>i</a>                 507 mylist.cpp         for (i=0; i&lt;5; ++i)</span>
+<span class='curline'><a href='../S/1.html#L508'>i</a>                 508 mylist.cpp           a.push(i);</span>
+<span class='curline'><a href='../S/1.html#L522'>i</a>                 522 mylist.cpp         for (i=0; i&lt;a.get_size(); ++i)</span>
+<span class='curline'><a href='../S/1.html#L523'>i</a>                 523 mylist.cpp           cout&lt;&lt;a.get_item(i)&lt;&lt;endl;</span>
+<span class='curline'><a href='../S/1.html#L542'>i</a>                 542 mylist.cpp         for (i=0; i&lt;100; ++i)</span>
+<span class='curline'><a href='../S/1.html#L543'>i</a>                 543 mylist.cpp           c.push(1.1*i);</span>
 </pre>
 </body>
 </html>

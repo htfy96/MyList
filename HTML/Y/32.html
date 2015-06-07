@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>os</title>
+<title>func_</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,14 +9,9 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L50'>os</a>                 50 mylist.cpp     std::ostream &amp; operator &lt;&lt; (std::ostream &amp;os, const MyList&lt;U&gt; &amp;obj) __MYLIST_NOEXCEPT();</span>
-<span class='curline'><a href='../S/1.html#L93'>os</a>                 93 mylist.cpp             friend std::ostream &amp; operator&lt;&lt; &lt;&gt;(std::ostream &amp;os, const MyList&lt;T&gt; &amp;obj) __MYLIST_NOEXCEPT();//如果T是可以直接cout的类的话（比如int），按Python数组的格式输出MyList中的每一个元素，例如：</span>
-<span class='curline'><a href='../S/1.html#L360'>os</a>                360 mylist.cpp     std::ostream &amp; operator &lt;&lt; (std::ostream &amp;os, const MyList&lt;U&gt; &amp;obj) __MYLIST_NOEXCEPT()</span>
-<span class='curline'><a href='../S/1.html#L362'>os</a>                362 mylist.cpp         os&lt;&lt;'[';</span>
-<span class='curline'><a href='../S/1.html#L365'>os</a>                365 mylist.cpp             if (i) os&lt;&lt;", ";</span>
-<span class='curline'><a href='../S/1.html#L366'>os</a>                366 mylist.cpp             os&lt;&lt;obj[i];</span>
-<span class='curline'><a href='../S/1.html#L368'>os</a>                368 mylist.cpp         os&lt;&lt;']';</span>
-<span class='curline'><a href='../S/1.html#L369'>os</a>                369 mylist.cpp         return os;</span>
+<span class='curline'><a href='../S/1.html#L61'>func_</a>              61 mylist.cpp     #define __MYLIST_EXCEPTION_CONS(thisClass) thisClass(int lineno_, const char* filename_, const char* func_, const char* msg_):</span>
+<span class='curline'><a href='../S/1.html#L62'>func_</a>              62 mylist.cpp     #define __MYLIST_EXCEPTION_CONS2(baseClass,ThisClass) baseClass(lineno_,filename_,func_,msg_),exceptionType(#ThisClass) {}</span>
+<span class='curline'><a href='../S/1.html#L73'>func_</a>              73 mylist.cpp                 exceptionType("MyListBaseException"),lineno(lineno_),filename(filename_),func(func_),msg(msg_) {}</span>
 </pre>
 </body>
 </html>

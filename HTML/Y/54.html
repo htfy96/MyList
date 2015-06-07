@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>targetSize</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.4' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/1.html#L126'>targetSize</a>        126 mylist.cpp             void double_space(int targetSize=-1) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY);</span>
+<span class='curline'><a href='../S/1.html#L175'>targetSize</a>        175 mylist.cpp     void MyList&lt;T&gt;::double_space(int targetSize) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L178'>targetSize</a>        178 mylist.cpp         if (targetSize == -1) targetSize = capacity*2;</span>
+<span class='curline'><a href='../S/1.html#L179'>targetSize</a>        179 mylist.cpp         if (targetSize&lt;0) throw MyListResizeToMinusError(__EXCEPTION_PREFIX, "can't resize to minus");</span>
+<span class='curline'><a href='../S/1.html#L180'>targetSize</a>        180 mylist.cpp         tmp = new T [targetSize];</span>
+<span class='curline'><a href='../S/1.html#L193'>targetSize</a>        193 mylist.cpp         capacity = targetSize;</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,71 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+MyList	mylist.cpp	/^class MyList{$/;"	c	file:
+MyListBaseException	mylist.cpp	/^struct MyListBaseException {$/;"	s	file:
+MyListLogicError	mylist.cpp	/^struct MyListLogicError:MyListBaseException {$/;"	s	file:
+MyListOutOfRangeError	mylist.cpp	/^struct MyListOutOfRangeError:MyListLogicError{$/;"	s	file:
+MyListPopFromNullError	mylist.cpp	/^struct MyListPopFromNullError:MyListLogicError{$/;"	s	file:
+MyListResizeToMinusError	mylist.cpp	/^struct MyListResizeToMinusError:MyListLogicError{$/;"	s	file:
+_MYLIST_HPP	mylist.cpp	2;"	d	file:
+__EXCEPTION_PREFIX	mylist.cpp	58;"	d	file:
+__MYLIST_ASSIGN	mylist.cpp	31;"	d	file:
+__MYLIST_CONSTRUCT	mylist.cpp	30;"	d	file:
+__MYLIST_COPY	mylist.cpp	/^        MyList &operator = (const MyList<T> &l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);\/\/赋值$/;"	m	class:MyList	file:
+__MYLIST_COPY	mylist.cpp	/^        void insert(int index, const T &item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);\/\/将item插入到place处。$/;"	m	class:MyList	file:
+__MYLIST_COPY	mylist.cpp	/^        void push(const T &item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)$/;"	m	class:MyList	file:
+__MYLIST_COPY	mylist.cpp	29;"	d	file:
+__MYLIST_EXCEPTION_CONS	mylist.cpp	61;"	d	file:
+__MYLIST_EXCEPTION_CONS2	mylist.cpp	62;"	d	file:
+__MYLIST_EXCEPTION_DEF_CONS	mylist.cpp	63;"	d	file:
+__MYLIST_EXCEPT_1	mylist.cpp	23;"	d	file:
+__MYLIST_EXCEPT_1	mylist.cpp	35;"	d	file:
+__MYLIST_EXCEPT_2	mylist.cpp	24;"	d	file:
+__MYLIST_EXCEPT_2	mylist.cpp	36;"	d	file:
+__MYLIST_EXCEPT_ANY	mylist.cpp	25;"	d	file:
+__MYLIST_EXCEPT_ANY	mylist.cpp	40;"	d	file:
+__MYLIST_NEW	mylist.cpp	32;"	d	file:
+__MYLIST_NOEXCEPT	mylist.cpp	/^        MyList() __MYLIST_NOEXCEPT() : a(NULL), capacity(0), size(0){};$/;"	f	class:MyList
+__MYLIST_NOEXCEPT	mylist.cpp	/^int MyList<T>::get_size() const __MYLIST_NOEXCEPT()$/;"	f
+__MYLIST_NOEXCEPT	mylist.cpp	/^void MyList<T>::clean() __MYLIST_NOEXCEPT()$/;"	f
+__MYLIST_NOEXCEPT	mylist.cpp	22;"	d	file:
+__MYLIST_NOEXCEPT	mylist.cpp	34;"	d	file:
+__MYLIST_NOEXCEPT_IF	mylist.cpp	/^int MyList<T>::count(const T &item) const __MYLIST_NOEXCEPT_IF(item == a[0])$/;"	f
+__MYLIST_NOEXCEPT_IF	mylist.cpp	26;"	d	file:
+__MYLIST_NOEXCEPT_IF	mylist.cpp	37;"	d	file:
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	/^MyList<T> MyList<T>::get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList<T>(a,0))$/;"	f
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	/^MyList<T>::MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)$/;"	f
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	/^MyList<T>::MyList(const MyList &l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)$/;"	f
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	/^MyList<T>::MyList(int num, const T &item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)$/;"	f
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	/^T MyList<T>::get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY) $/;"	f
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	/^T MyList<T>::pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLIST_COPY())$/;"	f
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	/^void MyList<T>::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)$/;"	f
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	/^void MyList<T>::reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)$/;"	f
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	/^void MyList<T>::sort(bool less) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)$/;"	f
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	/^void MyList<T>::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)$/;"	f
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	27;"	d	file:
+__MYLIST_NOEXCEPT_IF_2	mylist.cpp	38;"	d	file:
+__MYLIST_NOEXCEPT_IF_3	mylist.cpp	/^void MyList<T>::double_space(int targetSize) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY)$/;"	f
+__MYLIST_NOEXCEPT_IF_3	mylist.cpp	28;"	d	file:
+__MYLIST_NOEXCEPT_IF_3	mylist.cpp	39;"	d	file:
+a	mylist.cpp	/^        T *a;$/;"	m	class:MyList	file:
+capacity	mylist.cpp	/^        int capacity;$/;"	m	class:MyList	file:
+exceptionType	mylist.cpp	/^        const char* const exceptionType;$/;"	m	struct:MyListBaseException	file:
+exceptionType	mylist.cpp	/^        const char* const exceptionType;$/;"	m	struct:MyListLogicError	file:
+exceptionType	mylist.cpp	/^    const char* const exceptionType;$/;"	m	struct:MyListOutOfRangeError	file:
+exceptionType	mylist.cpp	/^    const char* const exceptionType;$/;"	m	struct:MyListPopFromNullError	file:
+exceptionType	mylist.cpp	/^    const char* const exceptionType;$/;"	m	struct:MyListResizeToMinusError	file:
+filename	mylist.cpp	/^        const char* filename;$/;"	m	struct:MyListBaseException	file:
+func	mylist.cpp	/^        const char* func;$/;"	m	struct:MyListBaseException	file:
+lineno	mylist.cpp	/^        int lineno;$/;"	m	struct:MyListBaseException	file:
+main	mylist.cpp	/^int main()$/;"	f
+msg	mylist.cpp	/^            exceptionType("MyListBaseException"),lineno(lineno_),filename(filename_),func(func_),msg(msg_) {}$/;"	f	struct:MyListBaseException
+msg	mylist.cpp	/^        const char* msg;$/;"	m	struct:MyListBaseException	file:
+print	mylist.cpp	/^        virtual void print()$/;"	f	struct:MyListBaseException
+push	mylist.cpp	/^MyList<T>& MyList<T>::operator+=(const T &item) __MYLIST_NOEXCEPT_IF(push(T()))$/;"	f
+size	mylist.cpp	/^        int size;$/;"	m	class:MyList	file:
+~MyList	mylist.cpp	/^        ~MyList(){delete [] a;}$/;"	f	class:MyList
+~MyListBaseException	mylist.cpp	/^        virtual ~MyListBaseException() {};$/;"	f	struct:MyListBaseException

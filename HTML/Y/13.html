@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>c</title>
+<title>a_</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,9 +9,16 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L469'>c</a>                 469 mylist.cpp         MyList&lt;double&gt; c(10, 3.14);</span>
-<span class='curline'><a href='../S/1.html#L471'>c</a>                 471 mylist.cpp           c.push(1.1*i);</span>
-<span class='curline'><a href='../S/1.html#L472'>c</a>                 472 mylist.cpp         cout&lt;&lt;c.get_item(100, 105)&lt;&lt;endl;</span>
+<span class='curline'><a href='../S/1.html#L23'>a_</a>                 23 mylist.cpp     #define __MYLIST_EXCEPT_1(a_) noexcept(false)</span>
+<span class='curline'><a href='../S/1.html#L24'>a_</a>                 24 mylist.cpp     #define __MYLIST_EXCEPT_2(a_,b_) noexcept(false)</span>
+<span class='curline'><a href='../S/1.html#L26'>a_</a>                 26 mylist.cpp     #define __MYLIST_NOEXCEPT_IF(a_) noexcept( noexcept((a_)) )</span>
+<span class='curline'><a href='../S/1.html#L27'>a_</a>                 27 mylist.cpp     #define __MYLIST_NOEXCEPT_IF_2(a_,b_) noexcept(noexcept(a_) &amp;&amp; noexcept(b_))</span>
+<span class='curline'><a href='../S/1.html#L28'>a_</a>                 28 mylist.cpp     #define __MYLIST_NOEXCEPT_IF_3(a_,b_,c_) noexcept( noexcept((a_)) &amp;&amp; noexcept((b_)) &amp;&amp; noexcept((c_)))</span>
+<span class='curline'><a href='../S/1.html#L35'>a_</a>                 35 mylist.cpp     #define __MYLIST_EXCEPT_1(a_) throw(a_)</span>
+<span class='curline'><a href='../S/1.html#L36'>a_</a>                 36 mylist.cpp     #define __MYLIST_EXCEPT_2(a_,b_) throw(a_,b_)</span>
+<span class='curline'><a href='../S/1.html#L37'>a_</a>                 37 mylist.cpp     #define __MYLIST_NOEXCEPT_IF(a_) </span>
+<span class='curline'><a href='../S/1.html#L38'>a_</a>                 38 mylist.cpp     #define __MYLIST_NOEXCEPT_IF_2(a_,b_) </span>
+<span class='curline'><a href='../S/1.html#L39'>a_</a>                 39 mylist.cpp     #define __MYLIST_NOEXCEPT_IF_3(a_,b_,c_)</span>
 </pre>
 </body>
 </html>

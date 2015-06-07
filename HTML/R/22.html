@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>push</title>
+<title>erase</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,13 +9,13 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L71'>push</a>               71 mylist.cpp             void push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L90'>push</a>               90 mylist.cpp             MyList &amp;operator += (const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()));//同push(T item)</span>
-<span class='curline'><a href='../S/1.html#L304'>push</a>              304 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator+=(const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()))</span>
-<span class='curline'><a href='../S/1.html#L306'>push</a>              306 mylist.cpp         push(item);</span>
-<span class='curline'><a href='../S/1.html#L332'>push</a>              332 mylist.cpp         l1.push(item);</span>
-<span class='curline'><a href='../S/1.html#L444'>push</a>              444 mylist.cpp           a.push(i);</span>
-<span class='curline'><a href='../S/1.html#L471'>push</a>              471 mylist.cpp           c.push(1.1*i);</span>
+<span class='curline'><a href='../S/1.html#L141'>erase</a>             141 mylist.cpp             void erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY); //删除MyList中第start到第end位的元素，包括两边。</span>
+<span class='curline'><a href='../S/1.html#L147'>erase</a>             147 mylist.cpp             void remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0));//删除MyList中第一个和item相等的元素。</span>
+<span class='curline'><a href='../S/1.html#L356'>erase</a>             356 mylist.cpp     void MyList&lt;T&gt;::remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0))</span>
+<span class='curline'><a href='../S/1.html#L361'>erase</a>             361 mylist.cpp               erase(i,i);</span>
+<span class='curline'><a href='../S/1.html#L527'>erase</a>             527 mylist.cpp         a.erase(2, 6); // a = [15, 4, 0, 12]</span>
+<span class='curline'><a href='../S/1.html#L531'>erase</a>             531 mylist.cpp         a.erase(3,9);</span>
+<span class='curline'><a href='../S/1.html#L545'>erase</a>             545 mylist.cpp         c.erase(2,98);</span>
 </pre>
 </body>
 </html>

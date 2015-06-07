@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>x</title>
+<title>noexcept</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,9 +9,13 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L386'>x</a>                 386 mylist.cpp         T &amp;x= *(l+((r-l)&gt;&gt;1));</span>
-<span class='curline'><a href='../S/1.html#L402'>x</a>                 402 mylist.cpp             while (__comp&lt;T,less&gt;(*i,x)) ++i;</span>
-<span class='curline'><a href='../S/1.html#L403'>x</a>                 403 mylist.cpp             while (__comp&lt;T,less&gt;(x,*j)) --j;</span>
+<span class='curline'><a href='../S/1.html#L22'>noexcept</a>           22 mylist.cpp     #define __MYLIST_NOEXCEPT() noexcept</span>
+<span class='curline'><a href='../S/1.html#L23'>noexcept</a>           23 mylist.cpp     #define __MYLIST_EXCEPT_1(a_) noexcept(false)</span>
+<span class='curline'><a href='../S/1.html#L24'>noexcept</a>           24 mylist.cpp     #define __MYLIST_EXCEPT_2(a_,b_) noexcept(false)</span>
+<span class='curline'><a href='../S/1.html#L25'>noexcept</a>           25 mylist.cpp     #define __MYLIST_EXCEPT_ANY() noexcept(false)</span>
+<span class='curline'><a href='../S/1.html#L26'>noexcept</a>           26 mylist.cpp     #define __MYLIST_NOEXCEPT_IF(a_) noexcept( noexcept((a_)) )</span>
+<span class='curline'><a href='../S/1.html#L27'>noexcept</a>           27 mylist.cpp     #define __MYLIST_NOEXCEPT_IF_2(a_,b_) noexcept(noexcept(a_) &amp;&amp; noexcept(b_))</span>
+<span class='curline'><a href='../S/1.html#L28'>noexcept</a>           28 mylist.cpp     #define __MYLIST_NOEXCEPT_IF_3(a_,b_,c_) noexcept( noexcept((a_)) &amp;&amp; noexcept((b_)) &amp;&amp; noexcept((c_)))</span>
 </pre>
 </body>
 </html>

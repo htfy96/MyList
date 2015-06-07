@@ -9,99 +9,99 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L15'>T</a>                  15 mylist.cpp     #define __MYLIST_COPY T( T() )</span>
-<span class='curline'><a href='../S/1.html#L16'>T</a>                  16 mylist.cpp     #define __MYLIST_CONSTRUCT T()</span>
-<span class='curline'><a href='../S/1.html#L17'>T</a>                  17 mylist.cpp     #define __MYLIST_ASSIGN T()=T()</span>
-<span class='curline'><a href='../S/1.html#L18'>T</a>                  18 mylist.cpp     #define __MYLIST_NEW new T[1]</span>
-<span class='curline'><a href='../S/1.html#L43'>T</a>                  43 mylist.cpp     template&lt;class T&gt;</span>
-<span class='curline'><a href='../S/1.html#L52'>T</a>                  52 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L53'>T</a>                  53 mylist.cpp     MyList&lt;T&gt; operator + (const MyList&lt;T&gt; &amp;l1, const T &amp;item);</span>
-<span class='curline'><a href='../S/1.html#L55'>T</a>                  55 mylist.cpp     template&lt;class T&gt;</span>
-<span class='curline'><a href='../S/1.html#L58'>T</a>                  58 mylist.cpp             T *a;</span>
-<span class='curline'><a href='../S/1.html#L62'>T</a>                  62 mylist.cpp             template&lt;bool less&gt; void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L67'>T</a>                  67 mylist.cpp             MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//将item重复num次填入数组中。</span>
-<span class='curline'><a href='../S/1.html#L69'>T</a>                  69 mylist.cpp             MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//以arr的前len个元素构造数组</span>
-<span class='curline'><a href='../S/1.html#L71'>T</a>                  71 mylist.cpp             void push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L73'>T</a>                  73 mylist.cpp             T pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLIST_COPY());//将MyList中最后一个元素删除，并返回这个删除的元素。</span>
-<span class='curline'><a href='../S/1.html#L74'>T</a>                  74 mylist.cpp             void insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//将item插入到place处。</span>
-<span class='curline'><a href='../S/1.html#L80'>T</a>                  80 mylist.cpp             MyList&lt;T&gt; get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0));//返回MyList中第start到第end位的元素，包括两边。此处需要像python一样接受负数，具体见测试代码。</span>
-<span class='curline'><a href='../S/1.html#L81'>T</a>                  81 mylist.cpp             T get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY );</span>
-<span class='curline'><a href='../S/1.html#L82'>T</a>                  82 mylist.cpp             int count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0]);//返回MyList中和item相等的元素的个数。</span>
-<span class='curline'><a href='../S/1.html#L83'>T</a>                  83 mylist.cpp             void remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0));//删除MyList中第一个和item相等的元素。</span>
-<span class='curline'><a href='../S/1.html#L86'>T</a>                  86 mylist.cpp             friend MyList operator + &lt;&gt; (const MyList&lt;T&gt; &amp;l1, const MyList&lt;T&gt; &amp;l2); </span>
-<span class='curline'><a href='../S/1.html#L88'>T</a>                  88 mylist.cpp             friend MyList operator + &lt;&gt; (const MyList &amp;l1, const T &amp;item); //同push(T item)，但不修改l1，返回一个新数组</span>
-<span class='curline'><a href='../S/1.html#L89'>T</a>                  89 mylist.cpp             MyList &amp;operator = (const MyList&lt;T&gt; &amp;l)__MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//赋值</span>
-<span class='curline'><a href='../S/1.html#L90'>T</a>                  90 mylist.cpp             MyList &amp;operator += (const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()));//同push(T item)</span>
-<span class='curline'><a href='../S/1.html#L91'>T</a>                  91 mylist.cpp             MyList &amp;operator += (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T());//将一个MyList加入到本个MyList之后。</span>
-<span class='curline'><a href='../S/1.html#L92'>T</a>                  92 mylist.cpp             T &amp;operator [](int index) const  __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY);//返回第index个元素。</span>
-<span class='curline'><a href='../S/1.html#L93'>T</a>                  93 mylist.cpp             friend std::ostream &amp; operator&lt;&lt; &lt;&gt;(std::ostream &amp;os, const MyList&lt;T&gt; &amp;obj) __MYLIST_NOEXCEPT();//如果T是可以直接cout的类的话（比如int），按Python数组的格式输出MyList中的每一个元素，例如：</span>
-<span class='curline'><a href='../S/1.html#L110'>T</a>                 110 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L111'>T</a>                 111 mylist.cpp     void MyList&lt;T&gt;::double_space(int targetSize) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L113'>T</a>                 113 mylist.cpp         T* tmp;</span>
-<span class='curline'><a href='../S/1.html#L116'>T</a>                 116 mylist.cpp         tmp = new T [targetSize];</span>
-<span class='curline'><a href='../S/1.html#L127'>T</a>                 127 mylist.cpp           a[i].~T();</span>
-<span class='curline'><a href='../S/1.html#L134'>T</a>                 134 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L135'>T</a>                 135 mylist.cpp     MyList&lt;T&gt;::MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L137'>T</a>                 137 mylist.cpp         a = new T [num];</span>
-<span class='curline'><a href='../S/1.html#L152'>T</a>                 152 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L153'>T</a>                 153 mylist.cpp     MyList&lt;T&gt;::MyList(const MyList &amp;l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L157'>T</a>                 157 mylist.cpp         a = new T[capacity];</span>
-<span class='curline'><a href='../S/1.html#L171'>T</a>                 171 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L172'>T</a>                 172 mylist.cpp     MyList&lt;T&gt;::MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L177'>T</a>                 177 mylist.cpp         a=new T[capacity];</span>
-<span class='curline'><a href='../S/1.html#L191'>T</a>                 191 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L192'>T</a>                 192 mylist.cpp     void MyList&lt;T&gt;::push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L201'>T</a>                 201 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L202'>T</a>                 202 mylist.cpp     T MyList&lt;T&gt;::pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLIST_COPY())</span>
-<span class='curline'><a href='../S/1.html#L206'>T</a>                 206 mylist.cpp         T tmp=a[size-1];</span>
-<span class='curline'><a href='../S/1.html#L207'>T</a>                 207 mylist.cpp         a[--size].~T(); //Destructor never throws exception</span>
-<span class='curline'><a href='../S/1.html#L219'>T</a>                 219 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L220'>T</a>                 220 mylist.cpp     void MyList&lt;T&gt;::insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L232'>T</a>                 232 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L233'>T</a>                 233 mylist.cpp     void MyList&lt;T&gt;::clean() __MYLIST_NOEXCEPT()</span>
-<span class='curline'><a href='../S/1.html#L236'>T</a>                 236 mylist.cpp           a[i].~T();</span>
-<span class='curline'><a href='../S/1.html#L241'>T</a>                 241 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L242'>T</a>                 242 mylist.cpp     int MyList&lt;T&gt;::get_size() const __MYLIST_NOEXCEPT()</span>
-<span class='curline'><a href='../S/1.html#L248'>T</a>                 248 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L249'>T</a>                 249 mylist.cpp     void MyList&lt;T&gt;::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L254'>T</a>                 254 mylist.cpp           a[i].~T();</span>
-<span class='curline'><a href='../S/1.html#L261'>T</a>                 261 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L262'>T</a>                 262 mylist.cpp     T MyList&lt;T&gt;::get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY) </span>
-<span class='curline'><a href='../S/1.html#L270'>T</a>                 270 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L271'>T</a>                 271 mylist.cpp     MyList&lt;T&gt; MyList&lt;T&gt;::get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0))</span>
-<span class='curline'><a href='../S/1.html#L276'>T</a>                 276 mylist.cpp         if (start&gt;end) return MyList&lt;T&gt;();</span>
-<span class='curline'><a href='../S/1.html#L277'>T</a>                 277 mylist.cpp         return MyList&lt;T&gt;(a+start, end-start+1); //RVO</span>
-<span class='curline'><a href='../S/1.html#L281'>T</a>                 281 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L282'>T</a>                 282 mylist.cpp     int MyList&lt;T&gt;::count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0])</span>
-<span class='curline'><a href='../S/1.html#L291'>T</a>                 291 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L292'>T</a>                 292 mylist.cpp     void MyList&lt;T&gt;::remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0))</span>
-<span class='curline'><a href='../S/1.html#L303'>T</a>                 303 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L304'>T</a>                 304 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator+=(const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()))</span>
-<span class='curline'><a href='../S/1.html#L311'>T</a>                 311 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L312'>T</a>                 312 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator +=(const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T())</span>
-<span class='curline'><a href='../S/1.html#L329'>T</a>                 329 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L330'>T</a>                 330 mylist.cpp     MyList&lt;T&gt; operator + (const MyList&lt;T&gt; &amp;l1, const T &amp;item){</span>
-<span class='curline'><a href='../S/1.html#L331'>T</a>                 331 mylist.cpp         MyList&lt;T&gt; result(l1);</span>
-<span class='curline'><a href='../S/1.html#L337'>T</a>                 337 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L338'>T</a>                 338 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator= (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L342'>T</a>                 342 mylist.cpp           a[i].~T();</span>
-<span class='curline'><a href='../S/1.html#L350'>T</a>                 350 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L351'>T</a>                 351 mylist.cpp     T&amp; MyList&lt;T&gt;::operator[](int index) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L372'>T</a>                 372 mylist.cpp     template&lt;typename T, bool less&gt;</span>
-<span class='curline'><a href='../S/1.html#L373'>T</a>                 373 mylist.cpp     inline bool __comp(const T&amp; a, const T&amp; b) { if (less) return a&lt;b; return a&gt;b; }</span>
-<span class='curline'><a href='../S/1.html#L378'>T</a>                 378 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L380'>T</a>                 380 mylist.cpp     void MyList&lt;T&gt;::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L384'>T</a>                 384 mylist.cpp         T *i=l, *j=r;</span>
-<span class='curline'><a href='../S/1.html#L385'>T</a>                 385 mylist.cpp         T y;</span>
-<span class='curline'><a href='../S/1.html#L386'>T</a>                 386 mylist.cpp         T &amp;x= *(l+((r-l)&gt;&gt;1));</span>
-<span class='curline'><a href='../S/1.html#L392'>T</a>                 392 mylist.cpp                 if (__comp&lt;T,less&gt;(*i, *j))</span>
-<span class='curline'><a href='../S/1.html#L402'>T</a>                 402 mylist.cpp             while (__comp&lt;T,less&gt;(*i,x)) ++i;</span>
-<span class='curline'><a href='../S/1.html#L403'>T</a>                 403 mylist.cpp             while (__comp&lt;T,less&gt;(x,*j)) --j;</span>
-<span class='curline'><a href='../S/1.html#L417'>T</a>                 417 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L418'>T</a>                 418 mylist.cpp     void MyList&lt;T&gt;::sort(bool less) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L425'>T</a>                 425 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L426'>T</a>                 426 mylist.cpp     void MyList&lt;T&gt;::reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L428'>T</a>                 428 mylist.cpp         T y;</span>
+<span class='curline'><a href='../S/1.html#L29'>T</a>                  29 mylist.cpp     #define __MYLIST_COPY T( T() )</span>
+<span class='curline'><a href='../S/1.html#L30'>T</a>                  30 mylist.cpp     #define __MYLIST_CONSTRUCT T()</span>
+<span class='curline'><a href='../S/1.html#L31'>T</a>                  31 mylist.cpp     #define __MYLIST_ASSIGN (T() = T())</span>
+<span class='curline'><a href='../S/1.html#L32'>T</a>                  32 mylist.cpp     #define __MYLIST_NEW new T[1]</span>
+<span class='curline'><a href='../S/1.html#L107'>T</a>                 107 mylist.cpp     template&lt;class T&gt;</span>
+<span class='curline'><a href='../S/1.html#L116'>T</a>                 116 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L117'>T</a>                 117 mylist.cpp     MyList&lt;T&gt; operator + (const MyList&lt;T&gt; &amp;l1, const T &amp;item);</span>
+<span class='curline'><a href='../S/1.html#L120'>T</a>                 120 mylist.cpp     template&lt;class T&gt;</span>
+<span class='curline'><a href='../S/1.html#L123'>T</a>                 123 mylist.cpp             T *a;</span>
+<span class='curline'><a href='../S/1.html#L127'>T</a>                 127 mylist.cpp             template&lt;bool less&gt; void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT);</span>
+<span class='curline'><a href='../S/1.html#L131'>T</a>                 131 mylist.cpp             MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//将item重复num次填入数组中。</span>
+<span class='curline'><a href='../S/1.html#L133'>T</a>                 133 mylist.cpp             MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//以arr的前len个元素构造数组</span>
+<span class='curline'><a href='../S/1.html#L135'>T</a>                 135 mylist.cpp             void push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L137'>T</a>                 137 mylist.cpp             T pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLIST_COPY());//将MyList中最后一个元素删除，并返回这个删除的元素。</span>
+<span class='curline'><a href='../S/1.html#L138'>T</a>                 138 mylist.cpp             void insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//将item插入到place处。</span>
+<span class='curline'><a href='../S/1.html#L144'>T</a>                 144 mylist.cpp             MyList&lt;T&gt; get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0));//返回MyList中第start到第end位的元素，包括两边。此处需要像python一样接受负数，具体见测试代码。</span>
+<span class='curline'><a href='../S/1.html#L145'>T</a>                 145 mylist.cpp             T get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY );</span>
+<span class='curline'><a href='../S/1.html#L146'>T</a>                 146 mylist.cpp             int count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0]);//返回MyList中和item相等的元素的个数。</span>
+<span class='curline'><a href='../S/1.html#L147'>T</a>                 147 mylist.cpp             void remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0));//删除MyList中第一个和item相等的元素。</span>
+<span class='curline'><a href='../S/1.html#L150'>T</a>                 150 mylist.cpp             friend MyList operator + &lt;&gt; (const MyList&lt;T&gt; &amp;l1, const MyList&lt;T&gt; &amp;l2); </span>
+<span class='curline'><a href='../S/1.html#L152'>T</a>                 152 mylist.cpp             friend MyList operator + &lt;&gt; (const MyList &amp;l1, const T &amp;item); //同push(T item)，但不修改l1，返回一个新数组</span>
+<span class='curline'><a href='../S/1.html#L153'>T</a>                 153 mylist.cpp             MyList &amp;operator = (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//赋值</span>
+<span class='curline'><a href='../S/1.html#L154'>T</a>                 154 mylist.cpp             MyList &amp;operator += (const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()));//同push(T item)</span>
+<span class='curline'><a href='../S/1.html#L155'>T</a>                 155 mylist.cpp             MyList &amp;operator += (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T());//将一个MyList加入到本个MyList之后。</span>
+<span class='curline'><a href='../S/1.html#L156'>T</a>                 156 mylist.cpp             T &amp;operator [](int index) const  __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY);//返回第index个元素。</span>
+<span class='curline'><a href='../S/1.html#L157'>T</a>                 157 mylist.cpp             friend std::ostream &amp; operator&lt;&lt; &lt;&gt;(std::ostream &amp;os, const MyList&lt;T&gt; &amp;obj) __MYLIST_NOEXCEPT();//如果T是可以直接cout的类的话（比如int），按Python数组的格式输出MyList中的每一个元素，例如：</span>
+<span class='curline'><a href='../S/1.html#L174'>T</a>                 174 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L175'>T</a>                 175 mylist.cpp     void MyList&lt;T&gt;::double_space(int targetSize) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L177'>T</a>                 177 mylist.cpp         T* tmp;</span>
+<span class='curline'><a href='../S/1.html#L180'>T</a>                 180 mylist.cpp         tmp = new T [targetSize];</span>
+<span class='curline'><a href='../S/1.html#L191'>T</a>                 191 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L198'>T</a>                 198 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L199'>T</a>                 199 mylist.cpp     MyList&lt;T&gt;::MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L201'>T</a>                 201 mylist.cpp         a = new T [num];</span>
+<span class='curline'><a href='../S/1.html#L216'>T</a>                 216 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L217'>T</a>                 217 mylist.cpp     MyList&lt;T&gt;::MyList(const MyList &amp;l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L221'>T</a>                 221 mylist.cpp         a = new T[capacity];</span>
+<span class='curline'><a href='../S/1.html#L235'>T</a>                 235 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L236'>T</a>                 236 mylist.cpp     MyList&lt;T&gt;::MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L241'>T</a>                 241 mylist.cpp         a=new T[capacity];</span>
+<span class='curline'><a href='../S/1.html#L255'>T</a>                 255 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L256'>T</a>                 256 mylist.cpp     void MyList&lt;T&gt;::push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L265'>T</a>                 265 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L266'>T</a>                 266 mylist.cpp     T MyList&lt;T&gt;::pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLIST_COPY())</span>
+<span class='curline'><a href='../S/1.html#L270'>T</a>                 270 mylist.cpp         T tmp=a[size-1];</span>
+<span class='curline'><a href='../S/1.html#L271'>T</a>                 271 mylist.cpp         a[--size].~T(); //Destructor never throws exception</span>
+<span class='curline'><a href='../S/1.html#L283'>T</a>                 283 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L284'>T</a>                 284 mylist.cpp     void MyList&lt;T&gt;::insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L296'>T</a>                 296 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L297'>T</a>                 297 mylist.cpp     void MyList&lt;T&gt;::clean() __MYLIST_NOEXCEPT()</span>
+<span class='curline'><a href='../S/1.html#L300'>T</a>                 300 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L305'>T</a>                 305 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L306'>T</a>                 306 mylist.cpp     int MyList&lt;T&gt;::get_size() const __MYLIST_NOEXCEPT()</span>
+<span class='curline'><a href='../S/1.html#L312'>T</a>                 312 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L313'>T</a>                 313 mylist.cpp     void MyList&lt;T&gt;::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L318'>T</a>                 318 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L325'>T</a>                 325 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L326'>T</a>                 326 mylist.cpp     T MyList&lt;T&gt;::get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY) </span>
+<span class='curline'><a href='../S/1.html#L334'>T</a>                 334 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L335'>T</a>                 335 mylist.cpp     MyList&lt;T&gt; MyList&lt;T&gt;::get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0))</span>
+<span class='curline'><a href='../S/1.html#L340'>T</a>                 340 mylist.cpp         if (start&gt;end) return MyList&lt;T&gt;();</span>
+<span class='curline'><a href='../S/1.html#L341'>T</a>                 341 mylist.cpp         return MyList&lt;T&gt;(a+start, end-start+1); //RVO</span>
+<span class='curline'><a href='../S/1.html#L345'>T</a>                 345 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L346'>T</a>                 346 mylist.cpp     int MyList&lt;T&gt;::count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0])</span>
+<span class='curline'><a href='../S/1.html#L355'>T</a>                 355 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L356'>T</a>                 356 mylist.cpp     void MyList&lt;T&gt;::remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0))</span>
+<span class='curline'><a href='../S/1.html#L367'>T</a>                 367 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L368'>T</a>                 368 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator+=(const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()))</span>
+<span class='curline'><a href='../S/1.html#L375'>T</a>                 375 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L376'>T</a>                 376 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator +=(const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T())</span>
+<span class='curline'><a href='../S/1.html#L393'>T</a>                 393 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L394'>T</a>                 394 mylist.cpp     MyList&lt;T&gt; operator + (const MyList&lt;T&gt; &amp;l1, const T &amp;item){</span>
+<span class='curline'><a href='../S/1.html#L395'>T</a>                 395 mylist.cpp         MyList&lt;T&gt; result(l1);</span>
+<span class='curline'><a href='../S/1.html#L401'>T</a>                 401 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L402'>T</a>                 402 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator= (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_ASSIGN)</span>
+<span class='curline'><a href='../S/1.html#L406'>T</a>                 406 mylist.cpp           a[i].~T();</span>
+<span class='curline'><a href='../S/1.html#L414'>T</a>                 414 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L415'>T</a>                 415 mylist.cpp     T&amp; MyList&lt;T&gt;::operator[](int index) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L436'>T</a>                 436 mylist.cpp     template&lt;typename T, bool less&gt;</span>
+<span class='curline'><a href='../S/1.html#L437'>T</a>                 437 mylist.cpp     inline bool __comp(const T&amp; a, const T&amp; b) { if (less) return a&lt;b; return a&gt;b; }</span>
+<span class='curline'><a href='../S/1.html#L442'>T</a>                 442 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L444'>T</a>                 444 mylist.cpp     void MyList&lt;T&gt;::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L448'>T</a>                 448 mylist.cpp         T *i=l, *j=r;</span>
+<span class='curline'><a href='../S/1.html#L449'>T</a>                 449 mylist.cpp         T y;</span>
+<span class='curline'><a href='../S/1.html#L450'>T</a>                 450 mylist.cpp         T &amp;x= *(l+((r-l)&gt;&gt;1));</span>
+<span class='curline'><a href='../S/1.html#L456'>T</a>                 456 mylist.cpp                 if (__comp&lt;T,less&gt;(*i, *j))</span>
+<span class='curline'><a href='../S/1.html#L466'>T</a>                 466 mylist.cpp             while (__comp&lt;T,less&gt;(*i,x)) ++i;</span>
+<span class='curline'><a href='../S/1.html#L467'>T</a>                 467 mylist.cpp             while (__comp&lt;T,less&gt;(x,*j)) --j;</span>
+<span class='curline'><a href='../S/1.html#L481'>T</a>                 481 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L482'>T</a>                 482 mylist.cpp     void MyList&lt;T&gt;::sort(bool less) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L489'>T</a>                 489 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L490'>T</a>                 490 mylist.cpp     void MyList&lt;T&gt;::reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L492'>T</a>                 492 mylist.cpp         T y;</span>
 </pre>
 </body>
 </html>

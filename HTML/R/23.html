@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>remove</title>
+<title>get_item</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,8 +9,12 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L83'>remove</a>             83 mylist.cpp             void remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0));//删除MyList中第一个和item相等的元素。</span>
-<span class='curline'><a href='../S/1.html#L467'>remove</a>            467 mylist.cpp         b.remove(4); // b = [15, 0, 116, ...]</span>
+<span class='curline'><a href='../S/1.html#L144'>get_item</a>          144 mylist.cpp             MyList&lt;T&gt; get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0));//返回MyList中第start到第end位的元素，包括两边。此处需要像python一样接受负数，具体见测试代码。</span>
+<span class='curline'><a href='../S/1.html#L145'>get_item</a>          145 mylist.cpp             T get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY );</span>
+<span class='curline'><a href='../S/1.html#L518'>get_item</a>          518 mylist.cpp         b = a.get_item(4, -3); // b = [] *若start &gt; end，返回空数组</span>
+<span class='curline'><a href='../S/1.html#L519'>get_item</a>          519 mylist.cpp         b = a.get_item(3, -1); // b = [1, 0, 12] </span>
+<span class='curline'><a href='../S/1.html#L523'>get_item</a>          523 mylist.cpp           cout&lt;&lt;a.get_item(i)&lt;&lt;endl;</span>
+<span class='curline'><a href='../S/1.html#L544'>get_item</a>          544 mylist.cpp         cout&lt;&lt;c.get_item(100, 105)&lt;&lt;endl;</span>
 </pre>
 </body>
 </html>

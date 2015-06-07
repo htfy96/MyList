@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>r</title>
+<title>index</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,15 +9,19 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L62'>r</a>                  62 mylist.cpp             template&lt;bool less&gt; void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L380'>r</a>                 380 mylist.cpp     void MyList&lt;T&gt;::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L384'>r</a>                 384 mylist.cpp         T *i=l, *j=r;</span>
-<span class='curline'><a href='../S/1.html#L386'>r</a>                 386 mylist.cpp         T &amp;x= *(l+((r-l)&gt;&gt;1));</span>
-<span class='curline'><a href='../S/1.html#L387'>r</a>                 387 mylist.cpp         if (l&gt;=r) return;</span>
-<span class='curline'><a href='../S/1.html#L388'>r</a>                 388 mylist.cpp         if (r-l&lt;SORT_THRESHOLD)</span>
-<span class='curline'><a href='../S/1.html#L390'>r</a>                 390 mylist.cpp             for(i=l;i&lt;r;++i)</span>
-<span class='curline'><a href='../S/1.html#L391'>r</a>                 391 mylist.cpp               for (j=i+1;j&lt;r;++j)</span>
-<span class='curline'><a href='../S/1.html#L414'>r</a>                 414 mylist.cpp         if (i&lt;r) sort_impl&lt;less&gt;(i, r);</span>
+<span class='curline'><a href='../S/1.html#L138'>index</a>             138 mylist.cpp             void insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//将item插入到place处。</span>
+<span class='curline'><a href='../S/1.html#L145'>index</a>             145 mylist.cpp             T get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY );</span>
+<span class='curline'><a href='../S/1.html#L156'>index</a>             156 mylist.cpp             T &amp;operator [](int index) const  __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY);//返回第index个元素。</span>
+<span class='curline'><a href='../S/1.html#L284'>index</a>             284 mylist.cpp     void MyList&lt;T&gt;::insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L286'>index</a>             286 mylist.cpp         if (index&lt;0 || index&gt;size) throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of insert out of range");</span>
+<span class='curline'><a href='../S/1.html#L290'>index</a>             290 mylist.cpp         for (int i=size-1; i&gt;index; --i)</span>
+<span class='curline'><a href='../S/1.html#L292'>index</a>             292 mylist.cpp         a[index]=item;</span>
+<span class='curline'><a href='../S/1.html#L326'>index</a>             326 mylist.cpp     T MyList&lt;T&gt;::get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY) </span>
+<span class='curline'><a href='../S/1.html#L328'>index</a>             328 mylist.cpp         if (index&lt;0 || index&gt;=size) </span>
+<span class='curline'><a href='../S/1.html#L330'>index</a>             330 mylist.cpp         return a[index];</span>
+<span class='curline'><a href='../S/1.html#L415'>index</a>             415 mylist.cpp     T&amp; MyList&lt;T&gt;::operator[](int index) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L417'>index</a>             417 mylist.cpp         if (index&lt;0 || index&gt;=size) </span>
+<span class='curline'><a href='../S/1.html#L419'>index</a>             419 mylist.cpp         return a[index];</span>
 </pre>
 </body>
 </html>

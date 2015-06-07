@@ -1,20 +1,34 @@
 #ifndef _MYLIST_HPP
 #define _MYLIST_HPP
 
+/******************************
+ *  Prohibit g++ --std=c++11
+ ******************************/
+#ifdef __GNUC__ 
+#ifndef __clang__
+#if __cplusplus>=201103L
+#error "Since g++ has bug in the scope of 'this'(https://gcc.gnu.org/bugzilla/show_bug.cgi?id=52869), g++ with c++11 standard is incompatible with this program"
+#endif
+#endif
+#endif
+
 #include <iostream>
 
-//Dirty tricks - disgusting
+/*************************************************
+ * General macros for noexcept or throw feature
+ * Dirty tricks - disgusting
+ * ***************************8*******************/
 #if __cplusplus >= 201103L
 #define __MYLIST_NOEXCEPT() noexcept
 #define __MYLIST_EXCEPT_1(a_) noexcept(false)
 #define __MYLIST_EXCEPT_2(a_,b_) noexcept(false)
 #define __MYLIST_EXCEPT_ANY() noexcept(false)
-#define __MYLIST_NOEXCEPT_IF(a_) noexcept( noexcept(a_) )
-#define __MYLIST_NOEXCEPT_IF_2(a_,b_) noexcept( noexcept(a_) && noexcept(b_) )
-#define __MYLIST_NOEXCEPT_IF_3(a_,b_,c_) noexcept( noexcept(a_) && noexcept(b_) && noexcept(c_))
+#define __MYLIST_NOEXCEPT_IF(a_) noexcept( noexcept((a_)) )
+#define __MYLIST_NOEXCEPT_IF_2(a_,b_) noexcept(noexcept(a_) && noexcept(b_))
+#define __MYLIST_NOEXCEPT_IF_3(a_,b_,c_) noexcept( noexcept((a_)) && noexcept((b_)) && noexcept((c_)))
 #define __MYLIST_COPY T( T() )
 #define __MYLIST_CONSTRUCT T()
-#define __MYLIST_ASSIGN T()=T()
+#define __MYLIST_ASSIGN (T() = T())
 #define __MYLIST_NEW new T[1]
 #else
 #define __MYLIST_NOEXCEPT() throw()
@@ -25,19 +39,69 @@
 #define __MYLIST_NOEXCEPT_IF_3(a_,b_,c_)
 #define __MYLIST_EXCEPT_ANY() 
 #endif
-//Implemention
 
-//WHY inheritation from <exception> is not allowed...
+/**********************************************************
+ * Exception classes
+ *
+ * MyListBaseException (exceptionType, lineno, filename, msg, print())
+ * |
+ * +----MyListLogicError
+ *      |
+ *      +----MyListPopFromNullError
+ *      +----MyListOutOfRangeError
+ *      +----MyListResizeToZeroError
+ *
+ * Due to the lack of meta data in c++98, extra tag "exceptionType"
+ * is included in an object
+ * *******************************************************/
 
-//WHY <string> is not allowed... therefore no error message
-
+#define __EXCEPTION_PREFIX __LINE__,__FILE__,__func__
 //OK, make them happy
-struct MyListBaseException {};
-struct MyListLogicError:MyListBaseException {};
-struct MyListPopFromNullError:MyListLogicError {};
-struct MyListOutOfRangeError:MyListLogicError {};
-struct MyListResizeToMinusError:MyListLogicError {};
-//size_t isn't allowed, sad
+//Duplicate code sucks
+#define __MYLIST_EXCEPTION_CONS(thisClass) thisClass(int lineno_, const char* filename_, const char* func_, const char* msg_):
+#define __MYLIST_EXCEPTION_CONS2(baseClass,ThisClass) baseClass(lineno_,filename_,func_,msg_),exceptionType(#ThisClass) {}
+#define __MYLIST_EXCEPTION_DEF_CONS(thisClass) thisClass():exceptionType(#thisClass){}
+
+struct MyListBaseException {
+    public:
+        const char* const exceptionType;
+        int lineno;
+        const char* filename;
+        const char* func;
+        const char* msg;
+        __MYLIST_EXCEPTION_CONS(MyListBaseException)
+            exceptionType("MyListBaseException"),lineno(lineno_),filename(filename_),func(func_),msg(msg_) {}
+        __MYLIST_EXCEPTION_DEF_CONS(MyListBaseException)
+        virtual ~MyListBaseException() {};
+        virtual void print()
+        {
+            std::cout<<exceptionType<<": In "<<filename<<" at line "<<lineno<<" in function "<<func<<"  ["<<msg<<"]"<<std::endl;
+        }
+};
+struct MyListLogicError:MyListBaseException {
+        const char* const exceptionType;
+        __MYLIST_EXCEPTION_CONS(MyListLogicError)
+            __MYLIST_EXCEPTION_CONS2(MyListBaseException,MyListLogicError)
+        __MYLIST_EXCEPTION_DEF_CONS(MyListLogicError)
+};
+struct MyListPopFromNullError:MyListLogicError{
+    const char* const exceptionType;
+    __MYLIST_EXCEPTION_CONS(MyListPopFromNullError)
+        __MYLIST_EXCEPTION_CONS2(MyListLogicError,MyListPopFromNullError)
+    __MYLIST_EXCEPTION_DEF_CONS(MyListPopFromNullError)
+};
+struct MyListOutOfRangeError:MyListLogicError{
+    const char* const exceptionType;
+    __MYLIST_EXCEPTION_CONS(MyListOutOfRangeError)
+        __MYLIST_EXCEPTION_CONS2(MyListLogicError,MyListOutOfRangeError)
+    __MYLIST_EXCEPTION_DEF_CONS(MyListOutOfRangeError)
+};
+struct MyListResizeToMinusError:MyListLogicError{
+    const char* const exceptionType;
+    __MYLIST_EXCEPTION_CONS(MyListResizeToMinusError)
+        __MYLIST_EXCEPTION_CONS2(MyListLogicError,MyListResizeToMinusError)
+    __MYLIST_EXCEPTION_DEF_CONS(MyListResizeToMinusError)
+};
 
 //Forward Declaration
 template<class T>
@@ -52,6 +116,7 @@ std::ostream & operator << (std::ostream &os, const MyList<U> &obj) __MYLIST_NOE
 template<typename T>
 MyList<T> operator + (const MyList<T> &l1, const T &item);
 
+//Declaration of MyList<T>
 template<class T>
 class MyList{
     private:
@@ -59,8 +124,7 @@ class MyList{
         int capacity;
         int size;
         void double_space(int targetSize=-1) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY);
-        template<bool less> void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
-            ;
+        template<bool less> void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT);
     public:
 
         MyList() __MYLIST_NOEXCEPT() : a(NULL), capacity(0), size(0){};
@@ -86,7 +150,7 @@ class MyList{
         friend MyList operator + <> (const MyList<T> &l1, const MyList<T> &l2); 
         //合并两个MyList
         friend MyList operator + <> (const MyList &l1, const T &item); //同push(T item)，但不修改l1，返回一个新数组
-        MyList &operator = (const MyList<T> &l)__MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//赋值
+        MyList &operator = (const MyList<T> &l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//赋值
         MyList &operator += (const T &item) __MYLIST_NOEXCEPT_IF(push(T()));//同push(T item)
         MyList &operator += (const MyList<T> &l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T());//将一个MyList加入到本个MyList之后。
         T &operator [](int index) const  __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY);//返回第index个元素。
@@ -112,7 +176,7 @@ void MyList<T>::double_space(int targetSize) __MYLIST_NOEXCEPT_IF_3(throw std::b
 {
     T* tmp;
     if (targetSize == -1) targetSize = capacity*2;
-    if (targetSize<0) throw MyListResizeToMinusError();
+    if (targetSize<0) throw MyListResizeToMinusError(__EXCEPTION_PREFIX, "can't resize to minus");
     tmp = new T [targetSize];
     try
     {
@@ -202,7 +266,7 @@ template<typename T>
 T MyList<T>::pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLIST_COPY())
 {
     if (!size)
-      throw MyListPopFromNullError();
+      throw MyListPopFromNullError(__EXCEPTION_PREFIX, "can't pop from a null list");
     T tmp=a[size-1];
     a[--size].~T(); //Destructor never throws exception
     try
@@ -219,7 +283,7 @@ T MyList<T>::pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLI
 template<typename T>
 void MyList<T>::insert(int index, const T &item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)
 {
-    if (index<0 || index>size) throw MyListOutOfRangeError();
+    if (index<0 || index>size) throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of insert out of range");
     if (size == capacity)
       double_space();
     ++size;
@@ -249,7 +313,7 @@ template<typename T>
 void MyList<T>::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)
 {
     if (start<0 || start>=size || end<0 || end>=size || start>end)
-      throw MyListOutOfRangeError();
+      throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of erase out of range");
     for (int i=start; i<=end; ++i)
       a[i].~T();
     for (int i=end+1; i<size; ++i)
@@ -262,7 +326,7 @@ template<typename T>
 T MyList<T>::get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY) 
 {
     if (index<0 || index>=size) 
-      throw MyListOutOfRangeError();
+      throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of item out of range");
     return a[index];
 }
 
@@ -335,7 +399,7 @@ MyList<T> operator + (const MyList<T> &l1, const T &item){
 
 //Weak Exception Safety
 template<typename T>
-MyList<T>& MyList<T>::operator= (const MyList<T> &l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)
+MyList<T>& MyList<T>::operator= (const MyList<T> &l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_ASSIGN)
 {
     if (capacity<l.size) double_space(l.size);
     for (int i=size;i<l.size;++i)
@@ -351,7 +415,7 @@ template<typename T>
 T& MyList<T>::operator[](int index) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)
 {
     if (index<0 || index>=size) 
-      throw MyListOutOfRangeError();
+      throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index out of range");
     return a[index];
 }
 
@@ -462,6 +526,14 @@ int main()
     cout<<b.get_size()<<endl;
     a.erase(2, 6); // a = [15, 4, 0, 12]
     cout<<a<<endl;
+    try
+    {
+    a.erase(3,9);
+    } catch(MyListBaseException& e)
+    {
+        e.print();
+    }
+    // after exception nothing changes
     b = a + a; // b = [15, 4, 0, 12, 15, 4, 0, 12]
     b.insert(3, 116); // b = [15, 4, 0, 116, 12, 15, 4, 0, 12]
     b.remove(4); // b = [15, 0, 116, ...]
@@ -470,7 +542,9 @@ int main()
     for (i=0; i<100; ++i)
       c.push(1.1*i);
     cout<<c.get_item(100, 105)<<endl;
-
+    c.erase(2,98);
+    cout<<c.get_size()<<endl;
+    cout<<c<<endl;
 
     return 0;
 }

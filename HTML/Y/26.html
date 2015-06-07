@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>l2</title>
+<title>end</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,10 +9,19 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L47'>l2</a>                 47 mylist.cpp     MyList&lt;U&gt; operator +(const MyList&lt;U&gt; &amp;l1, const MyList&lt;U&gt; &amp;l2);</span>
-<span class='curline'><a href='../S/1.html#L86'>l2</a>                 86 mylist.cpp             friend MyList operator + &lt;&gt; (const MyList&lt;T&gt; &amp;l1, const MyList&lt;T&gt; &amp;l2); </span>
-<span class='curline'><a href='../S/1.html#L323'>l2</a>                323 mylist.cpp     MyList&lt;U&gt; operator +(const MyList&lt;U&gt; &amp;l1, const MyList&lt;U&gt; &amp;l2) </span>
-<span class='curline'><a href='../S/1.html#L326'>l2</a>                326 mylist.cpp         return result+=l2;</span>
+<span class='curline'><a href='../S/1.html#L141'>end</a>               141 mylist.cpp             void erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY); //删除MyList中第start到第end位的元素，包括两边。</span>
+<span class='curline'><a href='../S/1.html#L144'>end</a>               144 mylist.cpp             MyList&lt;T&gt; get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0));//返回MyList中第start到第end位的元素，包括两边。此处需要像python一样接受负数，具体见测试代码。</span>
+<span class='curline'><a href='../S/1.html#L313'>end</a>               313 mylist.cpp     void MyList&lt;T&gt;::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L315'>end</a>               315 mylist.cpp         if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size || start&gt;end)</span>
+<span class='curline'><a href='../S/1.html#L317'>end</a>               317 mylist.cpp         for (int i=start; i&lt;=end; ++i)</span>
+<span class='curline'><a href='../S/1.html#L319'>end</a>               319 mylist.cpp         for (int i=end+1; i&lt;size; ++i)</span>
+<span class='curline'><a href='../S/1.html#L320'>end</a>               320 mylist.cpp           a[i-end+start-1] = a[i];      //error in copy -&gt; correct destruct</span>
+<span class='curline'><a href='../S/1.html#L321'>end</a>               321 mylist.cpp         size -= end-start+1;</span>
+<span class='curline'><a href='../S/1.html#L335'>end</a>               335 mylist.cpp     MyList&lt;T&gt; MyList&lt;T&gt;::get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0))</span>
+<span class='curline'><a href='../S/1.html#L338'>end</a>               338 mylist.cpp         if (end&lt;0) end+=size;</span>
+<span class='curline'><a href='../S/1.html#L339'>end</a>               339 mylist.cpp         if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size) throw MyListOutOfRangeError();</span>
+<span class='curline'><a href='../S/1.html#L340'>end</a>               340 mylist.cpp         if (start&gt;end) return MyList&lt;T&gt;();</span>
+<span class='curline'><a href='../S/1.html#L341'>end</a>               341 mylist.cpp         return MyList&lt;T&gt;(a+start, end-start+1); //RVO</span>
 </pre>
 </body>
 </html>

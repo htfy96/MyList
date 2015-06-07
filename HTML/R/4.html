@@ -9,17 +9,20 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L77'>MyListOutOfRangeError</a>   77 mylist.cpp             void erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY); //删除MyList中第start到第end位的元素，包括两边。</span>
-<span class='curline'><a href='../S/1.html#L80'>MyListOutOfRangeError</a>   80 mylist.cpp             MyList&lt;T&gt; get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0));//返回MyList中第start到第end位的元素，包括两边。此处需要像python一样接受负数，具体见测试代码。</span>
-<span class='curline'><a href='../S/1.html#L92'>MyListOutOfRangeError</a>   92 mylist.cpp             T &amp;operator [](int index) const  __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY);//返回第index个元素。</span>
-<span class='curline'><a href='../S/1.html#L222'>MyListOutOfRangeError</a>  222 mylist.cpp         if (index&lt;0 || index&gt;size) throw MyListOutOfRangeError();</span>
-<span class='curline'><a href='../S/1.html#L249'>MyListOutOfRangeError</a>  249 mylist.cpp     void MyList&lt;T&gt;::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L252'>MyListOutOfRangeError</a>  252 mylist.cpp           throw MyListOutOfRangeError();</span>
-<span class='curline'><a href='../S/1.html#L265'>MyListOutOfRangeError</a>  265 mylist.cpp           throw MyListOutOfRangeError();</span>
-<span class='curline'><a href='../S/1.html#L271'>MyListOutOfRangeError</a>  271 mylist.cpp     MyList&lt;T&gt; MyList&lt;T&gt;::get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0))</span>
-<span class='curline'><a href='../S/1.html#L275'>MyListOutOfRangeError</a>  275 mylist.cpp         if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size) throw MyListOutOfRangeError();</span>
-<span class='curline'><a href='../S/1.html#L351'>MyListOutOfRangeError</a>  351 mylist.cpp     T&amp; MyList&lt;T&gt;::operator[](int index) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L354'>MyListOutOfRangeError</a>  354 mylist.cpp           throw MyListOutOfRangeError();</span>
+<span class='curline'><a href='../S/1.html#L95'>MyListOutOfRangeError</a>   95 mylist.cpp         __MYLIST_EXCEPTION_CONS(MyListOutOfRangeError)</span>
+<span class='curline'><a href='../S/1.html#L96'>MyListOutOfRangeError</a>   96 mylist.cpp             __MYLIST_EXCEPTION_CONS2(MyListLogicError,MyListOutOfRangeError)</span>
+<span class='curline'><a href='../S/1.html#L97'>MyListOutOfRangeError</a>   97 mylist.cpp         __MYLIST_EXCEPTION_DEF_CONS(MyListOutOfRangeError)</span>
+<span class='curline'><a href='../S/1.html#L141'>MyListOutOfRangeError</a>  141 mylist.cpp             void erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY); //删除MyList中第start到第end位的元素，包括两边。</span>
+<span class='curline'><a href='../S/1.html#L144'>MyListOutOfRangeError</a>  144 mylist.cpp             MyList&lt;T&gt; get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0));//返回MyList中第start到第end位的元素，包括两边。此处需要像python一样接受负数，具体见测试代码。</span>
+<span class='curline'><a href='../S/1.html#L156'>MyListOutOfRangeError</a>  156 mylist.cpp             T &amp;operator [](int index) const  __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY);//返回第index个元素。</span>
+<span class='curline'><a href='../S/1.html#L286'>MyListOutOfRangeError</a>  286 mylist.cpp         if (index&lt;0 || index&gt;size) throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of insert out of range");</span>
+<span class='curline'><a href='../S/1.html#L313'>MyListOutOfRangeError</a>  313 mylist.cpp     void MyList&lt;T&gt;::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L316'>MyListOutOfRangeError</a>  316 mylist.cpp           throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of erase out of range");</span>
+<span class='curline'><a href='../S/1.html#L329'>MyListOutOfRangeError</a>  329 mylist.cpp           throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of item out of range");</span>
+<span class='curline'><a href='../S/1.html#L335'>MyListOutOfRangeError</a>  335 mylist.cpp     MyList&lt;T&gt; MyList&lt;T&gt;::get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0))</span>
+<span class='curline'><a href='../S/1.html#L339'>MyListOutOfRangeError</a>  339 mylist.cpp         if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size) throw MyListOutOfRangeError();</span>
+<span class='curline'><a href='../S/1.html#L415'>MyListOutOfRangeError</a>  415 mylist.cpp     T&amp; MyList&lt;T&gt;::operator[](int index) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L418'>MyListOutOfRangeError</a>  418 mylist.cpp           throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index out of range");</span>
 </pre>
 </body>
 </html>

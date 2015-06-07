@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>targetSize</title>
+<title>l1</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,12 +9,16 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L61'>targetSize</a>         61 mylist.cpp             void double_space(int targetSize=-1) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY);</span>
-<span class='curline'><a href='../S/1.html#L111'>targetSize</a>        111 mylist.cpp     void MyList&lt;T&gt;::double_space(int targetSize) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L114'>targetSize</a>        114 mylist.cpp         if (targetSize == -1) targetSize = capacity*2;</span>
-<span class='curline'><a href='../S/1.html#L115'>targetSize</a>        115 mylist.cpp         if (targetSize&lt;0) throw MyListResizeToMinusError();</span>
-<span class='curline'><a href='../S/1.html#L116'>targetSize</a>        116 mylist.cpp         tmp = new T [targetSize];</span>
-<span class='curline'><a href='../S/1.html#L129'>targetSize</a>        129 mylist.cpp         capacity = targetSize;</span>
+<span class='curline'><a href='../S/1.html#L111'>l1</a>                111 mylist.cpp     MyList&lt;U&gt; operator +(const MyList&lt;U&gt; &amp;l1, const MyList&lt;U&gt; &amp;l2);</span>
+<span class='curline'><a href='../S/1.html#L117'>l1</a>                117 mylist.cpp     MyList&lt;T&gt; operator + (const MyList&lt;T&gt; &amp;l1, const T &amp;item);</span>
+<span class='curline'><a href='../S/1.html#L150'>l1</a>                150 mylist.cpp             friend MyList operator + &lt;&gt; (const MyList&lt;T&gt; &amp;l1, const MyList&lt;T&gt; &amp;l2); </span>
+<span class='curline'><a href='../S/1.html#L152'>l1</a>                152 mylist.cpp             friend MyList operator + &lt;&gt; (const MyList &amp;l1, const T &amp;item); //同push(T item)，但不修改l1，返回一个新数组</span>
+<span class='curline'><a href='../S/1.html#L387'>l1</a>                387 mylist.cpp     MyList&lt;U&gt; operator +(const MyList&lt;U&gt; &amp;l1, const MyList&lt;U&gt; &amp;l2) </span>
+<span class='curline'><a href='../S/1.html#L389'>l1</a>                389 mylist.cpp         MyList&lt;U&gt; result(l1);</span>
+<span class='curline'><a href='../S/1.html#L394'>l1</a>                394 mylist.cpp     MyList&lt;T&gt; operator + (const MyList&lt;T&gt; &amp;l1, const T &amp;item){</span>
+<span class='curline'><a href='../S/1.html#L395'>l1</a>                395 mylist.cpp         MyList&lt;T&gt; result(l1);</span>
+<span class='curline'><a href='../S/1.html#L396'>l1</a>                396 mylist.cpp         l1.push(item);</span>
+<span class='curline'><a href='../S/1.html#L397'>l1</a>                397 mylist.cpp         return l1;</span>
 </pre>
 </body>
 </html>

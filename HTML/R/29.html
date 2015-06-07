@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>sort_impl</title>
+<title>push</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,11 +9,13 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L62'>sort_impl</a>          62 mylist.cpp             template&lt;bool less&gt; void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L413'>sort_impl</a>         413 mylist.cpp         if (l&lt;j) sort_impl&lt;less&gt;(l, j);</span>
-<span class='curline'><a href='../S/1.html#L414'>sort_impl</a>         414 mylist.cpp         if (i&lt;r) sort_impl&lt;less&gt;(i, r);</span>
-<span class='curline'><a href='../S/1.html#L421'>sort_impl</a>         421 mylist.cpp         if(!less) sort_impl&lt;true&gt;(a,a+size);</span>
-<span class='curline'><a href='../S/1.html#L422'>sort_impl</a>         422 mylist.cpp         else sort_impl&lt;false&gt;(a,a+size);</span>
+<span class='curline'><a href='../S/1.html#L135'>push</a>              135 mylist.cpp             void push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L154'>push</a>              154 mylist.cpp             MyList &amp;operator += (const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()));//同push(T item)</span>
+<span class='curline'><a href='../S/1.html#L368'>push</a>              368 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator+=(const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()))</span>
+<span class='curline'><a href='../S/1.html#L370'>push</a>              370 mylist.cpp         push(item);</span>
+<span class='curline'><a href='../S/1.html#L396'>push</a>              396 mylist.cpp         l1.push(item);</span>
+<span class='curline'><a href='../S/1.html#L508'>push</a>              508 mylist.cpp           a.push(i);</span>
+<span class='curline'><a href='../S/1.html#L543'>push</a>              543 mylist.cpp           c.push(1.1*i);</span>
 </pre>
 </body>
 </html>

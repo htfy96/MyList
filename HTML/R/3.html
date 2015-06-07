@@ -9,9 +9,15 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L37'>MyListLogicError</a>   37 mylist.cpp     struct MyListPopFromNullError:MyListLogicError {};</span>
-<span class='curline'><a href='../S/1.html#L38'>MyListLogicError</a>   38 mylist.cpp     struct MyListOutOfRangeError:MyListLogicError {};</span>
-<span class='curline'><a href='../S/1.html#L39'>MyListLogicError</a>   39 mylist.cpp     struct MyListResizeToMinusError:MyListLogicError {};</span>
+<span class='curline'><a href='../S/1.html#L83'>MyListLogicError</a>   83 mylist.cpp             __MYLIST_EXCEPTION_CONS(MyListLogicError)</span>
+<span class='curline'><a href='../S/1.html#L84'>MyListLogicError</a>   84 mylist.cpp                 __MYLIST_EXCEPTION_CONS2(MyListBaseException,MyListLogicError)</span>
+<span class='curline'><a href='../S/1.html#L85'>MyListLogicError</a>   85 mylist.cpp             __MYLIST_EXCEPTION_DEF_CONS(MyListLogicError)</span>
+<span class='curline'><a href='../S/1.html#L87'>MyListLogicError</a>   87 mylist.cpp     struct MyListPopFromNullError:MyListLogicError{</span>
+<span class='curline'><a href='../S/1.html#L90'>MyListLogicError</a>   90 mylist.cpp             __MYLIST_EXCEPTION_CONS2(MyListLogicError,MyListPopFromNullError)</span>
+<span class='curline'><a href='../S/1.html#L93'>MyListLogicError</a>   93 mylist.cpp     struct MyListOutOfRangeError:MyListLogicError{</span>
+<span class='curline'><a href='../S/1.html#L96'>MyListLogicError</a>   96 mylist.cpp             __MYLIST_EXCEPTION_CONS2(MyListLogicError,MyListOutOfRangeError)</span>
+<span class='curline'><a href='../S/1.html#L99'>MyListLogicError</a>   99 mylist.cpp     struct MyListResizeToMinusError:MyListLogicError{</span>
+<span class='curline'><a href='../S/1.html#L102'>MyListLogicError</a>  102 mylist.cpp             __MYLIST_EXCEPTION_CONS2(MyListLogicError,MyListResizeToMinusError)</span>
 </pre>
 </body>
 </html>

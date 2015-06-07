@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>double_space</title>
+<title>__MYLIST_NOEXCEPT_IF</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,19 +9,12 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L61'>double_space</a>       61 mylist.cpp             void double_space(int targetSize=-1) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY);</span>
-<span class='curline'><a href='../S/1.html#L71'>double_space</a>       71 mylist.cpp             void push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L74'>double_space</a>       74 mylist.cpp             void insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//将item插入到place处。</span>
-<span class='curline'><a href='../S/1.html#L89'>double_space</a>       89 mylist.cpp             MyList &amp;operator = (const MyList&lt;T&gt; &amp;l)__MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//赋值</span>
-<span class='curline'><a href='../S/1.html#L91'>double_space</a>       91 mylist.cpp             MyList &amp;operator += (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T());//将一个MyList加入到本个MyList之后。</span>
-<span class='curline'><a href='../S/1.html#L192'>double_space</a>      192 mylist.cpp     void MyList&lt;T&gt;::push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L195'>double_space</a>      195 mylist.cpp           double_space();</span>
-<span class='curline'><a href='../S/1.html#L220'>double_space</a>      220 mylist.cpp     void MyList&lt;T&gt;::insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L224'>double_space</a>      224 mylist.cpp           double_space();</span>
-<span class='curline'><a href='../S/1.html#L312'>double_space</a>      312 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator +=(const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T())</span>
-<span class='curline'><a href='../S/1.html#L315'>double_space</a>      315 mylist.cpp           double_space(size + l.size);</span>
-<span class='curline'><a href='../S/1.html#L338'>double_space</a>      338 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator= (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
-<span class='curline'><a href='../S/1.html#L340'>double_space</a>      340 mylist.cpp         if (capacity&lt;l.size) double_space(l.size);</span>
+<span class='curline'><a href='../S/1.html#L146'>__MYLIST_NOEXCEPT_IF</a>  146 mylist.cpp             int count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0]);//返回MyList中和item相等的元素的个数。</span>
+<span class='curline'><a href='../S/1.html#L147'>__MYLIST_NOEXCEPT_IF</a>  147 mylist.cpp             void remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0));//删除MyList中第一个和item相等的元素。</span>
+<span class='curline'><a href='../S/1.html#L154'>__MYLIST_NOEXCEPT_IF</a>  154 mylist.cpp             MyList &amp;operator += (const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()));//同push(T item)</span>
+<span class='curline'><a href='../S/1.html#L346'>__MYLIST_NOEXCEPT_IF</a>  346 mylist.cpp     int MyList&lt;T&gt;::count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0])</span>
+<span class='curline'><a href='../S/1.html#L356'>__MYLIST_NOEXCEPT_IF</a>  356 mylist.cpp     void MyList&lt;T&gt;::remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0))</span>
+<span class='curline'><a href='../S/1.html#L368'>__MYLIST_NOEXCEPT_IF</a>  368 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator+=(const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()))</span>
 </pre>
 </body>
 </html>
