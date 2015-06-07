@@ -1,14 +1,20 @@
 # MyList
 An array-based C++ MyList Class with robust exception safety
 #Summary
-
+**GCC with c++11 is incompatible with this project!**
 ##Exception Classes
+
 ```cpp
-struct MyListBaseException {};
-struct MyListLogicError:MyListBaseException {};
-struct MyListPopFromNullError:MyListLogicError {};
-struct MyListOutOfRangeError:MyListLogicError {};
-struct MyListResizeToMinusError:MyListLogicError {};
+ * MyListBaseException (exceptionType, lineno, filename, msg, print())
+ * |
+ * +----MyListLogicError
+ *      |
+ *      +----MyListPopFromNullError
+ *      +----MyListOutOfRangeError
+ *      +----MyListResizeToZeroError
+ *
+ * Due to the lack of meta data in c++98, extra tag "exceptionType"
+ * is included in an object
 ```
 
 ##Exception Specifer
