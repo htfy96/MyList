@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>r</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.4' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/1.html#L62'>r</a>                  62 mylist.cpp             template&lt;bool less&gt; void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L380'>r</a>                 380 mylist.cpp     void MyList&lt;T&gt;::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L384'>r</a>                 384 mylist.cpp         T *i=l, *j=r;</span>
+<span class='curline'><a href='../S/1.html#L386'>r</a>                 386 mylist.cpp         T &amp;x= *(l+((r-l)&gt;&gt;1));</span>
+<span class='curline'><a href='../S/1.html#L387'>r</a>                 387 mylist.cpp         if (l&gt;=r) return;</span>
+<span class='curline'><a href='../S/1.html#L388'>r</a>                 388 mylist.cpp         if (r-l&lt;SORT_THRESHOLD)</span>
+<span class='curline'><a href='../S/1.html#L390'>r</a>                 390 mylist.cpp             for(i=l;i&lt;r;++i)</span>
+<span class='curline'><a href='../S/1.html#L391'>r</a>                 391 mylist.cpp               for (j=i+1;j&lt;r;++j)</span>
+<span class='curline'><a href='../S/1.html#L414'>r</a>                 414 mylist.cpp         if (i&lt;r) sort_impl&lt;less&gt;(i, r);</span>
+</pre>
+</body>
+</html>

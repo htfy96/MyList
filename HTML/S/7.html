@@ -1,0 +1,501 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>:w:w</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.4' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<!-- beginning of fixed guide -->
+<div id='guide'><ul>
+<li><a href='#TOP'><img class='icon' src='../icons/first.png' alt='[^]' /></a></li>
+<li><a href='#BOTTOM'><img class='icon' src='../icons/last.png' alt='[v]' /></a></li>
+<li><a href='#TOP'><img class='icon' src='../icons/top.png' alt='[top]' /></a></li>
+<li><a href='#BOTTOM'><img class='icon' src='../icons/bottom.png' alt='[bottom]' /></a></li>
+<li><a href='../mains.html'><img class='icon' src='../icons/index.png' alt='[index]' /></a></li>
+<li><a href='../help.html'><img class='icon' src='../icons/help.png' alt='[help]' /></a></li>
+<li class='standout'><span>:w:w</span></li>
+</ul></div>
+<!-- end of fixed guide -->
+<a id='TOP' name='TOP'></a><h2 class='header'><a href='../mains.html'>root</a>/:w:w</h2>
+<em class='comment'>/* <img class='icon' src='../icons/n_left.png' alt='[previous]' /><img class='icon' src='../icons/n_right.png' alt='[next]' /><img class='icon' src='../icons/n_first.png' alt='[first]' /><img class='icon' src='../icons/n_last.png' alt='[last]' /><img class='icon' src='../icons/n_top.png' alt='[top]' /><a href='#BOTTOM'><img class='icon' src='../icons/bottom.png' alt='[bottom]' /></a><a href='../mains.html'><img class='icon' src='../icons/index.png' alt='[index]' /></a><a href='../help.html'><img class='icon' src='../icons/help.png' alt='[help]' /></a>&nbsp;<em class='position'>[+1 :w:w]</em> */</em>
+<hr />
+<pre>
+<a id='L1' name='L1'></a>#ifndef _MYLIST_HPP
+<a id='L2' name='L2'></a>#define _MYLIST_HPP
+<a id='L3' name='L3'></a>
+<a id='L4' name='L4'></a>#include &lt;iostream&gt;
+<a id='L5' name='L5'></a>
+<a id='L6' name='L6'></a>//Dirty tricks - disgusting
+<a id='L7' name='L7'></a>#if __cplusplus &gt;= 201103L
+<a id='L8' name='L8'></a>#define __MYLIST_NOEXCEPT() noexcept
+<a id='L9' name='L9'></a>#define __MYLIST_EXCEPT_1(a_) noexcept(false)
+<a id='L10' name='L10'></a>#define __MYLIST_EXCEPT_2(a_,b_) noexcept(false)
+<a id='L11' name='L11'></a>#define __MYLIST_EXCEPT_ANY() noexcept(false)
+<a id='L12' name='L12'></a>#define __MYLIST_NOEXCEPT_IF(a_) noexcept( noexcept(a_) )
+<a id='L13' name='L13'></a>#define __MYLIST_NOEXCEPT_IF_2(a_,b_) noexcept( noexcept(a_) &amp;&amp; noexcept(b_) )
+<a id='L14' name='L14'></a>#define __MYLIST_NOEXCEPT_IF_3(a_,b_,c_) noexcept( noexcept(a_) &amp;&amp; noexcept(b_) &amp;&amp; noexcept(c_))
+<a id='L15' name='L15'></a>#define __MYLIST_COPY T( T() )
+<a id='L16' name='L16'></a>#define __MYLIST_CONSTRUCT T()
+<a id='L17' name='L17'></a>#define __MYLIST_ASSIGN T()=T()
+<a id='L18' name='L18'></a>#define __MYLIST_NEW new T[1]
+<a id='L19' name='L19'></a>#else
+<a id='L20' name='L20'></a>#define __MYLIST_NOEXCEPT() throw()
+<a id='L21' name='L21'></a>#define __MYLIST_EXCEPT_1(a_) throw(a_)
+<a id='L22' name='L22'></a>#define __MYLIST_EXCEPT_2(a_,b_) throw(a_,b_)
+<a id='L23' name='L23'></a>#define __MYLIST_NOEXCEPT_IF(a_) 
+<a id='L24' name='L24'></a>#define __MYLIST_NOEXCEPT_IF_2(a_,b_) 
+<a id='L25' name='L25'></a>#define __MYLIST_NOEXCEPT_IF_3(a_,b_,c_)
+<a id='L26' name='L26'></a>#define __MYLIST_EXCEPT_ANY() 
+<a id='L27' name='L27'></a>#endif
+<a id='L28' name='L28'></a>//Implemention
+<a id='L29' name='L29'></a>
+<a id='L30' name='L30'></a>//WHY inheritation from &lt;exception&gt; is not allowed...
+<a id='L31' name='L31'></a>
+<a id='L32' name='L32'></a>//WHY &lt;string&gt; is not allowed... therefore no error message
+<a id='L33' name='L33'></a>
+<a id='L34' name='L34'></a>//OK, make them happy
+<a id='L35' name='L35'></a>struct MyListBaseException {};
+<a id='L36' name='L36'></a>struct MyListLogicError:MyListBaseException {};
+<a id='L37' name='L37'></a>struct MyListPopFromNullError:MyListLogicError {};
+<a id='L38' name='L38'></a>struct MyListOutOfRangeError:MyListLogicError {};
+<a id='L39' name='L39'></a>struct MyListResizeToMinusError:MyListLogicError {};
+<a id='L40' name='L40'></a>//size_t isn't allowed, sad
+<a id='L41' name='L41'></a>
+<a id='L42' name='L42'></a>template&lt;class T&gt;
+<a id='L43' name='L43'></a>class MyList;
+<a id='L44' name='L44'></a>template&lt;typename U&gt;
+<a id='L45' name='L45'></a>MyList&lt;U&gt; operator +(const MyList&lt;U&gt; &amp;l1, const MyList&lt;U&gt; &amp;l2);
+<a id='L46' name='L46'></a>template&lt;typename U&gt;
+<a id='L47' name='L47'></a>std::ostream &amp; operator &lt;&lt; (std::ostream &amp;os, const MyList&lt;U&gt; &amp;obj) __MYLIST_NOEXCEPT();
+<a id='L48' name='L48'></a>template&lt;class T&gt;
+<a id='L49' name='L49'></a>class MyList{
+<a id='L50' name='L50'></a>    private:
+<a id='L51' name='L51'></a>        T *a;
+<a id='L52' name='L52'></a>        int capacity;
+<a id='L53' name='L53'></a>        int size;
+<a id='L54' name='L54'></a>        void double_space(int targetSize=-1) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY);
+<a id='L55' name='L55'></a>        template&lt;bool less&gt; void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
+<a id='L56' name='L56'></a>            ;
+<a id='L57' name='L57'></a>    public:
+<a id='L58' name='L58'></a>
+<a id='L59' name='L59'></a>        MyList() __MYLIST_NOEXCEPT() : a(NULL), capacity(0), size(0){};
+<a id='L60' name='L60'></a>        MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//将item重复num次填入数组中。
+<a id='L61' name='L61'></a>        MyList(const MyList &amp;l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//深复制另外一个MyList。
+<a id='L62' name='L62'></a>        MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//以arr的前len个元素构造数组
+<a id='L63' name='L63'></a>
+<a id='L64' name='L64'></a>        void push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)
+<a id='L65' name='L65'></a>            ;//将item添加在MyList最后。
+<a id='L66' name='L66'></a>        T pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLIST_COPY());//将MyList中最后一个元素删除，并返回这个删除的元素。
+<a id='L67' name='L67'></a>        void insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//将item插入到place处。
+<a id='L68' name='L68'></a>        void clean() __MYLIST_NOEXCEPT();//清空数组。
+<a id='L69' name='L69'></a>        int get_size() const __MYLIST_NOEXCEPT();//返回MyList中元素的数量。
+<a id='L70' name='L70'></a>        void erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY); //删除MyList中第start到第end位的元素，包括两边。
+<a id='L71' name='L71'></a>        //T get_item(int index) const;//返回第index个元素。
+<a id='L72' name='L72'></a>
+<a id='L73' name='L73'></a>        MyList&lt;T&gt; get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0));//返回MyList中第start到第end位的元素，包括两边。此处需要像python一样接受负数，具体见测试代码。
+<a id='L74' name='L74'></a>        T get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY );
+<a id='L75' name='L75'></a>        int count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0]);//返回MyList中和item相等的元素的个数。
+<a id='L76' name='L76'></a>        void remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0));//删除MyList中第一个和item相等的元素。
+<a id='L77' name='L77'></a>
+<a id='L78' name='L78'></a>
+<a id='L79' name='L79'></a>       friend MyList operator + &lt;&gt; (const MyList&lt;T&gt; &amp;l1, const MyList&lt;T&gt; &amp;l2); 
+<a id='L80' name='L80'></a>        //合并两个MyList
+<a id='L81' name='L81'></a>        friend MyList operator + (const MyList &amp;l1, const T &amp;item); //同push(T item)，但不修改l1，返回一个新数组
+<a id='L82' name='L82'></a>        MyList &amp;operator = (const MyList&lt;T&gt; &amp;l)__MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//赋值
+<a id='L83' name='L83'></a>        MyList &amp;operator += (const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()));//同push(T item)
+<a id='L84' name='L84'></a>        MyList &amp;operator += (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T());//将一个MyList加入到本个MyList之后。
+<a id='L85' name='L85'></a>        T &amp;operator [](int index) const  __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY);//返回第index个元素。
+<a id='L86' name='L86'></a>        friend std::ostream &amp; operator&lt;&lt; &lt;&gt;(std::ostream &amp;os, const MyList&lt;T&gt; &amp;obj) __MYLIST_NOEXCEPT();//如果T是可以直接cout的类的话（比如int），按Python数组的格式输出MyList中的每一个元素，例如：
+<a id='L87' name='L87'></a>        // [1, 2, 5, 4, 1]
+<a id='L88' name='L88'></a>
+<a id='L89' name='L89'></a>        void sort(bool less=true) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
+<a id='L90' name='L90'></a>            ;//实现一个快速排序或归并排序，对支持比较运算符（&gt;=&lt;）的类进行排序。
+<a id='L91' name='L91'></a>        // 若less=true，按照从小到大排列，否则按从大到小排列
+<a id='L92' name='L92'></a>        void reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
+<a id='L93' name='L93'></a>            ;//将MyList的元素倒过来。
+<a id='L94' name='L94'></a>
+<a id='L95' name='L95'></a>        ~MyList(){delete [] a;}
+<a id='L96' name='L96'></a>};
+<a id='L97' name='L97'></a>
+<a id='L98' name='L98'></a>
+<a id='L99' name='L99'></a>
+<a id='L100' name='L100'></a>
+<a id='L101' name='L101'></a>
+<a id='L102' name='L102'></a>//Strong Exception Safety
+<a id='L103' name='L103'></a>template&lt;typename T&gt;
+<a id='L104' name='L104'></a>void MyList&lt;T&gt;::double_space(int targetSize) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY)
+<a id='L105' name='L105'></a>{
+<a id='L106' name='L106'></a>    T* tmp;
+<a id='L107' name='L107'></a>    if (targetSize == -1) targetSize = capacity*2;
+<a id='L108' name='L108'></a>    if (targetSize&lt;0) throw MyListResizeToMinusError();
+<a id='L109' name='L109'></a>    tmp = new T [targetSize];
+<a id='L110' name='L110'></a>    try
+<a id='L111' name='L111'></a>    {
+<a id='L112' name='L112'></a>        for(int i=0;i&lt;size;++i)
+<a id='L113' name='L113'></a>          tmp[i]=a[i];          //If exception raises, a will not be influenced
+<a id='L114' name='L114'></a>    } catch(...)
+<a id='L115' name='L115'></a>    {
+<a id='L116' name='L116'></a>        delete[] tmp;
+<a id='L117' name='L117'></a>        throw;
+<a id='L118' name='L118'></a>    }
+<a id='L119' name='L119'></a>    for (int i=0;i&lt;size;++i)
+<a id='L120' name='L120'></a>      a[i].~T();
+<a id='L121' name='L121'></a>    delete[] a;
+<a id='L122' name='L122'></a>    capacity = targetSize;
+<a id='L123' name='L123'></a>    a = tmp;
+<a id='L124' name='L124'></a>}
+<a id='L125' name='L125'></a>
+<a id='L126' name='L126'></a>//Strong Exception Safety (OK... there is no difference between Basic/Strong ES in Constructor)
+<a id='L127' name='L127'></a>template&lt;typename T&gt;
+<a id='L128' name='L128'></a>MyList&lt;T&gt;::MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)
+<a id='L129' name='L129'></a>{
+<a id='L130' name='L130'></a>    a = new T [num];
+<a id='L131' name='L131'></a>    capacity = num;
+<a id='L132' name='L132'></a>    size = num;
+<a id='L133' name='L133'></a>    try
+<a id='L134' name='L134'></a>    {
+<a id='L135' name='L135'></a>        for(int i=0; i&lt;num; ++i)
+<a id='L136' name='L136'></a>          a[i] = item;
+<a id='L137' name='L137'></a>    } catch (...)                   // Constructor will not call destructor after an exception is thrown, therefore manual delete[] a is required in case of memory leak
+<a id='L138' name='L138'></a>    {
+<a id='L139' name='L139'></a>        delete[] a;
+<a id='L140' name='L140'></a>        throw;
+<a id='L141' name='L141'></a>    }
+<a id='L142' name='L142'></a>}
+<a id='L143' name='L143'></a>
+<a id='L144' name='L144'></a>//Strong Exception Safety
+<a id='L145' name='L145'></a>template&lt;typename T&gt;
+<a id='L146' name='L146'></a>MyList&lt;T&gt;::MyList(const MyList &amp;l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)
+<a id='L147' name='L147'></a>{
+<a id='L148' name='L148'></a>    size = l.size;
+<a id='L149' name='L149'></a>    capacity = l.capacity;
+<a id='L150' name='L150'></a>    a = new T[capacity];
+<a id='L151' name='L151'></a>
+<a id='L152' name='L152'></a>    try
+<a id='L153' name='L153'></a>    {
+<a id='L154' name='L154'></a>        for(int i=0;i&lt;size;++i)
+<a id='L155' name='L155'></a>          a[i]=l.a[i];
+<a id='L156' name='L156'></a>    } catch(...)
+<a id='L157' name='L157'></a>    {
+<a id='L158' name='L158'></a>        delete[] a;
+<a id='L159' name='L159'></a>        throw;
+<a id='L160' name='L160'></a>    }
+<a id='L161' name='L161'></a>}
+<a id='L162' name='L162'></a>
+<a id='L163' name='L163'></a>//Strong Exception Safety
+<a id='L164' name='L164'></a>template&lt;typename T&gt;
+<a id='L165' name='L165'></a>MyList&lt;T&gt;::MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)
+<a id='L166' name='L166'></a>{
+<a id='L167' name='L167'></a>    size = len;
+<a id='L168' name='L168'></a>    capacity = len;
+<a id='L169' name='L169'></a>
+<a id='L170' name='L170'></a>    a=new T[capacity];
+<a id='L171' name='L171'></a>
+<a id='L172' name='L172'></a>    try
+<a id='L173' name='L173'></a>    {
+<a id='L174' name='L174'></a>        for(int i=0;i&lt;size;++i) //Out_of_range is not an exception
+<a id='L175' name='L175'></a>          a[i]=arr[i];
+<a id='L176' name='L176'></a>    } catch(...)
+<a id='L177' name='L177'></a>    {
+<a id='L178' name='L178'></a>        delete[] a;
+<a id='L179' name='L179'></a>        throw;
+<a id='L180' name='L180'></a>    }
+<a id='L181' name='L181'></a>}
+<a id='L182' name='L182'></a>
+<a id='L183' name='L183'></a>//Strong Exception Safety (SES does not mean everything remains unchanged after exception, but means everything *exposed to user* remains unchanged)
+<a id='L184' name='L184'></a>template&lt;typename T&gt;
+<a id='L185' name='L185'></a>void MyList&lt;T&gt;::push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)
+<a id='L186' name='L186'></a>{
+<a id='L187' name='L187'></a>    if (capacity == size)
+<a id='L188' name='L188'></a>      double_space();
+<a id='L189' name='L189'></a>    a[size]=item;       //if exception raises, size will remain unchanged. Since a[size] is undefined, then the part exposed to user (a[0]~a[size-1]) remains unchanged)
+<a id='L190' name='L190'></a>    ++size;
+<a id='L191' name='L191'></a>}
+<a id='L192' name='L192'></a>
+<a id='L193' name='L193'></a>//Strong Exception Safety
+<a id='L194' name='L194'></a>template&lt;typename T&gt;
+<a id='L195' name='L195'></a>T MyList&lt;T&gt;::pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLIST_COPY())
+<a id='L196' name='L196'></a>{
+<a id='L197' name='L197'></a>    if (!size)
+<a id='L198' name='L198'></a>      throw MyListPopFromNullError();
+<a id='L199' name='L199'></a>    T tmp=a[size-1];
+<a id='L200' name='L200'></a>    a[--size].~T(); //Destructor never throws exception
+<a id='L201' name='L201'></a>    try
+<a id='L202' name='L202'></a>    {
+<a id='L203' name='L203'></a>        return tmp; //Copy constructor may throw exception! 
+<a id='L204' name='L204'></a>    } catch(...)
+<a id='L205' name='L205'></a>    {
+<a id='L206' name='L206'></a>        ++size; //Even if copy constructor throws an exception, size will still be decreased
+<a id='L207' name='L207'></a>        throw;
+<a id='L208' name='L208'></a>    }
+<a id='L209' name='L209'></a>}
+<a id='L210' name='L210'></a>
+<a id='L211' name='L211'></a>//Weak Exception safety
+<a id='L212' name='L212'></a>template&lt;typename T&gt;
+<a id='L213' name='L213'></a>void MyList&lt;T&gt;::insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)
+<a id='L214' name='L214'></a>{
+<a id='L215' name='L215'></a>    if (index&lt;0 || index&gt;size) throw MyListOutOfRangeError();
+<a id='L216' name='L216'></a>    if (size == capacity)
+<a id='L217' name='L217'></a>      double_space();
+<a id='L218' name='L218'></a>    ++size;
+<a id='L219' name='L219'></a>    for (int i=size-1; i&gt;index; --i)
+<a id='L220' name='L220'></a>      a[i]=a[i-1];
+<a id='L221' name='L221'></a>    a[index]=item;
+<a id='L222' name='L222'></a>}
+<a id='L223' name='L223'></a>
+<a id='L224' name='L224'></a>//No exception
+<a id='L225' name='L225'></a>template&lt;typename T&gt;
+<a id='L226' name='L226'></a>void MyList&lt;T&gt;::clean() __MYLIST_NOEXCEPT()
+<a id='L227' name='L227'></a>{
+<a id='L228' name='L228'></a>    for(int i=0;i&lt;size;++i)
+<a id='L229' name='L229'></a>      a[i].~T();
+<a id='L230' name='L230'></a>    size=0;
+<a id='L231' name='L231'></a>}
+<a id='L232' name='L232'></a>
+<a id='L233' name='L233'></a>//No exception
+<a id='L234' name='L234'></a>template&lt;typename T&gt;
+<a id='L235' name='L235'></a>int MyList&lt;T&gt;::get_size() const __MYLIST_NOEXCEPT()
+<a id='L236' name='L236'></a>{
+<a id='L237' name='L237'></a>    return size;
+<a id='L238' name='L238'></a>}
+<a id='L239' name='L239'></a>
+<a id='L240' name='L240'></a>//Weak Exception Safety
+<a id='L241' name='L241'></a>template&lt;typename T&gt;
+<a id='L242' name='L242'></a>void MyList&lt;T&gt;::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)
+<a id='L243' name='L243'></a>{
+<a id='L244' name='L244'></a>    if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size || start&gt;end)
+<a id='L245' name='L245'></a>      throw MyListOutOfRangeError();
+<a id='L246' name='L246'></a>    for (int i=start; i&lt;=end; ++i)
+<a id='L247' name='L247'></a>      a[i].~T();
+<a id='L248' name='L248'></a>    for (int i=end+1; i&lt;size; ++i)
+<a id='L249' name='L249'></a>      a[i-end+start-1] = a[i];      //error in copy -&gt; correct destruct
+<a id='L250' name='L250'></a>    size -= end-start+1;
+<a id='L251' name='L251'></a>}
+<a id='L252' name='L252'></a>
+<a id='L253' name='L253'></a>//Strong Exception Safety
+<a id='L254' name='L254'></a>template&lt;typename T&gt;
+<a id='L255' name='L255'></a>T MyList&lt;T&gt;::get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY) 
+<a id='L256' name='L256'></a>{
+<a id='L257' name='L257'></a>    if (index&lt;0 || index&gt;=size) 
+<a id='L258' name='L258'></a>      throw MyListOutOfRangeError();
+<a id='L259' name='L259'></a>    return a[index];
+<a id='L260' name='L260'></a>}
+<a id='L261' name='L261'></a>
+<a id='L262' name='L262'></a>//Strong Exception Safety
+<a id='L263' name='L263'></a>template&lt;typename T&gt;
+<a id='L264' name='L264'></a>MyList&lt;T&gt; MyList&lt;T&gt;::get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0))
+<a id='L265' name='L265'></a>{
+<a id='L266' name='L266'></a>    if (start&lt;0) start+=size;
+<a id='L267' name='L267'></a>    if (end&lt;0) end+=size;
+<a id='L268' name='L268'></a>    if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size) throw MyListOutOfRangeError();
+<a id='L269' name='L269'></a>    if (start&gt;end) return MyList&lt;T&gt;();
+<a id='L270' name='L270'></a>    return MyList&lt;T&gt;(a+start, end-start+1); //RVO
+<a id='L271' name='L271'></a>}
+<a id='L272' name='L272'></a>
+<a id='L273' name='L273'></a>//Strong Exception Safety
+<a id='L274' name='L274'></a>template&lt;typename T&gt;
+<a id='L275' name='L275'></a>int MyList&lt;T&gt;::count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0])
+<a id='L276' name='L276'></a>{
+<a id='L277' name='L277'></a>    int ans=0;
+<a id='L278' name='L278'></a>    for(int i=0; i&lt;size; ++i)
+<a id='L279' name='L279'></a>      ans+=(item == a[i]);
+<a id='L280' name='L280'></a>    return ans;
+<a id='L281' name='L281'></a>}
+<a id='L282' name='L282'></a>
+<a id='L283' name='L283'></a>//Weak Exception Safety - because erase(i,i) has WES
+<a id='L284' name='L284'></a>template&lt;typename T&gt;
+<a id='L285' name='L285'></a>void MyList&lt;T&gt;::remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0))
+<a id='L286' name='L286'></a>{
+<a id='L287' name='L287'></a>    for (int i=0;i&lt;size;++i)
+<a id='L288' name='L288'></a>      if (item == a[i])
+<a id='L289' name='L289'></a>      {
+<a id='L290' name='L290'></a>          erase(i,i);
+<a id='L291' name='L291'></a>          return;
+<a id='L292' name='L292'></a>      }
+<a id='L293' name='L293'></a>}
+<a id='L294' name='L294'></a>
+<a id='L295' name='L295'></a>//Strong Exception Safety
+<a id='L296' name='L296'></a>template&lt;typename T&gt;
+<a id='L297' name='L297'></a>MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator+=(const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()))
+<a id='L298' name='L298'></a>{
+<a id='L299' name='L299'></a>    push(item);
+<a id='L300' name='L300'></a>    return *this;
+<a id='L301' name='L301'></a>}
+<a id='L302' name='L302'></a>
+<a id='L303' name='L303'></a>//Weak Exception Safety
+<a id='L304' name='L304'></a>template&lt;typename T&gt;
+<a id='L305' name='L305'></a>MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator +=(const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T())
+<a id='L306' name='L306'></a>{
+<a id='L307' name='L307'></a>    if (capacity &lt; size + l.size)
+<a id='L308' name='L308'></a>      double_space(size + l.size);
+<a id='L309' name='L309'></a>    for (int i=0; i&lt;l.size; ++i)
+<a id='L310' name='L310'></a>      (*this) += l[i];
+<a id='L311' name='L311'></a>    return *this;
+<a id='L312' name='L312'></a>}
+<a id='L313' name='L313'></a>
+<a id='L314' name='L314'></a>//Weak Exception Safety
+<a id='L315' name='L315'></a>template&lt;typename U&gt;
+<a id='L316' name='L316'></a>MyList&lt;U&gt; operator +(const MyList&lt;U&gt; &amp;l1, const MyList&lt;U&gt; &amp;l2) 
+<a id='L317' name='L317'></a>{
+<a id='L318' name='L318'></a>    MyList&lt;U&gt; result(l1);
+<a id='L319' name='L319'></a>    return result+=l2;
+<a id='L320' name='L320'></a>}
+<a id='L321' name='L321'></a>
+<a id='L322' name='L322'></a>template&lt;typename T&gt;
+<a id='L323' name='L323'></a>MyList&lt;T&gt; operator + (const MyList&lt;T&gt; &amp;l1, const T &amp;item){
+<a id='L324' name='L324'></a>    MyList&lt;T&gt; result(l1);
+<a id='L325' name='L325'></a>    l1.push(item);
+<a id='L326' name='L326'></a>    return l1;
+<a id='L327' name='L327'></a>}
+<a id='L328' name='L328'></a>
+<a id='L329' name='L329'></a>//Weak Exception Safety
+<a id='L330' name='L330'></a>template&lt;typename T&gt;
+<a id='L331' name='L331'></a>MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator= (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)
+<a id='L332' name='L332'></a>{
+<a id='L333' name='L333'></a>    if (capacity&lt;l.size) double_space(l.size);
+<a id='L334' name='L334'></a>    for (int i=size;i&lt;l.size;++i)
+<a id='L335' name='L335'></a>      a[i].~T();
+<a id='L336' name='L336'></a>    size = l.size;
+<a id='L337' name='L337'></a>    for(int i=0; i&lt;l.size; ++i)
+<a id='L338' name='L338'></a>      a[i]=l[i];
+<a id='L339' name='L339'></a>    return *this;
+<a id='L340' name='L340'></a>}
+<a id='L341' name='L341'></a>
+<a id='L342' name='L342'></a>//Strong Exception Safety
+<a id='L343' name='L343'></a>template&lt;typename T&gt;
+<a id='L344' name='L344'></a>T&amp; MyList&lt;T&gt;::operator[](int index) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)
+<a id='L345' name='L345'></a>{
+<a id='L346' name='L346'></a>    if (index&lt;0 || index&gt;=size) 
+<a id='L347' name='L347'></a>      throw MyListOutOfRangeError();
+<a id='L348' name='L348'></a>    return a[index];
+<a id='L349' name='L349'></a>}
+<a id='L350' name='L350'></a>
+<a id='L351' name='L351'></a>//Strong Exception Safety
+<a id='L352' name='L352'></a>template&lt;typename U&gt;
+<a id='L353' name='L353'></a>std::ostream &amp; operator &lt;&lt; (std::ostream &amp;os, const MyList&lt;U&gt; &amp;obj) __MYLIST_NOEXCEPT()
+<a id='L354' name='L354'></a>{
+<a id='L355' name='L355'></a>    os&lt;&lt;'[';
+<a id='L356' name='L356'></a>    for (int i=0;i&lt;obj.size;++i)
+<a id='L357' name='L357'></a>    {
+<a id='L358' name='L358'></a>        if (i) os&lt;&lt;", ";
+<a id='L359' name='L359'></a>        os&lt;&lt;obj[i];
+<a id='L360' name='L360'></a>    }
+<a id='L361' name='L361'></a>    os&lt;&lt;']';
+<a id='L362' name='L362'></a>    return os;
+<a id='L363' name='L363'></a>}
+<a id='L364' name='L364'></a>
+<a id='L365' name='L365'></a>template&lt;typename T, bool less&gt;
+<a id='L366' name='L366'></a>inline bool __comp(const T&amp; a, const T&amp; b) { if (less) return a&lt;b; return a&gt;b; }
+<a id='L367' name='L367'></a>
+<a id='L368' name='L368'></a>const int SORT_THRESHOLD=32;
+<a id='L369' name='L369'></a>
+<a id='L370' name='L370'></a>//Oops... Weak Exception Safety
+<a id='L371' name='L371'></a>template&lt;typename T&gt;
+<a id='L372' name='L372'></a>template&lt;bool less&gt;
+<a id='L373' name='L373'></a>void MyList&lt;T&gt;::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
+<a id='L374' name='L374'></a>
+<a id='L375' name='L375'></a>{
+<a id='L376' name='L376'></a>
+<a id='L377' name='L377'></a>    T *i=l, *j=r;
+<a id='L378' name='L378'></a>    T y;
+<a id='L379' name='L379'></a>    T &amp;x= *(l+((r-l)&gt;&gt;1));
+<a id='L380' name='L380'></a>    if (l&gt;=r) return;
+<a id='L381' name='L381'></a>    if (r-l&lt;SORT_THRESHOLD)
+<a id='L382' name='L382'></a>    {
+<a id='L383' name='L383'></a>        for(i=l;i&lt;r;++i)
+<a id='L384' name='L384'></a>          for (j=i+1;j&lt;r;++j)
+<a id='L385' name='L385'></a>            if (__comp&lt;T,less&gt;(*i, *j))
+<a id='L386' name='L386'></a>            {
+<a id='L387' name='L387'></a>                y=*i;
+<a id='L388' name='L388'></a>                *i=*j;
+<a id='L389' name='L389'></a>                *j=y;
+<a id='L390' name='L390'></a>            }
+<a id='L391' name='L391'></a>        return;
+<a id='L392' name='L392'></a>    }
+<a id='L393' name='L393'></a>    do
+<a id='L394' name='L394'></a>    {
+<a id='L395' name='L395'></a>        while (__comp&lt;T,less&gt;(*i,x)) ++i;
+<a id='L396' name='L396'></a>        while (__comp&lt;T,less&gt;(x,*j)) --j;
+<a id='L397' name='L397'></a>        if (i&lt;=j)
+<a id='L398' name='L398'></a>        {
+<a id='L399' name='L399'></a>            y=*i;
+<a id='L400' name='L400'></a>            *i=*j;
+<a id='L401' name='L401'></a>            *j=y;
+<a id='L402' name='L402'></a>            ++i;
+<a id='L403' name='L403'></a>            --j;
+<a id='L404' name='L404'></a>        }
+<a id='L405' name='L405'></a>    } while (i&lt;=j);
+<a id='L406' name='L406'></a>    if (l&lt;j) sort_impl&lt;less&gt;(l, j);
+<a id='L407' name='L407'></a>    if (i&lt;r) sort_impl&lt;less&gt;(i, r);
+<a id='L408' name='L408'></a>}
+<a id='L409' name='L409'></a>
+<a id='L410' name='L410'></a>template&lt;typename T&gt;
+<a id='L411' name='L411'></a>void MyList&lt;T&gt;::sort(bool less) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
+<a id='L412' name='L412'></a>
+<a id='L413' name='L413'></a>{
+<a id='L414' name='L414'></a>    if(!less) sort_impl&lt;true&gt;(a,a+size);
+<a id='L415' name='L415'></a>    else sort_impl&lt;false&gt;(a,a+size);
+<a id='L416' name='L416'></a>}
+<a id='L417' name='L417'></a>
+<a id='L418' name='L418'></a>template&lt;typename T&gt;
+<a id='L419' name='L419'></a>void MyList&lt;T&gt;::reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
+<a id='L420' name='L420'></a>{
+<a id='L421' name='L421'></a>    T y;
+<a id='L422' name='L422'></a>    for(int i=0;i&lt;size/2;++i)
+<a id='L423' name='L423'></a>    {
+<a id='L424' name='L424'></a>        y=a[i];
+<a id='L425' name='L425'></a>        a[i]=a[size-i-1];
+<a id='L426' name='L426'></a>        a[size-i-1]=y;
+<a id='L427' name='L427'></a>    }
+<a id='L428' name='L428'></a>}
+<a id='L429' name='L429'></a>
+<a id='L430' name='L430'></a>#endif
+<a id='L431' name='L431'></a>using namespace std;
+<a id='L432' name='L432'></a>
+<a id='L433' name='L433'></a>int main()
+<a id='L434' name='L434'></a>{       MyList&lt;int&gt; a, b;
+<a id='L435' name='L435'></a>    int i;
+<a id='L436' name='L436'></a>    for (i=0; i&lt;5; ++i)
+<a id='L437' name='L437'></a>      a.push(i);
+<a id='L438' name='L438'></a>    // a = [0, 1, 2, 3, 4]
+<a id='L439' name='L439'></a>    cout&lt;&lt;a&lt;&lt;endl;
+<a id='L440' name='L440'></a>    a[3] = 15; // a = [0, 1, 2, 15, 4]
+<a id='L441' name='L441'></a>    cout&lt;&lt;a&lt;&lt;endl;
+<a id='L442' name='L442'></a>    a.sort(); // a = [0, 1, 2, 4, 15]
+<a id='L443' name='L443'></a>    cout&lt;&lt;a&lt;&lt;endl;
+<a id='L444' name='L444'></a>    a.reverse(); // a = [15, 4, 2, 1, 0]
+<a id='L445' name='L445'></a>    a += 12; // a = [15, 4, 2, 1, 0, 12]
+<a id='L446' name='L446'></a>    cout&lt;&lt;a&lt;&lt;endl;
+<a id='L447' name='L447'></a>    b = a.get_item(4, -3); // b = [] *若start &gt; end，返回空数组
+<a id='L448' name='L448'></a>    b = a.get_item(3, -1); // b = [1, 0, 12] 
+<a id='L449' name='L449'></a>    a += b; // a = [15, 4, 2, 1, 0, 12, 1, 0, 12]
+<a id='L450' name='L450'></a>    
+<a id='L451' name='L451'></a>    for (i=0; i&lt;a.get_size(); ++i)
+<a id='L452' name='L452'></a>      cout&lt;&lt;a.get_item(i)&lt;&lt;endl;
+<a id='L453' name='L453'></a>    cout&lt;&lt;a.count(5)&lt;&lt;endl;
+<a id='L454' name='L454'></a>    b.clean(); // b = []
+<a id='L455' name='L455'></a>    cout&lt;&lt;b.get_size()&lt;&lt;endl;
+<a id='L456' name='L456'></a>    a.erase(2, 6); // a = [15, 4, 0, 12]
+<a id='L457' name='L457'></a>    cout&lt;&lt;a&lt;&lt;endl;
+<a id='L458' name='L458'></a>    b = a + a; // b = [15, 4, 0, 12, 15, 4, 0, 12]
+<a id='L459' name='L459'></a>    b.insert(3, 116); // b = [15, 4, 0, 116, 12, 15, 4, 0, 12]
+<a id='L460' name='L460'></a>    b.remove(4); // b = [15, 0, 116, ...]
+<a id='L461' name='L461'></a>    cout&lt;&lt;b&lt;&lt;endl;
+<a id='L462' name='L462'></a>    MyList&lt;double&gt; c(10, 3.14);
+<a id='L463' name='L463'></a>    for (i=0; i&lt;100; ++i)
+<a id='L464' name='L464'></a>      c.push(1.1*i);
+<a id='L465' name='L465'></a>    cout&lt;&lt;c.get_item(100, 105)&lt;&lt;endl;
+<a id='L466' name='L466'></a>
+<a id='L467' name='L467'></a>
+<a id='L468' name='L468'></a>    return 0;
+<a id='L469' name='L469'></a>}
+<a id='L470' name='L470'></a>
+</pre>
+<hr />
+<a id='BOTTOM' name='BOTTOM'></a>
+<em class='comment'>/* <img class='icon' src='../icons/n_left.png' alt='[previous]' /><img class='icon' src='../icons/n_right.png' alt='[next]' /><img class='icon' src='../icons/n_first.png' alt='[first]' /><img class='icon' src='../icons/n_last.png' alt='[last]' /><a href='#TOP'><img class='icon' src='../icons/top.png' alt='[top]' /></a><img class='icon' src='../icons/n_bottom.png' alt='[bottom]' /><a href='../mains.html'><img class='icon' src='../icons/index.png' alt='[index]' /></a><a href='../help.html'><img class='icon' src='../icons/help.png' alt='[help]' /></a>&nbsp;<em class='position'>[+470 :w:w]</em> */</em>
+</body>
+</html>

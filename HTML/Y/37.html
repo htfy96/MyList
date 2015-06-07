@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>std</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.4' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/1.html#L50'>std</a>                50 mylist.cpp     std::ostream &amp; operator &lt;&lt; (std::ostream &amp;os, const MyList&lt;U&gt; &amp;obj) __MYLIST_NOEXCEPT();</span>
+<span class='curline'><a href='../S/1.html#L61'>std</a>                61 mylist.cpp             void double_space(int targetSize=-1) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY);</span>
+<span class='curline'><a href='../S/1.html#L67'>std</a>                67 mylist.cpp             MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//将item重复num次填入数组中。</span>
+<span class='curline'><a href='../S/1.html#L68'>std</a>                68 mylist.cpp             MyList(const MyList &amp;l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//深复制另外一个MyList。</span>
+<span class='curline'><a href='../S/1.html#L69'>std</a>                69 mylist.cpp             MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//以arr的前len个元素构造数组</span>
+<span class='curline'><a href='../S/1.html#L81'>std</a>                81 mylist.cpp             T get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY );</span>
+<span class='curline'><a href='../S/1.html#L93'>std</a>                93 mylist.cpp             friend std::ostream &amp; operator&lt;&lt; &lt;&gt;(std::ostream &amp;os, const MyList&lt;T&gt; &amp;obj) __MYLIST_NOEXCEPT();//如果T是可以直接cout的类的话（比如int），按Python数组的格式输出MyList中的每一个元素，例如：</span>
+<span class='curline'><a href='../S/1.html#L111'>std</a>               111 mylist.cpp     void MyList&lt;T&gt;::double_space(int targetSize) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L135'>std</a>               135 mylist.cpp     MyList&lt;T&gt;::MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L153'>std</a>               153 mylist.cpp     MyList&lt;T&gt;::MyList(const MyList &amp;l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L172'>std</a>               172 mylist.cpp     MyList&lt;T&gt;::MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L262'>std</a>               262 mylist.cpp     T MyList&lt;T&gt;::get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY) </span>
+<span class='curline'><a href='../S/1.html#L360'>std</a>               360 mylist.cpp     std::ostream &amp; operator &lt;&lt; (std::ostream &amp;os, const MyList&lt;U&gt; &amp;obj) __MYLIST_NOEXCEPT()</span>
+<span class='curline'><a href='../S/1.html#L438'>std</a>               438 mylist.cpp     using namespace std;</span>
+</pre>
+</body>
+</html>

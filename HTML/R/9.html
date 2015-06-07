@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>__MYLIST_COPY</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.4' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/1.html#L61'>__MYLIST_COPY</a>      61 mylist.cpp             void double_space(int targetSize=-1) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY);</span>
+<span class='curline'><a href='../S/1.html#L62'>__MYLIST_COPY</a>      62 mylist.cpp             template&lt;bool less&gt; void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L67'>__MYLIST_COPY</a>      67 mylist.cpp             MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//将item重复num次填入数组中。</span>
+<span class='curline'><a href='../S/1.html#L68'>__MYLIST_COPY</a>      68 mylist.cpp             MyList(const MyList &amp;l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//深复制另外一个MyList。</span>
+<span class='curline'><a href='../S/1.html#L69'>__MYLIST_COPY</a>      69 mylist.cpp             MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//以arr的前len个元素构造数组</span>
+<span class='curline'><a href='../S/1.html#L71'>__MYLIST_COPY</a>      71 mylist.cpp             void push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L73'>__MYLIST_COPY</a>      73 mylist.cpp             T pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLIST_COPY());//将MyList中最后一个元素删除，并返回这个删除的元素。</span>
+<span class='curline'><a href='../S/1.html#L74'>__MYLIST_COPY</a>      74 mylist.cpp             void insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//将item插入到place处。</span>
+<span class='curline'><a href='../S/1.html#L77'>__MYLIST_COPY</a>      77 mylist.cpp             void erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY); //删除MyList中第start到第end位的元素，包括两边。</span>
+<span class='curline'><a href='../S/1.html#L81'>__MYLIST_COPY</a>      81 mylist.cpp             T get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY );</span>
+<span class='curline'><a href='../S/1.html#L89'>__MYLIST_COPY</a>      89 mylist.cpp             MyList &amp;operator = (const MyList&lt;T&gt; &amp;l)__MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//赋值</span>
+<span class='curline'><a href='../S/1.html#L92'>__MYLIST_COPY</a>      92 mylist.cpp             T &amp;operator [](int index) const  __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY);//返回第index个元素。</span>
+<span class='curline'><a href='../S/1.html#L96'>__MYLIST_COPY</a>      96 mylist.cpp             void sort(bool less=true) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L99'>__MYLIST_COPY</a>      99 mylist.cpp             void reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L111'>__MYLIST_COPY</a>     111 mylist.cpp     void MyList&lt;T&gt;::double_space(int targetSize) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L135'>__MYLIST_COPY</a>     135 mylist.cpp     MyList&lt;T&gt;::MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L153'>__MYLIST_COPY</a>     153 mylist.cpp     MyList&lt;T&gt;::MyList(const MyList &amp;l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L172'>__MYLIST_COPY</a>     172 mylist.cpp     MyList&lt;T&gt;::MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L192'>__MYLIST_COPY</a>     192 mylist.cpp     void MyList&lt;T&gt;::push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L202'>__MYLIST_COPY</a>     202 mylist.cpp     T MyList&lt;T&gt;::pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLIST_COPY())</span>
+<span class='curline'><a href='../S/1.html#L220'>__MYLIST_COPY</a>     220 mylist.cpp     void MyList&lt;T&gt;::insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L249'>__MYLIST_COPY</a>     249 mylist.cpp     void MyList&lt;T&gt;::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L262'>__MYLIST_COPY</a>     262 mylist.cpp     T MyList&lt;T&gt;::get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY) </span>
+<span class='curline'><a href='../S/1.html#L338'>__MYLIST_COPY</a>     338 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator= (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L351'>__MYLIST_COPY</a>     351 mylist.cpp     T&amp; MyList&lt;T&gt;::operator[](int index) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L380'>__MYLIST_COPY</a>     380 mylist.cpp     void MyList&lt;T&gt;::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L418'>__MYLIST_COPY</a>     418 mylist.cpp     void MyList&lt;T&gt;::sort(bool less) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L426'>__MYLIST_COPY</a>     426 mylist.cpp     void MyList&lt;T&gt;::reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+</pre>
+</body>
+</html>

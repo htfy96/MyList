@@ -83,7 +83,7 @@ class MyList{
         void remove(const T &item) __MYLIST_NOEXCEPT_IF(erase(0,0));//删除MyList中第一个和item相等的元素。
 
 
-       friend MyList operator + <> (const MyList<T> &l1, const MyList<T> &l2); 
+        friend MyList operator + <> (const MyList<T> &l1, const MyList<T> &l2); 
         //合并两个MyList
         friend MyList operator + <> (const MyList &l1, const T &item); //同push(T item)，但不修改l1，返回一个新数组
         MyList &operator = (const MyList<T> &l)__MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//赋值
@@ -454,7 +454,7 @@ int main()
     b = a.get_item(4, -3); // b = [] *若start > end，返回空数组
     b = a.get_item(3, -1); // b = [1, 0, 12] 
     a += b; // a = [15, 4, 2, 1, 0, 12, 1, 0, 12]
-    
+
     for (i=0; i<a.get_size(); ++i)
       cout<<a.get_item(i)<<endl;
     cout<<a.count(5)<<endl;

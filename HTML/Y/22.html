@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>item</title>
+<meta name='robots' content='noindex,nofollow' />
+<meta name='generator' content='GLOBAL-6.4' />
+<meta http-equiv='Content-Style-Type' content='text/css' />
+<link rel='stylesheet' type='text/css' href='../style.css' />
+</head>
+<body>
+<pre>
+<span class='curline'><a href='../S/1.html#L53'>item</a>               53 mylist.cpp     MyList&lt;T&gt; operator + (const MyList&lt;T&gt; &amp;l1, const T &amp;item);</span>
+<span class='curline'><a href='../S/1.html#L67'>item</a>               67 mylist.cpp             MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//将item重复num次填入数组中。</span>
+<span class='curline'><a href='../S/1.html#L71'>item</a>               71 mylist.cpp             void push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L74'>item</a>               74 mylist.cpp             void insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//将item插入到place处。</span>
+<span class='curline'><a href='../S/1.html#L82'>item</a>               82 mylist.cpp             int count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0]);//返回MyList中和item相等的元素的个数。</span>
+<span class='curline'><a href='../S/1.html#L83'>item</a>               83 mylist.cpp             void remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0));//删除MyList中第一个和item相等的元素。</span>
+<span class='curline'><a href='../S/1.html#L88'>item</a>               88 mylist.cpp             friend MyList operator + &lt;&gt; (const MyList &amp;l1, const T &amp;item); //同push(T item)，但不修改l1，返回一个新数组</span>
+<span class='curline'><a href='../S/1.html#L90'>item</a>               90 mylist.cpp             MyList &amp;operator += (const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()));//同push(T item)</span>
+<span class='curline'><a href='../S/1.html#L135'>item</a>              135 mylist.cpp     MyList&lt;T&gt;::MyList(int num, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L143'>item</a>              143 mylist.cpp               a[i] = item;</span>
+<span class='curline'><a href='../S/1.html#L192'>item</a>              192 mylist.cpp     void MyList&lt;T&gt;::push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L196'>item</a>              196 mylist.cpp         a[size]=item;       //if exception raises, size will remain unchanged. Since a[size] is undefined, then the part exposed to user (a[0]~a[size-1]) remains unchanged)</span>
+<span class='curline'><a href='../S/1.html#L220'>item</a>              220 mylist.cpp     void MyList&lt;T&gt;::insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L228'>item</a>              228 mylist.cpp         a[index]=item;</span>
+<span class='curline'><a href='../S/1.html#L282'>item</a>              282 mylist.cpp     int MyList&lt;T&gt;::count(const T &amp;item) const __MYLIST_NOEXCEPT_IF(item == a[0])</span>
+<span class='curline'><a href='../S/1.html#L286'>item</a>              286 mylist.cpp           ans+=(item == a[i]);</span>
+<span class='curline'><a href='../S/1.html#L292'>item</a>              292 mylist.cpp     void MyList&lt;T&gt;::remove(const T &amp;item) __MYLIST_NOEXCEPT_IF(erase(0,0))</span>
+<span class='curline'><a href='../S/1.html#L295'>item</a>              295 mylist.cpp           if (item == a[i])</span>
+<span class='curline'><a href='../S/1.html#L304'>item</a>              304 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator+=(const T &amp;item) __MYLIST_NOEXCEPT_IF(push(T()))</span>
+<span class='curline'><a href='../S/1.html#L306'>item</a>              306 mylist.cpp         push(item);</span>
+<span class='curline'><a href='../S/1.html#L330'>item</a>              330 mylist.cpp     MyList&lt;T&gt; operator + (const MyList&lt;T&gt; &amp;l1, const T &amp;item){</span>
+<span class='curline'><a href='../S/1.html#L332'>item</a>              332 mylist.cpp         l1.push(item);</span>
+</pre>
+</body>
+</html>
