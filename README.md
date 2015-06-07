@@ -2,6 +2,15 @@
 An array-based C++ MyList Class with robust exception safety
 #Summary
 **GCC with c++11 is incompatible with this project!**
+
+##How to compile
+|        Command        |       Explaination        |
+|:---------------------:|:-------------------------:|
+|`make`=`make gcc98`    |compile it with gcc in c++98|
+|`make clang98`         |compile it with clang in c++98|
+|`make clang11`         |compile it with clang in c++11|
+|`make clean`           |clean `mylist`             |
+|`make prepare`         |Generate tags/documents    |
 ##Exception Classes
 
 ```cpp
