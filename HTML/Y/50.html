@@ -11,13 +11,17 @@
 <pre>
 <span class='curline'><a href='../S/1.html#L127'>r</a>                 127 mylist.cpp             template&lt;bool less&gt; void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT);</span>
 <span class='curline'><a href='../S/1.html#L443'>r</a>                 443 mylist.cpp     void MyList&lt;T&gt;::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L447'>r</a>                 447 mylist.cpp         T *i=l, *j=r;</span>
-<span class='curline'><a href='../S/1.html#L449'>r</a>                 449 mylist.cpp         T &amp;x= *(l+((r-l)&gt;&gt;1));</span>
-<span class='curline'><a href='../S/1.html#L450'>r</a>                 450 mylist.cpp         if (l&gt;=r) return;</span>
-<span class='curline'><a href='../S/1.html#L451'>r</a>                 451 mylist.cpp         if (r-l&lt;SORT_THRESHOLD)</span>
-<span class='curline'><a href='../S/1.html#L453'>r</a>                 453 mylist.cpp             for(i=l;i&lt;r;++i)</span>
-<span class='curline'><a href='../S/1.html#L454'>r</a>                 454 mylist.cpp               for (j=i+1;j&lt;r;++j)</span>
-<span class='curline'><a href='../S/1.html#L477'>r</a>                 477 mylist.cpp         if (i&lt;r) sort_impl&lt;less&gt;(i, r);</span>
+<span class='curline'><a href='../S/1.html#L446'>r</a>                 446 mylist.cpp         if (l&gt;=r) return;</span>
+<span class='curline'><a href='../S/1.html#L447'>r</a>                 447 mylist.cpp         switch(r-l)</span>
+<span class='curline'><a href='../S/1.html#L451'>r</a>                 451 mylist.cpp                     if(__comp&lt;T,less&gt;(*r,*l)) __swap(*l,*r);</span>
+<span class='curline'><a href='../S/1.html#L455'>r</a>                 455 mylist.cpp                     if (__comp&lt;T,less&gt;(*r, *(l+1))) __swap(*(l+1), *r);</span>
+<span class='curline'><a href='../S/1.html#L460'>r</a>                 460 mylist.cpp                     if (__comp&lt;T,less&gt;(*(l+2), *r)) __swap (*(l+2),*r);</span>
+<span class='curline'><a href='../S/1.html#L463'>r</a>                 463 mylist.cpp                     T *i=l, *j=r;</span>
+<span class='curline'><a href='../S/1.html#L464'>r</a>                 464 mylist.cpp                     T &amp;x= *(l+((r-l)&gt;&gt;1));</span>
+<span class='curline'><a href='../S/1.html#L465'>r</a>                 465 mylist.cpp                     if (r-l&lt;SORT_THRESHOLD)</span>
+<span class='curline'><a href='../S/1.html#L467'>r</a>                 467 mylist.cpp                         for(i=l;i&lt;r;++i)</span>
+<span class='curline'><a href='../S/1.html#L468'>r</a>                 468 mylist.cpp                           for (j=i+1;j&lt;r;++j)</span>
+<span class='curline'><a href='../S/1.html#L485'>r</a>                 485 mylist.cpp                     if (i&lt;r) sort_impl&lt;less&gt;(i, r);</span>
 </pre>
 </body>
 </html>

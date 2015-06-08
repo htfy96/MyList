@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>get_item</title>
+<title>double_space</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,12 +9,19 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L144'>get_item</a>          144 mylist.cpp             MyList&lt;T&gt; get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0));//返回MyList中第start到第end位的元素，包括两边。此处需要像python一样接受负数，具体见测试代码。</span>
-<span class='curline'><a href='../S/1.html#L145'>get_item</a>          145 mylist.cpp             T get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY );</span>
-<span class='curline'><a href='../S/1.html#L526'>get_item</a>          526 mylist.cpp         b = a.get_item(4, -3); // b = [] *若start &gt; end，返回空数组</span>
-<span class='curline'><a href='../S/1.html#L527'>get_item</a>          527 mylist.cpp         b = a.get_item(3, -1); // b = [1, 0, 12] </span>
-<span class='curline'><a href='../S/1.html#L531'>get_item</a>          531 mylist.cpp           cout&lt;&lt;a.get_item(i)&lt;&lt;endl;</span>
-<span class='curline'><a href='../S/1.html#L552'>get_item</a>          552 mylist.cpp         cout&lt;&lt;c.get_item(100, 105)&lt;&lt;endl;</span>
+<span class='curline'><a href='../S/1.html#L126'>double_space</a>      126 mylist.cpp             void double_space(int targetSize=-1) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY);</span>
+<span class='curline'><a href='../S/1.html#L135'>double_space</a>      135 mylist.cpp             void push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L138'>double_space</a>      138 mylist.cpp             void insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//将item插入到place处。</span>
+<span class='curline'><a href='../S/1.html#L153'>double_space</a>      153 mylist.cpp             MyList &amp;operator = (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//赋值</span>
+<span class='curline'><a href='../S/1.html#L155'>double_space</a>      155 mylist.cpp             MyList &amp;operator += (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T());//将一个MyList加入到本个MyList之后。</span>
+<span class='curline'><a href='../S/1.html#L255'>double_space</a>      255 mylist.cpp     void MyList&lt;T&gt;::push(const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L258'>double_space</a>      258 mylist.cpp           double_space();</span>
+<span class='curline'><a href='../S/1.html#L283'>double_space</a>      283 mylist.cpp     void MyList&lt;T&gt;::insert(int index, const T &amp;item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)</span>
+<span class='curline'><a href='../S/1.html#L287'>double_space</a>      287 mylist.cpp           double_space();</span>
+<span class='curline'><a href='../S/1.html#L375'>double_space</a>      375 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator +=(const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T())</span>
+<span class='curline'><a href='../S/1.html#L378'>double_space</a>      378 mylist.cpp           double_space(size + l.size);</span>
+<span class='curline'><a href='../S/1.html#L401'>double_space</a>      401 mylist.cpp     MyList&lt;T&gt;&amp; MyList&lt;T&gt;::operator= (const MyList&lt;T&gt; &amp;l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_ASSIGN)</span>
+<span class='curline'><a href='../S/1.html#L403'>double_space</a>      403 mylist.cpp         if (capacity&lt;l.size) double_space(l.size);</span>
 </pre>
 </body>
 </html>

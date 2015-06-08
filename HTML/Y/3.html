@@ -90,21 +90,27 @@
 <span class='curline'><a href='../S/1.html#L414'>T</a>                 414 mylist.cpp     T&amp; MyList&lt;T&gt;::operator[](int index) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)</span>
 <span class='curline'><a href='../S/1.html#L435'>T</a>                 435 mylist.cpp     template&lt;typename T, bool less&gt;</span>
 <span class='curline'><a href='../S/1.html#L436'>T</a>                 436 mylist.cpp     inline bool __comp(const T&amp; a, const T&amp; b) { if (less) return a&lt;b; return a&gt;b; }</span>
+<span class='curline'><a href='../S/1.html#L437'>T</a>                 437 mylist.cpp     template&lt;typename T&gt; inline void __swap(T&amp; a, T&amp; b) { T y=a; a=b; b=y; }</span>
 <span class='curline'><a href='../S/1.html#L441'>T</a>                 441 mylist.cpp     template&lt;typename T&gt;</span>
 <span class='curline'><a href='../S/1.html#L443'>T</a>                 443 mylist.cpp     void MyList&lt;T&gt;::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L447'>T</a>                 447 mylist.cpp         T *i=l, *j=r;</span>
-<span class='curline'><a href='../S/1.html#L448'>T</a>                 448 mylist.cpp         T y;</span>
-<span class='curline'><a href='../S/1.html#L449'>T</a>                 449 mylist.cpp         T &amp;x= *(l+((r-l)&gt;&gt;1));</span>
-<span class='curline'><a href='../S/1.html#L455'>T</a>                 455 mylist.cpp                 if (__comp&lt;T,less&gt;(*i, *j))</span>
-<span class='curline'><a href='../S/1.html#L465'>T</a>                 465 mylist.cpp             while (__comp&lt;T,less&gt;(*i,x)) ++i;</span>
-<span class='curline'><a href='../S/1.html#L466'>T</a>                 466 mylist.cpp             while (__comp&lt;T,less&gt;(x,*j)) --j;</span>
-<span class='curline'><a href='../S/1.html#L480'>T</a>                 480 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L481'>T</a>                 481 mylist.cpp     void MyList&lt;T&gt;::sort(bool less) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L488'>T</a>                 488 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L489'>T</a>                 489 mylist.cpp     void MyList&lt;T&gt;::reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
-<span class='curline'><a href='../S/1.html#L491'>T</a>                 491 mylist.cpp         T y;</span>
-<span class='curline'><a href='../S/1.html#L500'>T</a>                 500 mylist.cpp     template&lt;typename T&gt;</span>
-<span class='curline'><a href='../S/1.html#L501'>T</a>                 501 mylist.cpp     void MyList&lt;T&gt;::swap(const MyList&lt;T&gt;&amp; b) __MYLIST_NOEXCEPT()</span>
+<span class='curline'><a href='../S/1.html#L451'>T</a>                 451 mylist.cpp                     if(__comp&lt;T,less&gt;(*r,*l)) __swap(*l,*r);</span>
+<span class='curline'><a href='../S/1.html#L454'>T</a>                 454 mylist.cpp                     if (__comp&lt;T,less&gt;(*(l+1), *l)) __swap(*l, *(l+1));</span>
+<span class='curline'><a href='../S/1.html#L455'>T</a>                 455 mylist.cpp                     if (__comp&lt;T,less&gt;(*r, *(l+1))) __swap(*(l+1), *r);</span>
+<span class='curline'><a href='../S/1.html#L458'>T</a>                 458 mylist.cpp                     if (__comp&lt;T,less&gt;(*(l+1), *l)) __swap(*l, *(l+1));</span>
+<span class='curline'><a href='../S/1.html#L459'>T</a>                 459 mylist.cpp                     if (__comp&lt;T,less&gt;(*(l+2), *(l+1))) __swap(*(l+2), *(l+1));</span>
+<span class='curline'><a href='../S/1.html#L460'>T</a>                 460 mylist.cpp                     if (__comp&lt;T,less&gt;(*(l+2), *r)) __swap (*(l+2),*r);</span>
+<span class='curline'><a href='../S/1.html#L463'>T</a>                 463 mylist.cpp                     T *i=l, *j=r;</span>
+<span class='curline'><a href='../S/1.html#L464'>T</a>                 464 mylist.cpp                     T &amp;x= *(l+((r-l)&gt;&gt;1));</span>
+<span class='curline'><a href='../S/1.html#L469'>T</a>                 469 mylist.cpp                             if (__comp&lt;T,less&gt;(*j, *i))</span>
+<span class='curline'><a href='../S/1.html#L475'>T</a>                 475 mylist.cpp                         while (__comp&lt;T,less&gt;(*i,x)) ++i;</span>
+<span class='curline'><a href='../S/1.html#L476'>T</a>                 476 mylist.cpp                         while (__comp&lt;T,less&gt;(x,*j)) --j;</span>
+<span class='curline'><a href='../S/1.html#L489'>T</a>                 489 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L490'>T</a>                 490 mylist.cpp     void MyList&lt;T&gt;::sort(bool less) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L497'>T</a>                 497 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L498'>T</a>                 498 mylist.cpp     void MyList&lt;T&gt;::reverse() __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)</span>
+<span class='curline'><a href='../S/1.html#L500'>T</a>                 500 mylist.cpp         T y;</span>
+<span class='curline'><a href='../S/1.html#L509'>T</a>                 509 mylist.cpp     template&lt;typename T&gt;</span>
+<span class='curline'><a href='../S/1.html#L510'>T</a>                 510 mylist.cpp     void MyList&lt;T&gt;::swap(const MyList&lt;T&gt;&amp; b) __MYLIST_NOEXCEPT()</span>
 </pre>
 </body>
 </html>

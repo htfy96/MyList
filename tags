@@ -52,10 +52,11 @@ __MYLIST_NOEXCEPT_IF_2	mylist.cpp	38;"	d	file:
 __MYLIST_NOEXCEPT_IF_3	mylist.cpp	/^void MyList<T>::double_space(int targetSize) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY)$/;"	f
 __MYLIST_NOEXCEPT_IF_3	mylist.cpp	28;"	d	file:
 __MYLIST_NOEXCEPT_IF_3	mylist.cpp	39;"	d	file:
+__max	mylist.cpp	/^int __max(int a, int b) { return (a>b)?a:b; }$/;"	f
 a	mylist.cpp	/^        T *a;$/;"	m	class:MyList	file:
 capacity	mylist.cpp	/^        int capacity;$/;"	m	class:MyList	file:
 exceptionType	mylist.cpp	/^        const char* const exceptionType;$/;"	m	struct:MyListBaseException	file:
-exceptionType	mylist.cpp	/^        const char* const exceptionType;$/;"	m	struct:MyListLogicError	file:
+exceptionType	mylist.cpp	/^    const char* const exceptionType;$/;"	m	struct:MyListLogicError	file:
 exceptionType	mylist.cpp	/^    const char* const exceptionType;$/;"	m	struct:MyListOutOfRangeError	file:
 exceptionType	mylist.cpp	/^    const char* const exceptionType;$/;"	m	struct:MyListPopFromNullError	file:
 exceptionType	mylist.cpp	/^    const char* const exceptionType;$/;"	m	struct:MyListResizeToMinusError	file:
@@ -69,4 +70,4 @@ print	mylist.cpp	/^        virtual void print()$/;"	f	struct:MyListBaseException
 push	mylist.cpp	/^MyList<T>& MyList<T>::operator+=(const T &item) __MYLIST_NOEXCEPT_IF(push(T()))$/;"	f
 size	mylist.cpp	/^        int size;$/;"	m	class:MyList	file:
 ~MyList	mylist.cpp	/^        ~MyList(){delete [] a;}$/;"	f	class:MyList
-~MyListBaseException	mylist.cpp	/^        virtual ~MyListBaseException() {};$/;"	f	struct:MyListBaseException
+~MyListBaseException	mylist.cpp	/^            virtual ~MyListBaseException() {};$/;"	f	struct:MyListBaseException

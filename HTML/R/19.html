@@ -9,9 +9,15 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L455'>__comp</a>            455 mylist.cpp                 if (__comp&lt;T,less&gt;(*i, *j))</span>
-<span class='curline'><a href='../S/1.html#L465'>__comp</a>            465 mylist.cpp             while (__comp&lt;T,less&gt;(*i,x)) ++i;</span>
-<span class='curline'><a href='../S/1.html#L466'>__comp</a>            466 mylist.cpp             while (__comp&lt;T,less&gt;(x,*j)) --j;</span>
+<span class='curline'><a href='../S/1.html#L451'>__comp</a>            451 mylist.cpp                     if(__comp&lt;T,less&gt;(*r,*l)) __swap(*l,*r);</span>
+<span class='curline'><a href='../S/1.html#L454'>__comp</a>            454 mylist.cpp                     if (__comp&lt;T,less&gt;(*(l+1), *l)) __swap(*l, *(l+1));</span>
+<span class='curline'><a href='../S/1.html#L455'>__comp</a>            455 mylist.cpp                     if (__comp&lt;T,less&gt;(*r, *(l+1))) __swap(*(l+1), *r);</span>
+<span class='curline'><a href='../S/1.html#L458'>__comp</a>            458 mylist.cpp                     if (__comp&lt;T,less&gt;(*(l+1), *l)) __swap(*l, *(l+1));</span>
+<span class='curline'><a href='../S/1.html#L459'>__comp</a>            459 mylist.cpp                     if (__comp&lt;T,less&gt;(*(l+2), *(l+1))) __swap(*(l+2), *(l+1));</span>
+<span class='curline'><a href='../S/1.html#L460'>__comp</a>            460 mylist.cpp                     if (__comp&lt;T,less&gt;(*(l+2), *r)) __swap (*(l+2),*r);</span>
+<span class='curline'><a href='../S/1.html#L469'>__comp</a>            469 mylist.cpp                             if (__comp&lt;T,less&gt;(*j, *i))</span>
+<span class='curline'><a href='../S/1.html#L475'>__comp</a>            475 mylist.cpp                         while (__comp&lt;T,less&gt;(*i,x)) ++i;</span>
+<span class='curline'><a href='../S/1.html#L476'>__comp</a>            476 mylist.cpp                         while (__comp&lt;T,less&gt;(x,*j)) --j;</span>
 </pre>
 </body>
 </html>

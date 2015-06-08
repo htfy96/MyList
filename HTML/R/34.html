@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-<title>sort_impl</title>
+<title>size</title>
 <meta name='robots' content='noindex,nofollow' />
 <meta name='generator' content='GLOBAL-6.4' />
 <meta http-equiv='Content-Style-Type' content='text/css' />
@@ -9,11 +9,54 @@
 </head>
 <body>
 <pre>
-<span class='curline'><a href='../S/1.html#L127'>sort_impl</a>         127 mylist.cpp             template&lt;bool less&gt; void sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT);</span>
-<span class='curline'><a href='../S/1.html#L476'>sort_impl</a>         476 mylist.cpp         if (l&lt;j) sort_impl&lt;less&gt;(l, j);</span>
-<span class='curline'><a href='../S/1.html#L477'>sort_impl</a>         477 mylist.cpp         if (i&lt;r) sort_impl&lt;less&gt;(i, r);</span>
-<span class='curline'><a href='../S/1.html#L484'>sort_impl</a>         484 mylist.cpp         if(!less) sort_impl&lt;true&gt;(a,a+size);</span>
-<span class='curline'><a href='../S/1.html#L485'>sort_impl</a>         485 mylist.cpp         else sort_impl&lt;false&gt;(a,a+size);</span>
+<span class='curline'><a href='../S/1.html#L125'>size</a>              125 mylist.cpp             int size;</span>
+<span class='curline'><a href='../S/1.html#L182'>size</a>              182 mylist.cpp             for(int i=0;i&lt;size;++i)</span>
+<span class='curline'><a href='../S/1.html#L189'>size</a>              189 mylist.cpp         for (int i=0;i&lt;size;++i)</span>
+<span class='curline'><a href='../S/1.html#L202'>size</a>              202 mylist.cpp         size = num;</span>
+<span class='curline'><a href='../S/1.html#L218'>size</a>              218 mylist.cpp         size = l.size;</span>
+<span class='curline'><a href='../S/1.html#L224'>size</a>              224 mylist.cpp             for(int i=0;i&lt;size;++i)</span>
+<span class='curline'><a href='../S/1.html#L237'>size</a>              237 mylist.cpp         size = len;</span>
+<span class='curline'><a href='../S/1.html#L244'>size</a>              244 mylist.cpp             for(int i=0;i&lt;size;++i) //Out_of_range is not an exception</span>
+<span class='curline'><a href='../S/1.html#L257'>size</a>              257 mylist.cpp         if (capacity == size)</span>
+<span class='curline'><a href='../S/1.html#L259'>size</a>              259 mylist.cpp         a[size]=item;       //if exception raises, size will remain unchanged. Since a[size] is undefined, then the part exposed to user (a[0]~a[size-1]) remains unchanged)</span>
+<span class='curline'><a href='../S/1.html#L260'>size</a>              260 mylist.cpp         ++size;</span>
+<span class='curline'><a href='../S/1.html#L267'>size</a>              267 mylist.cpp         if (!size)</span>
+<span class='curline'><a href='../S/1.html#L269'>size</a>              269 mylist.cpp         T tmp=a[size-1];</span>
+<span class='curline'><a href='../S/1.html#L270'>size</a>              270 mylist.cpp         a[--size].~T(); //Destructor never throws exception</span>
+<span class='curline'><a href='../S/1.html#L276'>size</a>              276 mylist.cpp             ++size; //Even if copy constructor throws an exception, size will still be decreased</span>
+<span class='curline'><a href='../S/1.html#L285'>size</a>              285 mylist.cpp         if (index&lt;0 || index&gt;size) throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of insert out of range");</span>
+<span class='curline'><a href='../S/1.html#L286'>size</a>              286 mylist.cpp         if (size == capacity)</span>
+<span class='curline'><a href='../S/1.html#L288'>size</a>              288 mylist.cpp         ++size;</span>
+<span class='curline'><a href='../S/1.html#L289'>size</a>              289 mylist.cpp         for (int i=size-1; i&gt;index; --i)</span>
+<span class='curline'><a href='../S/1.html#L298'>size</a>              298 mylist.cpp         for(int i=0;i&lt;size;++i)</span>
+<span class='curline'><a href='../S/1.html#L300'>size</a>              300 mylist.cpp         size=0;</span>
+<span class='curline'><a href='../S/1.html#L307'>size</a>              307 mylist.cpp         return size;</span>
+<span class='curline'><a href='../S/1.html#L314'>size</a>              314 mylist.cpp         if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size || start&gt;end)</span>
+<span class='curline'><a href='../S/1.html#L318'>size</a>              318 mylist.cpp         for (int i=end+1; i&lt;size; ++i)</span>
+<span class='curline'><a href='../S/1.html#L320'>size</a>              320 mylist.cpp         size -= end-start+1;</span>
+<span class='curline'><a href='../S/1.html#L327'>size</a>              327 mylist.cpp         if (index&lt;0 || index&gt;=size) </span>
+<span class='curline'><a href='../S/1.html#L336'>size</a>              336 mylist.cpp         if (start&lt;0) start+=size;</span>
+<span class='curline'><a href='../S/1.html#L337'>size</a>              337 mylist.cpp         if (end&lt;0) end+=size;</span>
+<span class='curline'><a href='../S/1.html#L338'>size</a>              338 mylist.cpp         if (start&lt;0 || start&gt;=size || end&lt;0 || end&gt;=size) throw MyListOutOfRangeError();</span>
+<span class='curline'><a href='../S/1.html#L348'>size</a>              348 mylist.cpp         for(int i=0; i&lt;size; ++i)</span>
+<span class='curline'><a href='../S/1.html#L357'>size</a>              357 mylist.cpp         for (int i=0;i&lt;size;++i)</span>
+<span class='curline'><a href='../S/1.html#L377'>size</a>              377 mylist.cpp         if (capacity &lt; size + l.size)</span>
+<span class='curline'><a href='../S/1.html#L378'>size</a>              378 mylist.cpp           double_space(size + l.size);</span>
+<span class='curline'><a href='../S/1.html#L379'>size</a>              379 mylist.cpp         for (int i=0; i&lt;l.size; ++i)</span>
+<span class='curline'><a href='../S/1.html#L403'>size</a>              403 mylist.cpp         if (capacity&lt;l.size) double_space(l.size);</span>
+<span class='curline'><a href='../S/1.html#L404'>size</a>              404 mylist.cpp         for (int i=size;i&lt;l.size;++i)</span>
+<span class='curline'><a href='../S/1.html#L406'>size</a>              406 mylist.cpp         size = l.size;</span>
+<span class='curline'><a href='../S/1.html#L407'>size</a>              407 mylist.cpp         for(int i=0; i&lt;l.size; ++i)</span>
+<span class='curline'><a href='../S/1.html#L416'>size</a>              416 mylist.cpp         if (index&lt;0 || index&gt;=size) </span>
+<span class='curline'><a href='../S/1.html#L426'>size</a>              426 mylist.cpp         for (int i=0;i&lt;obj.size;++i)</span>
+<span class='curline'><a href='../S/1.html#L493'>size</a>              493 mylist.cpp         if(less) sort_impl&lt;true&gt;(a,a+size-1);</span>
+<span class='curline'><a href='../S/1.html#L494'>size</a>              494 mylist.cpp         else sort_impl&lt;false&gt;(a,a+size-1);</span>
+<span class='curline'><a href='../S/1.html#L501'>size</a>              501 mylist.cpp         for(int i=0;i&lt;size/2;++i)</span>
+<span class='curline'><a href='../S/1.html#L504'>size</a>              504 mylist.cpp             a[i]=a[size-i-1];</span>
+<span class='curline'><a href='../S/1.html#L505'>size</a>              505 mylist.cpp             a[size-i-1]=y;</span>
+<span class='curline'><a href='../S/1.html#L515'>size</a>              515 mylist.cpp         y=size;</span>
+<span class='curline'><a href='../S/1.html#L516'>size</a>              516 mylist.cpp         size=b.size;</span>
+<span class='curline'><a href='../S/1.html#L517'>size</a>              517 mylist.cpp         b.size=size;</span>
 </pre>
 </body>
 </html>

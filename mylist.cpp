@@ -72,35 +72,35 @@ struct MyListBaseException {
         __MYLIST_EXCEPTION_CONS(MyListBaseException)
             exceptionType("MyListBaseException"),lineno(lineno_),filename(filename_),func(func_),msg(msg_) {}
         __MYLIST_EXCEPTION_DEF_CONS(MyListBaseException)
-        virtual ~MyListBaseException() {};
+            virtual ~MyListBaseException() {};
         virtual void print()
         {
             std::cout<<exceptionType<<": In "<<filename<<" at line "<<lineno<<" in function "<<func<<"  ["<<msg<<"]"<<std::endl;
         }
 };
 struct MyListLogicError:MyListBaseException {
-        const char* const exceptionType;
-        __MYLIST_EXCEPTION_CONS(MyListLogicError)
-            __MYLIST_EXCEPTION_CONS2(MyListBaseException,MyListLogicError)
+    const char* const exceptionType;
+    __MYLIST_EXCEPTION_CONS(MyListLogicError)
+        __MYLIST_EXCEPTION_CONS2(MyListBaseException,MyListLogicError)
         __MYLIST_EXCEPTION_DEF_CONS(MyListLogicError)
 };
 struct MyListPopFromNullError:MyListLogicError{
     const char* const exceptionType;
     __MYLIST_EXCEPTION_CONS(MyListPopFromNullError)
         __MYLIST_EXCEPTION_CONS2(MyListLogicError,MyListPopFromNullError)
-    __MYLIST_EXCEPTION_DEF_CONS(MyListPopFromNullError)
+        __MYLIST_EXCEPTION_DEF_CONS(MyListPopFromNullError)
 };
 struct MyListOutOfRangeError:MyListLogicError{
     const char* const exceptionType;
     __MYLIST_EXCEPTION_CONS(MyListOutOfRangeError)
         __MYLIST_EXCEPTION_CONS2(MyListLogicError,MyListOutOfRangeError)
-    __MYLIST_EXCEPTION_DEF_CONS(MyListOutOfRangeError)
+        __MYLIST_EXCEPTION_DEF_CONS(MyListOutOfRangeError)
 };
 struct MyListResizeToMinusError:MyListLogicError{
     const char* const exceptionType;
     __MYLIST_EXCEPTION_CONS(MyListResizeToMinusError)
         __MYLIST_EXCEPTION_CONS2(MyListLogicError,MyListResizeToMinusError)
-    __MYLIST_EXCEPTION_DEF_CONS(MyListResizeToMinusError)
+        __MYLIST_EXCEPTION_DEF_CONS(MyListResizeToMinusError)
 };
 
 //Forward Declaration
@@ -167,14 +167,14 @@ class MyList{
 
 
 
-
+int __max(int a, int b) { return (a>b)?a:b; }
 
 //Strong Exception Safety
 template<typename T>
 void MyList<T>::double_space(int targetSize) __MYLIST_NOEXCEPT_IF_3(throw std::bad_alloc(),throw MyListResizeToMinusError(), __MYLIST_COPY)
 {
     T* tmp;
-    if (targetSize == -1) targetSize = capacity*2;
+    if (targetSize == -1) targetSize = __max(1,capacity*2);
     if (targetSize<0) throw MyListResizeToMinusError(__EXCEPTION_PREFIX, "can't resize to minus");
     tmp = new T [targetSize];
     try
@@ -434,7 +434,7 @@ std::ostream & operator << (std::ostream &os, const MyList<U> &obj) __MYLIST_NOE
 
 template<typename T, bool less>
 inline bool __comp(const T& a, const T& b) { if (less) return a<b; return a>b; }
-
+template<typename T> inline void __swap(T& a, T& b) { T y=a; a=b; b=y; }
 const int SORT_THRESHOLD=32;
 
 //Oops... Weak Exception Safety
@@ -443,45 +443,55 @@ template<bool less>
 void MyList<T>::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
 {
 
-    T *i=l, *j=r;
-    T y;
-    T &x= *(l+((r-l)>>1));
     if (l>=r) return;
-    if (r-l<SORT_THRESHOLD)
+    switch(r-l)
     {
-        for(i=l;i<r;++i)
-          for (j=i+1;j<r;++j)
-            if (__comp<T,less>(*i, *j))
-            {
-                y=*i;
-                *i=*j;
-                *j=y;
-            }
-        return;
+        case 1: return;
+        case 2:
+                if(__comp<T,less>(*r,*l)) __swap(*l,*r);
+                return;
+        case 3:
+                if (__comp<T,less>(*(l+1), *l)) __swap(*l, *(l+1));
+                if (__comp<T,less>(*r, *(l+1))) __swap(*(l+1), *r);
+                return;
+        case 4:
+                if (__comp<T,less>(*(l+1), *l)) __swap(*l, *(l+1));
+                if (__comp<T,less>(*(l+2), *(l+1))) __swap(*(l+2), *(l+1));
+                if (__comp<T,less>(*(l+2), *r)) __swap (*(l+2),*r);
+                return;                
+        default:
+                T *i=l, *j=r;
+                T &x= *(l+((r-l)>>1));
+                if (r-l<SORT_THRESHOLD)
+                {
+                    for(i=l;i<r;++i)
+                      for (j=i+1;j<r;++j)
+                        if (__comp<T,less>(*j, *i))
+                          __swap(*i, *j);
+                    return;
+                }
+                do
+                {
+                    while (__comp<T,less>(*i,x)) ++i;
+                    while (__comp<T,less>(x,*j)) --j;
+                    if (i<=j)
+                    {
+                        __swap(*i, *j);
+                        ++i;
+                        --j;
+                    }
+                } while (i<=j);
+                if (l<j) sort_impl<less>(l, j);
+                if (i<r) sort_impl<less>(i, r);
     }
-    do
-    {
-        while (__comp<T,less>(*i,x)) ++i;
-        while (__comp<T,less>(x,*j)) --j;
-        if (i<=j)
-        {
-            y=*i;
-            *i=*j;
-            *j=y;
-            ++i;
-            --j;
-        }
-    } while (i<=j);
-    if (l<j) sort_impl<less>(l, j);
-    if (i<r) sort_impl<less>(i, r);
 }
 
 template<typename T>
 void MyList<T>::sort(bool less) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MYLIST_CONSTRUCT)
 
 {
-    if(!less) sort_impl<true>(a,a+size);
-    else sort_impl<false>(a,a+size);
+    if(less) sort_impl<true>(a,a+size-1);
+    else sort_impl<false>(a,a+size-1);
 }
 
 template<typename T>
@@ -541,7 +551,7 @@ int main()
     cout<<a<<endl;
     try
     {
-    a.erase(3,9);
+        a.erase(3,9);
     } catch(MyListBaseException& e)
     {
         e.print();
@@ -554,7 +564,11 @@ int main()
     MyList<double> c(10, 3.14);
     for (i=0; i<100; ++i)
       c.push(1.1*i);
+    c.sort();
+    cout<<c<<endl;
+    c.sort(false);
     cout<<c.get_item(100, 105)<<endl;
+    cout<<c<<endl;
     c.erase(2,98);
     cout<<c.get_size()<<endl;
     cout<<c<<endl;

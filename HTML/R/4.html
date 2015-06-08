@@ -11,7 +11,7 @@
 <pre>
 <span class='curline'><a href='../S/1.html#L95'>MyListOutOfRangeError</a>   95 mylist.cpp         __MYLIST_EXCEPTION_CONS(MyListOutOfRangeError)</span>
 <span class='curline'><a href='../S/1.html#L96'>MyListOutOfRangeError</a>   96 mylist.cpp             __MYLIST_EXCEPTION_CONS2(MyListLogicError,MyListOutOfRangeError)</span>
-<span class='curline'><a href='../S/1.html#L97'>MyListOutOfRangeError</a>   97 mylist.cpp         __MYLIST_EXCEPTION_DEF_CONS(MyListOutOfRangeError)</span>
+<span class='curline'><a href='../S/1.html#L97'>MyListOutOfRangeError</a>   97 mylist.cpp             __MYLIST_EXCEPTION_DEF_CONS(MyListOutOfRangeError)</span>
 <span class='curline'><a href='../S/1.html#L141'>MyListOutOfRangeError</a>  141 mylist.cpp             void erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY); //删除MyList中第start到第end位的元素，包括两边。</span>
 <span class='curline'><a href='../S/1.html#L144'>MyListOutOfRangeError</a>  144 mylist.cpp             MyList&lt;T&gt; get_item(int start, int end) const __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), MyList&lt;T&gt;(a,0));//返回MyList中第start到第end位的元素，包括两边。此处需要像python一样接受负数，具体见测试代码。</span>
 <span class='curline'><a href='../S/1.html#L156'>MyListOutOfRangeError</a>  156 mylist.cpp             T &amp;operator [](int index) const  __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY);//返回第index个元素。</span>
