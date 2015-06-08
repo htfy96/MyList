@@ -282,6 +282,7 @@ T MyList<T>::pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLI
 template<typename T>
 void MyList<T>::insert(int index, const T &item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)
 {
+    if (index<0) index+=size;
     if (index<0 || index>size) throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of insert out of range");
     if (size == capacity)
       double_space();
@@ -311,6 +312,8 @@ int MyList<T>::get_size() const __MYLIST_NOEXCEPT()
 template<typename T>
 void MyList<T>::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOutOfRangeError(), __MYLIST_COPY)
 {
+    if (start<0) start+=size;
+    if (end<0) end+=size;
     if (start<0 || start>=size || end<0 || end>=size || start>end)
       throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of erase out of range");
     for (int i=start; i<=end; ++i)
@@ -324,6 +327,7 @@ void MyList<T>::erase(int start, int end) __MYLIST_NOEXCEPT_IF_2(throw MyListOut
 template<typename T>
 T MyList<T>::get_item(int index) const __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY) 
 {
+    if (index<0) index+=size;
     if (index<0 || index>=size) 
       throw MyListOutOfRangeError(__EXCEPTION_PREFIX, "index of item out of range");
     return a[index];
@@ -444,7 +448,7 @@ void MyList<T>::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MY
 {
 
     if (l>=r) return;
-    switch(r-l)
+    switch(r-l+1)
     {
         case 1: return;
         case 2:
@@ -454,18 +458,13 @@ void MyList<T>::sort_impl(T* l, T* r) __MYLIST_NOEXCEPT_IF_2(__MYLIST_COPY, __MY
                 if (__comp<T,less>(*(l+1), *l)) __swap(*l, *(l+1));
                 if (__comp<T,less>(*r, *(l+1))) __swap(*(l+1), *r);
                 return;
-        case 4:
-                if (__comp<T,less>(*(l+1), *l)) __swap(*l, *(l+1));
-                if (__comp<T,less>(*(l+2), *(l+1))) __swap(*(l+2), *(l+1));
-                if (__comp<T,less>(*(l+2), *r)) __swap (*(l+2),*r);
-                return;                
         default:
                 T *i=l, *j=r;
                 T &x= *(l+((r-l)>>1));
-                if (r-l<SORT_THRESHOLD)
+                if (r-l+1<SORT_THRESHOLD)
                 {
                     for(i=l;i<r;++i)
-                      for (j=i+1;j<r;++j)
+                      for (j=i+1;j<=r;++j)
                         if (__comp<T,less>(*j, *i))
                           __swap(*i, *j);
                     return;
@@ -541,7 +540,7 @@ int main()
     b = a.get_item(4, -3); // b = [] *若start > end，返回空数组
     b = a.get_item(3, -1); // b = [1, 0, 12] 
     a += b; // a = [15, 4, 2, 1, 0, 12, 1, 0, 12]
-
+    cout<<a<<endl;
     for (i=0; i<a.get_size(); ++i)
       cout<<a.get_item(i)<<endl;
     cout<<a.count(5)<<endl;
