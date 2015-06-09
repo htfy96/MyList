@@ -72,7 +72,7 @@ struct MyListBaseException {
         __MYLIST_EXCEPTION_CONS(MyListBaseException)
             exceptionType("MyListBaseException"),lineno(lineno_),filename(filename_),func(func_),msg(msg_) {}
         __MYLIST_EXCEPTION_DEF_CONS(MyListBaseException)
-            virtual ~MyListBaseException() {};
+            virtual ~MyListBaseException() {print();};
         virtual void print()
         {
             std::cout<<exceptionType<<": In "<<filename<<" at line "<<lineno<<" in function "<<func<<"  ["<<msg<<"]"<<std::endl;
@@ -132,8 +132,7 @@ class MyList{
         MyList(const MyList &l)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//深复制另外一个MyList。
         MyList(T* arr, int len)  __MYLIST_NOEXCEPT_IF_2(throw std::bad_alloc(), __MYLIST_COPY);//以arr的前len个元素构造数组
 
-        void push(const T &item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)
-            ;//将item添加在MyList最后。
+        void push(const T &item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//将item添加在MyList最后。
         T pop() __MYLIST_NOEXCEPT_IF_2(throw MyListPopFromNullError(), __MYLIST_COPY());//将MyList中最后一个元素删除，并返回这个删除的元素。
         void insert(int index, const T &item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//将item插入到place处。
         void clean() __MYLIST_NOEXCEPT();//清空数组。
@@ -147,9 +146,9 @@ class MyList{
         void remove(const T &item) __MYLIST_NOEXCEPT_IF(erase(0,0));//删除MyList中第一个和item相等的元素。
 
 
-        friend MyList operator + <> (const MyList<T> &l1, const MyList<T> &l2); 
+        friend MyList<T> operator + <T> (const MyList<T> &l1, const MyList<T> &l2); 
         //合并两个MyList
-        friend MyList operator + <> (const MyList &l1, const T &item); //同push(T item)，但不修改l1，返回一个新数组
+        friend MyList<T> operator + <T> (const MyList<T> &l1, const T &item); //同push(T item)，但不修改l1，返回一个新数组
         MyList &operator = (const MyList<T> &l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);//赋值
         MyList &operator += (const T &item) __MYLIST_NOEXCEPT_IF(push(T()));//同push(T item)
         MyList &operator += (const MyList<T> &l) __MYLIST_NOEXCEPT_IF_2(double_space(),*this+=T());//将一个MyList加入到本个MyList之后。
@@ -571,6 +570,8 @@ int main()
     c.erase(2,98);
     cout<<c.get_size()<<endl;
     cout<<c<<endl;
+    cout<<c.get_item(-3)<<endl;
+    c.insert(30, 12);
 
     return 0;
 }

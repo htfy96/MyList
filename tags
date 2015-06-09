@@ -16,7 +16,7 @@ __MYLIST_ASSIGN	mylist.cpp	31;"	d	file:
 __MYLIST_CONSTRUCT	mylist.cpp	30;"	d	file:
 __MYLIST_COPY	mylist.cpp	/^        MyList &operator = (const MyList<T> &l) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);\/\/赋值$/;"	m	class:MyList	file:
 __MYLIST_COPY	mylist.cpp	/^        void insert(int index, const T &item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);\/\/将item插入到place处。$/;"	m	class:MyList	file:
-__MYLIST_COPY	mylist.cpp	/^        void push(const T &item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY)$/;"	m	class:MyList	file:
+__MYLIST_COPY	mylist.cpp	/^        void push(const T &item) __MYLIST_NOEXCEPT_IF_2(double_space(), __MYLIST_COPY);\/\/将item添加在MyList最后。$/;"	m	class:MyList	file:
 __MYLIST_COPY	mylist.cpp	29;"	d	file:
 __MYLIST_EXCEPTION_CONS	mylist.cpp	61;"	d	file:
 __MYLIST_EXCEPTION_CONS2	mylist.cpp	62;"	d	file:
@@ -70,4 +70,4 @@ print	mylist.cpp	/^        virtual void print()$/;"	f	struct:MyListBaseException
 push	mylist.cpp	/^MyList<T>& MyList<T>::operator+=(const T &item) __MYLIST_NOEXCEPT_IF(push(T()))$/;"	f
 size	mylist.cpp	/^        int size;$/;"	m	class:MyList	file:
 ~MyList	mylist.cpp	/^        ~MyList(){delete [] a;}$/;"	f	class:MyList
-~MyListBaseException	mylist.cpp	/^            virtual ~MyListBaseException() {};$/;"	f	struct:MyListBaseException
+~MyListBaseException	mylist.cpp	/^            virtual ~MyListBaseException() {print();};$/;"	f	struct:MyListBaseException
